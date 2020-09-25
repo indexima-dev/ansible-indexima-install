@@ -69,3 +69,8 @@ deploy:
 
   notifications:
     webhooks: https://galaxy.ansible.com/api/v1/notifications/
+
+jobs:
+  include:
+    - test
+    - deploy
