@@ -1,5 +1,4 @@
 ---
-# Standard
 - name: Stop Galactica service on workers
   become: yes
   become_user: root
