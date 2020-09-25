@@ -1,4 +1,8 @@
 ---
+- name: Test travis
+  debug:
+    msg: "This should not be appearing"
+    
 - name: Split version
   set_fact:
     version_split: "{{ version.split('.') }}"
