@@ -1,20 +1,24 @@
 ---
 language: python
-python: "2.7"
+python: "3.7"
 
 # Use the new container infrastructure
-sudo: false
 os: linux
 dist: bionic
+
+services:
+  - docker
+env:
+  - distribution: centos
 # Install ansible
 addons:
   apt:
     packages:
-    - python-pip
+    - python3-pip
 
 install:
   # Install ansible
-  - pip install ansible
+  - pip3 install ansible
 
   # Check ansible version
   - ansible --version
