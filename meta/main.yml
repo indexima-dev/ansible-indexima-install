@@ -15,13 +15,13 @@ galaxy_info:
   # https://galaxy.ansible.com/api/v1/platforms/
   #
   platforms:
-  - name: Centos
+  - name: CentOS
     versions:
     - all
   - name: Amazon
     versions:
     - all
-  - name: Redhat
+  - name: RedHat
     versions:
     - all
   - name: Ubuntu
