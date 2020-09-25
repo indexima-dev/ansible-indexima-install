@@ -2,7 +2,7 @@
 # internal_host is the host as seen by all the Indexima cluster nodes.
 # both are required
 [indexima]
-master ansible_host=localhost internal_host=locahost master=true
+node1 ansible_host=localhost internal_host=locahost is_master=1
 
 [indexima:vars]
 
@@ -38,12 +38,13 @@ ansible_connection=local
 ## Copy the desired indexima-installer-<version>.zip into roles/indexima-standalone/files
 internet=1
 
+
 ## Total number of nodes
 nodes=1
 ## Number of cores per node
 cores=2
 ## Amount of RAM per node (Mb)
-ram=8000
+ram=600
 ## Number of disk per node
 disk=1
 ## If you want to set the partitions number manually, uncomment next field and write the desired value
@@ -92,7 +93,7 @@ warehouse=/opt/indexima/indexima-warehouse
 #s3_like_https=true
 
 ##### VD CONFIG #####
-#############################
+#####################
 
 ## Choose admin_type between local, s3, azure and gs.
 ## If choosing local, specify a local absolute path in vd_data to store visualdoop data into
@@ -129,6 +130,10 @@ vd_data=/opt/indexima/visualdoop-data
 #gcp=1
 #google_credentials_path=
 
+
+##### HIVE CONFIG #####
+#######################
+
 ## Hive Kerberos
 ## If you want to configure to use a fully Kerberized Indexima Cluster, uncomment the following line, and specify the kerberos principal and keytab path
 ## If you want to use only a specific part of Indexima with Kerberos, uncomment only the line(s) corresponding to what you want to Kerberize. Then specify the kerberos principal and keytab path
@@ -147,6 +152,9 @@ galactica_users="admin,hadoop"
 galactica_passwords="admin,password"
 galactica_admins="admin"
 
+##### LDAP CONFIG #####
+#######################
+
 ## If you want to setup LDAP connection, uncomment the following parameter
 #ldap=1
 ## If LDAP is enabled, you need to configure your ldap url
@@ -159,6 +167,8 @@ galactica_admins="admin"
 #monitor_rights=1
 
 
+##### DRIVERS CONFIG #####
+##########################
 
 #### Database drivers
 ### If you want to Load data from external database into Indexima
@@ -183,7 +193,7 @@ galactica_admins="admin"
 #yarn_name=Indexima
 
 ## HA and Zookeeper
-ha=1
+#ha=0
 #zookeeper_quorum=
 #zookeeper_namespace=
 
