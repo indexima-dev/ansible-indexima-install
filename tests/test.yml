@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: indexima
   remote_user: root
   roles:
     - ansible-indexima-install
