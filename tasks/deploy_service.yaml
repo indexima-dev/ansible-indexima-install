@@ -1,0 +1,53 @@
+---
+- name: Copy Galactica Master service file to all nodes
+  become: yes
+  become_user: root
+  template:
+    src: indeximam.service
+    dest: /etc/systemd/system/indeximam.service
+    owner: "root"
+    group: "root"
+    mode: '0644'
+  when:
+    - is_master == 1
+    - ha == 0
+  tags: [ 'service', install', 'update', 'install', 'install-galactica', 'update-galactica' ]
+
+- name: Copy Galactica Worker service file to all nodes
+  become: yes
+  become_user: root
+  template:
+    src: indeximas.service
+    dest: /etc/systemd/system/indeximas.service
+    owner: "root"
+    group: "root"
+    mode: '0644'
+  when:
+    - is_master == 0
+    - ha == 0
+  tags: [ 'service', 'install', 'update', 'install', 'install-galactica', 'update-galactica' ]
+
+- name: Copy Visualdoop service file to master node
+  become: yes
+  become_user: root
+  template:
+    src: visualdoop.service
+    dest: /etc/systemd/system/visualdoop.service
+    owner: "root"
+    group: "root"
+    mode: '0644'
+  when: 
+    - is_master == 1
+  tags: [ 'service', 'install', 'update', 'install', 'install-visualdoop', 'update-visualdoop' ]
+
+- name: Copy Galactica ha service file to all nodes
+  become: yes
+  become_user: root
+  template:
+    src: indexima.service
+    dest: /etc/systemd/system/indexima.service
+    owner: "root"
+    group: "root"
+    mode: '0644'
+  when: ha == 1
+  tags: [ 'service', install', 'update', 'install', 'install-galactica', 'update-galactica' ]

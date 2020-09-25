@@ -1,0 +1,87 @@
+---
+# tasks file for indexima-prerequisites
+
+- name: Install unzip
+  yum:
+    name: unzip
+
+- name: Install JAVA with yum
+  yum:
+    name: "{{ java_package }}"
+  tags: ['java']
+
+- name: Find Java bin path
+  shell: readlink -f $(which java) |sed -e 's/\/bin\/java//'
+  register: java_path
+  tags: ['java', 'env']
+
+- name: Add java_path to JAVA_HOME Env
+  lineinfile:
+    path: /etc/environment
+    regexp: 'JAVA_HOME'
+    line: "JAVA_HOME={{ java_path.stdout }}"
+  tags: ['java', 'env']
+
+- name: Create Install Path Dir
+  file:
+    path: "{{ install_path }}"
+    state: directory
+    owner: "{{ service_user |d('root') }}"
+    group: "{{ service_user |d('root') }}"
+    mode: '0755'
+
+- name: Download Hadoop {{ hadoop_version }}
+  get_url:
+    url: "{{ hadoop_url }}"
+    dest: "{{ hadoop_archive }}"
+  tags: ['hadoop', 'web']
+  when: internet == 1
+
+- name: Copy Hadoop tar.gz archive
+  copy:
+    src: "{{ hadoop_file }}.tar.gz"
+    dest: "{{ hadoop_archive }}"
+    owner: "{{ service_user |d('root') }}"
+    group: "{{ service_user |d('root') }}"
+    mode: '0644'
+  tags: ['hadoop']
+  when: internet == 0
+
+- name: Extract hadoop_archive
+  unarchive:
+    remote_src: yes
+    src: "{{ hadoop_archive }}"
+    dest: "{{ install_path }}"
+    owner: "{{ service_user |d('root') }}"
+    group: "{{ service_user |d('root') }}"
+    mode: '0644'
+  tags: ['hadoop']
+
+- name: Add {{ hadoop_path }} to HADOOP_BASE Env
+  lineinfile:
+    path: /etc/environment
+    regexp: 'HADOOP_BASE'
+    line: "HADOOP_BASE={{ hadoop_path }}"
+  tags: ['hadoop', 'env']
+
+- name: add {{ hadoop_path }} to the PATH
+  copy:
+    dest: /etc/profile.d/custom-path.sh
+    content: 'PATH=$PATH:/usr/local/bin:{{ hadoop_path }}/bin:{{ hadoop_path }}/sbin'
+    owner: "root"
+    group: "root"
+    mode: '0755'
+  tags: ['hadoop', 'env']
+
+- name: Set ulimit 32000
+  lineinfile:
+    path: /etc/security/limits.conf
+    regexp: '\*\s*-\s*nofile\s*32000'
+    line: '*        -     nofile  32000'
+  tags: ['etc']
+
+- name: Install nginx with amazon linux extra
+  command:
+    cmd: amazon-linux-extras install nginx1.12=latest -y
+    creates: /sbin/nginx
+  when: ansible_distribution == "Amazon"

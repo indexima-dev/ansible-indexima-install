@@ -1,0 +1,8 @@
+---
+- name: Copy license to galactica/conf
+  copy:
+    src: indexima.lic
+    dest: "{{ galactica_path }}/conf"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0644'

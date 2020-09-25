@@ -1,0 +1,32 @@
+---
+- name: Create Install Path Dir
+  become: yes
+  become_user: root
+  file:
+    path: "{{ install_path }}"
+    state: directory
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0755'
+  register: install
+
+- name: Create Log Dir
+  become: yes
+  become_user: root
+  file:
+    path: "{{ indexima_logs_path }}"
+    state: directory
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0755'
+
+- name: Create extract dir
+  become: yes
+  become_user: root
+  file:
+    path: "{{ indexima_path }}"
+    state: directory
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0755'
+  register: dir

@@ -1,0 +1,14 @@
+[Unit]
+Description=Indexima Service
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/environment
+Restart=always
+WorkingDirectory={{ galactica_path }}
+LimitNOFILE=65536
+User={{ service_user | d('root') }}
+ExecStart=/bin/bash {{ galactica_path }}/start-node.sh --host {{ internal_host |d('LOCAL_IP') }} --attach {% for host in groups['indexima'] %}{% if hostvars[host]['is_master'] %}{{ hostvars[host]['internal_host'] }}{% endif %}{% endfor %}
+
+[Install]
+WantedBy=multi-user.target

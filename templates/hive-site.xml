@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<configuration>
+    <property>
+        <name>hive.server2.thrift.port</name>
+        <value>{{ hive_port }}</value>
+    </property>
+    <property>
+        <name>hive.server2.transport.mode</name>
+        <value>{{ hive_type }}</value>
+    </property>
+    <property>
+        <name>hive.server2.thrift.http.port</name>
+        <value>10001</value>
+    </property>
+    {% if monitor_auth %}
+    <property>
+        <name>hive.server2.authentication</name>
+        <value>CUSTOM</value>
+    </property>
+    <property>
+        <name>hive.server2.custom.authentication.class</name>
+        <value>io.galactica.admin.HiveAuthProvider</value>
+    </property>
+
+    {% endif %}
+    <property>
+        <name>hive.server2.enable.doAs</name>
+        <value>false</value>
+    </property>
+
+    {% if ldap %}
+    <property>
+       <name>hive.server2.authentication</name>
+       <value>LDAP</value>
+    </property>
+
+    <property>
+       <name>hive.server2.authentication.ldap.url</name>
+       <value>{{ ldap_url }}</value>
+    </property>
+
+    <property>
+       <name>hive.server2.authentication.ldap.userDNPattern</name>
+       <value>{{ ldap_user_dnpattern }}</value>
+    </property>
+
+    {% endif %}
+    {% if kerberos_indexima == 1 %}
+    <property>
+      <name>hive.server2.authentication</name>
+      <value>KERBEROS</value>
+    </property>
+    <property>
+      <name>hive.server2.authentication.kerberos.keytab</name>
+      <value>{{ kerberos_keytab }}</value>
+    </property>
+    <property>
+      <name>hive.server2.authentication.kerberos.principal</name>
+      <value>{{ kerberos_principal }}</value>
+    </property>
+
+    {% endif %}
+    {% if ha == 1 and zookeeper_namespace is defined %}
+    <property>
+      <name>hive.server2.support.dynamic.service.discovery</name>
+      <value>true</value>
+    </property>
+    <property>
+      <name>hive.server2.zookeeper.namespace</name>
+      <value>{{ zookeeper_namespace }}</value>
+    </property>
+    <property>
+      <name>hive.zookeeper.quorum</name>
+      <value>{{ zookeeper_quorum }}</value>
+    </property>
+    {% if zookeeper_bind_ip is defined %}
+    <property>
+      <name>hive.server2.thrift.bind.zookeeper</name>
+      <value>{{ zookeeper_bind_ip }}</value>
+    </property>
+    {% endif %}
+    {% if kerberos_zookeeper == 0 %}
+    <property>
+      <name>allow.unsecure.zookeeper</name>
+      <value>true</value>
+    </property>
+    {% endif %}
+    {% if kerberos_zookeeper == 1 and kerberos_indexima == 0 %}
+    <property>
+      <name>use.jaas.file.zookeeper</name>
+      <value>true</value>
+    </property>
+    {% endif %}
+    {% endif %}
+
+</configuration>

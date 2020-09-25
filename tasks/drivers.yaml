@@ -1,0 +1,90 @@
+---
+- name: Copy oracle jdbc driver in /driver
+  copy:
+    src: ojdbc8.jar
+    dest: "{{ galactica_path }}/driver"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0644'
+  when: oracle
+
+- name: Copy db2 jdbc driver in /driver
+  copy:
+    src: db2jcc4.jar
+    dest: "{{ galactica_path }}/driver"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0644'
+  when: db2
+
+- name: Copy snowflake jdbc driver in /driver
+  copy:
+    src: snowflake-jdbc-3.9.2.jar
+    dest: "{{ galactica_path }}/driver"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0644'
+  when: snowflake
+
+- name: Copy hive jdbc driver in /driver
+  copy:
+    src: hive-jdbc-1.2.1.jar
+    dest: "{{ galactica_path }}/driver"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0644'
+  when: hive
+
+- name: Copy postgres jdbc driver in /driver
+  copy:
+    src: postgresql-42.2.2.jar
+    dest: "{{ galactica_path }}/driver"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0644'
+  when: postgres
+
+- name: Copy sqlserver jdbc driver in /driver
+  copy:
+    src: sqljdbc42.jar
+    dest: "{{ galactica_path }}/driver"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0644'
+  when: sqlserver
+
+- name: Copy mysql jdbc driver in /driver
+  copy:
+    src: mysql-connector-java-8.0.18.jar
+    dest: "{{ galactica_path }}/driver"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0644'
+  when: mysql
+
+- name: Copy bigquery jdbc driver in /driver
+  copy:
+    src: googlebigquery.jdbc42-1.2.2.1004.jar
+    dest: "{{ galactica_path }}/driver"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0644'
+  when: bigquery
+
+- name: Copy redshift jdbc driver in /driver
+  copy:
+    src: redshift-jdbc42-1.2.37.1061.jar
+    dest: "{{ galactica_path }}/driver"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0644'
+  when: redshift
+
+- name: Copy Impala jdbc driver in /driver
+  copy:
+    src: jdbc-2.5.5.1007.jar
+    dest: "{{ galactica_path }}/driver"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0644'
+  when: impala

@@ -1,0 +1,30 @@
+<configuration>
+ <property>
+    <name>fs.adl.oauth2.client.id</name>
+    <value>{{ fs_adl_oauth2_client_id }}</value>
+  </property>
+  <property>
+    <name>fs.adl.oauth2.access.token.provider.type</name>
+    <value>{{ fs_adl_oauth2_access_token_provider_type }}</value>
+  </property>
+  <property>
+    <name>fs.adl.oauth2.refresh.url</name>
+    <value>https://login.microsoftonline.com/{{ fs_adl_oauth2_tenant_id }}/oauth2/token</value>
+  </property>
+  <property>
+    <name>dfs.adls.oauth2.credential</name>
+    <value>{{ dfs_adls_oauth2_credential }}</value>
+  </property>
+  <property>
+    <name>fs.defaultFS</name>
+    <value>{{ fs_defaultFS }}</value>
+  </property>
+  <property>
+    <name>fs.adl.impl</name>
+    <value>{{ fs_adl_impl }}</value>
+  </property>
+  <property>
+    <name>fs.AbstractFileSystem.adl.impl</name>
+    <value>{{ fs_AbstractFileSystem_adl_impl }}</value>
+  </property>
+</configuration>

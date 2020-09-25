@@ -1,0 +1,110 @@
+---
+# defaults file for indexima
+
+#prerequisites
+download_url: http://download.oracle.com/otn-pub/java/jdk/8u5-211/jdk-8u5-linux-x64.tar.gz
+install_path: "/opt"
+service_user: "root"
+java_name: "{{ install_path }}/jdk1.8.0_05"
+java_archive: "{{ install_path }}/jdk-8u5-linux-x64.tar.gz"
+java_package: java-1.8.0-openjdk # Redhat family
+#java_package: openjdk-8-jdk # Debian family
+
+hadoop_version: "2.8.3"
+hadoop_file: hadoop-{{ hadoop_version }}
+hadoop_url: http://archive.apache.org/dist/hadoop/common/{{ hadoop_file }}/{{ hadoop_file }}.tar.gz
+hadoop_archive: "{{ install_path }}/{{ hadoop_file }}.tar.gz"
+hadoop_path: "{{ install_path }}/{{ hadoop_file }}"
+
+
+#standalone
+#don't change
+version: 1.7.10.1132.0
+internal_use: 0
+indexima_base_url: "https://download.indexima.com/release"
+indexima_path: "{{ install_path }}/indexima"
+indexima_logs_path: "/var/log/indexima"
+indexima_version: "{{ indexima_release }}{% if indexima_build is defined %}.{{ indexima_build }}{% endif %}{% if indexima_sp is defined %}.{{ indexima_sp }}{% endif %}"
+
+# Indexima installer
+indexima_file: indexima-installer-{{ indexima_version }}.zip
+indexima_gold: "{{ indexima_release | replace('.', '') }}-{{ indexima_build | omitempty}}"
+indexima_url: "{{ indexima_base_url }}/{{ indexima_release }}/{{ indexima_sp |d('') }}/{{ indexima_file }}"
+indexima_archive: "{{ indexima_path }}/{{ indexima_file }}"
+galactica_path: "{{ indexima_path }}/galactica"
+
+# Dev Console
+admin_type: local
+vd_data: "$HOME/visualdoop-data"
+vd2_file: indexima-installer-visual2-{{ indexima_version }}.zip
+vd2_archive: "{{ indexima_path }}/{{ vd2_file }}"
+vd2_url: "{{ indexima_base_url }}/{{ indexima_release }}/{{ indexima_sp }}/{{ vd2_file }}"
+vd2_path: "{{ indexima_path }}/visualdoop2"
+vd_path: "{{ indexima_path }}/visualdoop"
+
+# Config parameters
+warehouse_type: local
+partitions_default: "{{ cores * nodes }}"
+partitions_number: "{{ partitions | d(partitions_default) }}"
+
+# Drivers
+oracle: 0
+db2: 0
+snowflake: 0
+hive: 0
+postgres: 0
+mysql: 0
+sqlserver: 0
+bigquery: 0
+redshift: 0
+impala: 0
+
+# Cloud Storage
+aws: 0
+gs: 0
+azure: 0
+src_google_credentials: credentials.json
+
+# Auth
+monitor_auth: false
+monitor_rights: false
+ldap: false
+ldap_url: null
+ldap_user_dnpattern: null
+
+galactica_users: null
+galactica_passwords: null
+galactica_admins: null
+
+kerberos_full: 0
+kerberos_indexima: "{{ kerberos_full }}"
+kerberos_hdfs: "{{ kerberos_full }}"
+kerberos_zookeeper: "{{ kerberos_full }}"
+
+# Hadoop
+hadoop_base: "{{ install_path }}/hadoop-2.8.3"
+yarn_deploy: 0
+yarn_classpath: "{{ yarn_deploy }}"
+hive_port: 10000
+hive_type: binary
+yarn_resourcemanager_hostname: localhost
+yarn_memory: "{{ ram }}"
+yarn_tmp_dir: hdfs://localhost:8020/tmp/indexima
+yarn_name: Indexima
+
+# HD Insight
+core_site_path: "{{ hadoop_base }}/etc/hadoop"
+azure_hadoop_jars_path: "{{ hadoop_base }}/share/hadoop/common"
+fs_adl_oauth2_client_id: "ADL_CLIENT_ID"
+fs_adl_oauth2_access_token_provider_type: "ClientCredential"
+fs_adl_oauth2_tenant_id: "ADL_TENANT_ID"
+dfs_adls_oauth2_password: "ADL_SECRET"
+fs_defaultFS: "adl://BUCKET_NAME.azuredatalakestore.net"
+fs_adl_impl: "org.apache.hadoop.fs.adl.AdlFileSystem"
+fs_AbstractFileSystem_adl_impl: "org.apache.hadoop.fs.adl.Adl"
+
+# Misc
+clean: 1
+ssl: 0
+ha: 1
+vd_cluster: 0

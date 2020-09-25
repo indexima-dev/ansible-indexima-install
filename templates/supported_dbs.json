@@ -1,0 +1,58 @@
+{
+  "supported_dbs": [
+	{
+	  "name": "snowflake",
+	  "only_physical_table": false,
+	  "display": true,
+	  "driver": "net.snowflake.client.jdbc.SnowflakeDriver"
+	},
+	{
+	  "name": "bigquery",
+	  "only_physical_table": false,
+	  "display": true,
+	  "driver": "com.simba.googlebigquery.jdbc42.Driver"
+	},
+	{
+	  "name": "redshift",
+	  "only_physical_table": false,
+	  "display": true,
+	  "driver": "com.amazon.redshift.jdbc42.Driver"
+	},
+	{
+	  "name": "oracle",
+	  "only_physical_table": true,
+	  "display": true,
+	  "driver": "oracle.jdbc.OracleDriver"
+	},
+	{
+	  "name": "postgresql",
+	  "only_physical_table": true,
+	  "display": true,
+	  "driver": "org.postgresql.Driver"
+	},
+	{
+	  "name": "db2",
+	  "only_physical_table": true,
+	  "display": true,
+	  "driver": "com.ibm.db2.jcc.DB2Driver"
+	},
+	{
+	  "name": "mysql",
+	  "only_physical_table": true,
+	  "display": true,
+	  "driver": "com.mysql.cj.jdbc.Driver"
+	},
+	{
+	  "name": "sqlserver",
+	  "only_physical_table": true,
+	  "display": true,
+	  "driver": "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+	},
+	{
+	  "name": "hive2",
+	  "only_physical_table": false,
+	  "display": true,
+	  "driver": "org.apache.hive.jdbc.HiveDriver"
+	}
+  ]
+}

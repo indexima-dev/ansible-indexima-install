@@ -1,0 +1,8 @@
+---
+- import_tasks: stop_indexima.yaml
+  ignore_errors: yes
+
+- name: Delete extract dir
+  file:
+    path: "{{ indexima_path }}"
+    state: absent

@@ -1,0 +1,138 @@
+---
+# Standard
+- name: Stop Galactica service on workers
+  become: yes
+  become_user: root
+  service:
+    name: indeximas
+    daemon_reload: yes
+    state: stopped
+  tags: [grestart', 'gstop', 'irestart', 'istop']
+  when:
+    - is_master == 0
+    - ha == 0
+
+- name: Stop Galactica service on master
+  become: yes
+  become_user: root
+  service:
+    name: indeximam
+    daemon_reload: yes
+    state: stopped
+  tags: [grestart', 'gstop', 'irestart', 'istop']
+  when:
+    - is_master == 1
+    - ha == 0
+
+# HA
+- name: Stop Galactica service on ha cluster
+  become: yes
+  become_user: root
+  service:
+    name: indexima
+    daemon_reload: yes
+    state: stopped
+  tags: [grestart', 'gstop', 'irestart', 'istop']
+  when: ha == 1
+
+# VD 2
+- name: Stop Visualdoop service
+  become: yes
+  become_user: root
+  service:
+    name: visualdoop
+    daemon_reload: yes
+    state: stopped
+  tags: [vrestart', 'vstop', 'irestart', 'istop']
+  when: is_master == 1
+
+# Standard
+- name: Enable Galactica service on workers
+  become: yes
+  become_user: root
+  service:
+    name: indeximas
+    daemon_reload: yes
+    enabled: yes
+  tags: [grestart', 'gstart', 'irestart', 'istart']
+  when:
+    - is_master == 0
+    - ha == 0
+
+- name: Start Galactica service on workers
+  become: yes
+  become_user: root
+  service:
+    name: indeximas
+    daemon_reload: yes
+    state: started
+  tags: [grestart', 'gstart', 'irestart', 'istart']
+  when:
+    - is_master == 0
+    - ha == 0
+
+- name: Enable Galactica service on master
+  become: yes
+  become_user: root
+  service:
+    name: indeximam
+    daemon_reload: yes
+    enabled: yes
+  tags: [grestart', 'gstart', 'irestart', 'istart']
+  when:
+    - is_master == 1
+    - ha == 0
+
+- name: Start Galactica service on master
+  become: yes
+  become_user: root
+  service:
+    name: indeximam
+    daemon_reload: yes
+    state: started
+  tags: [grestart', 'gstart', 'irestart', 'istart']
+  when:
+    - is_master == 1
+    - ha == 0
+
+# HA
+- name: Enable Galactica service on ha cluster
+  become: yes
+  become_user: root
+  service:
+    name: indexima
+    daemon_reload: yes
+    enabled: yes
+  tags: [grestart', 'gstart', 'irestart', 'istart']
+  when: ha == 1
+
+- name: Start Galactica service on ha cluster
+  become: yes
+  become_user: root
+  service:
+    name: indexima
+    daemon_reload: yes
+    state: started
+  tags: [grestart', 'gstart', 'irestart', 'istart']
+  when: ha == 1
+
+# VD2
+- name: Enable Visualdoop service
+  become: yes
+  become_user: root
+  service:
+    name: visualdoop
+    daemon_reload: yes
+    enabled: yes
+  tags: [vrestart', 'vstart', 'irestart', 'istart']
+  when: is_master == 1
+
+- name: Start Visualdoop service
+  become: yes
+  become_user: root
+  service:
+    name: visualdoop
+    daemon_reload: yes
+    state: started
+  tags: [vrestart', 'vstart', 'irestart', 'istart']
+  when: is_master == 1

@@ -1,0 +1,18 @@
+---
+- name: Copy config_vd2.sh template to visualdoop2 master
+  template:
+    src: config_vd2.sh
+    dest: "{{ indexima_path }}/visualdoop2/config.sh"
+    owner: "{{ service_user |d('root') }}"
+    group: "{{ service_user |d('root') }}"
+    mode: '0644'
+  when: is_master == 1
+
+- name: Copy log4j2_vd2.xml template to master
+  template:
+    src: log4j2_vd2.xml
+    dest: "{{ indexima_path }}/visualdoop2/log4j2.xml"
+    owner: "{{ service_user |d('root') }}"
+    group: "{{ service_user |d('root') }}"
+    mode: '0644'
+  when: is_master == 1

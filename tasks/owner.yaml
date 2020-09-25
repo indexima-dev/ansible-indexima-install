@@ -1,0 +1,21 @@
+- name: Recursively change ownership of install_dir
+  file:
+    path: "{{ install_path }}"
+    state: directory
+    recurse: yes
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0755'
+  vars:
+    ansible_become_user: root
+
+- name: Recursively change ownership of logs dir
+  file:
+    path: "{{ indexima_logs_path }}"
+    state: directory
+    recurse: yes
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0755'
+  vars:
+    ansible_become_user: root

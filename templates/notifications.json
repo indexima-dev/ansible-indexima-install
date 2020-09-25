@@ -1,0 +1,36 @@
+{
+	"notifications": [
+		{
+			"type": "LIMITED_TABLE",
+			"severity": "INFO",
+			"hints": ["ANALYZER", "DOCUMENTATION"]
+		},
+		{
+			"type": "OPTIMIZE_TABLE",
+			"severity": "WARNING",
+			"hints": ["ANALYZER", "DOCUMENTATION"],
+			"parameters": { 
+				"window_size" : "2" , 
+				"threshold" : "0.05" 
+			}
+		},
+		{
+			"type": "INDEX_SIZE",
+			"severity": "WARNING",
+			"hints": ["ANALYZER", "DOCUMENTATION"],
+			"parameters": { 
+				"almost_too_big" : "0.85" , 
+				"too_big" : "0.99" 
+			}
+		},
+		{
+			"type": "TABLE_SIZE",
+			"severity": "WARNING",
+			"hints": ["ANALYZER", "DOCUMENTATION"],
+			"parameters": { 
+				"almost_too_big" : "0.85" , 
+				"too_big" : "0.99" 
+			}
+		}
+	]
+}

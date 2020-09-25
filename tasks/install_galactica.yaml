@@ -1,0 +1,79 @@
+---
+# Find all zip in indexima_path
+- name: Find all zip in {{ indexima_path }} dir
+  find:
+    paths: "{{ indexima_path }}"
+    patterns: "*.zip"
+    excludes: "{{ indexima_file }},{{ vd2_file }}"
+  register: zip_to_delete
+  when: clean == 1
+
+# Remove all files found above
+- name: Remove all zip in {{ indexima_path }} dir
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items: "{{ zip_to_delete.files }}"
+  when: clean == 1
+
+- name: Copy Indexima zip archive (No internet mode)
+  copy:
+    src: "{{ indexima_file }}"
+    dest: "{{ indexima_archive }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0644'
+  when: internet == 0
+  register: copy_result
+
+- name: Download Indexima zip archive
+  get_url:
+    url: "{{ indexima_url }}"
+    dest: "{{ indexima_archive }}"
+  when:
+    - internet == 1
+    - internal_use == 0
+  register: download_result
+
+- name: Download Indexima zip archive from internal repository (internal use only)
+  get_url:
+    url: "{{ internal_url }}/indexima-installer/{{ indexima_version }}/indexima-installer-{{ indexima_version }}.zip"
+    dest: "{{ indexima_archive }}"
+    url_username: "{{ internal_username }}"
+    url_password: "{{ internal_password }}"
+  when:
+    - internet == 1
+    - internal_use == 1
+  register: download_result
+
+- name: Check if something changed in galactica
+  check_mode: true
+  unarchive:
+    remote_src: yes
+    src: "{{ indexima_archive }}"
+    dest: "{{ indexima_path }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+  register: check_galactica
+  tags: ['check']
+
+- import_tasks: clean_galactica.yaml
+  tags: ['clean']
+  when: check_galactica.changed
+
+- name: Extract indexima release
+  unarchive:
+    remote_src: yes
+    src: "{{ indexima_archive }}"
+    dest: "{{ indexima_path }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+
+- name: Copy keystore file if SSL is enabled
+  copy:
+    src: "{{ keystore_file }}"
+    dest: "{{ galactica_path }}/conf"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0644'
+  when: ssl == 1

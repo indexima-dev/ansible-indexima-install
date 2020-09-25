@@ -1,0 +1,34 @@
+---
+# collect stats about the dir
+- name: Check {{ vd2_path }}/lib exists
+  stat:
+    path: '{{ vd2_path }}/lib'
+  register: dir_to_delete
+
+# delete directory if condition is true
+- name: Purge {{ vd2_path }}/lib
+  file:
+    state: absent
+    path: '{{ vd2_path }}/lib'
+  when: dir_to_delete.stat.exists and dir_to_delete.stat.isdir
+
+# create directory if deleted (or if it didn't exist at all)
+# - name: Create directory {{ vd2_path }}/lib again
+#   file:
+#     state: directory
+#     path: '{{ vd2_path }}/lib'
+#   when: dir_to_delete is defined and dir_to_delete.stat.exists
+
+# Find all jar in  dir
+- name: Find all jar in {{ vd2_path }} dir
+  find:
+    paths: '{{ vd2_path }}'
+    patterns: "*.jar"
+  register: files_to_delete
+
+# Remove all files found above
+- name: Remove all jar in {{ vd2_path }} dir
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items: "{{ files_to_delete.files }}"

@@ -1,0 +1,52 @@
+---
+- name: Split version
+  set_fact:
+    version_split: "{{ version.split('.') }}"
+  when: version is defined
+
+- name: Print version_split
+  debug:
+    msg: "{{ version_split }}"
+  when: version_split is defined
+
+- name: Set indexima_release
+  set_fact:
+    indexima_release: "{{ version_split[0:3] |join('.') }}"
+  when: indexima_release is not defined
+
+- name: Set indexima_build
+  set_fact:
+    indexima_build: "{{ version_split[3] }}"
+  when: indexima_build is not defined
+
+- name: Set indexima_sp
+  set_fact:
+    indexima_sp: "{{ version_split[4] }}"
+  when:
+    - indexima_sp is not defined
+    - version_split is defined
+    - version_split[4] is defined
+
+- name: Set the JDBC URL for the cluster
+  set_fact:
+    jdbc_base_url: "jdbc:hive2://{% if zookeeper_quorum is defined %}{{ zookeeper_quorum }}\
+    {% else %}{% for host in groups['indexima'] %}{% if hostvars[host]['is_master'] %}{{ hostvars[host]['internal_host'] }}{% endif %}{% endfor %}\
+    :{{ hive_port }}/default{% endif %}"
+  ignore_errors: yes
+
+- name: Set the Zookeeper namespace for the jdbc url
+  set_fact:
+    jdbc_zookeeper: "serviceDiscoveryMode=zooKeeper;zooKeeperNamespace={{ zookeeper_namespace }}"
+  when: ha == 1 and zookeeper_namespace is defined
+  ignore_errors: yes
+
+- name: Set the Kerberos principal for the jdbc url
+  set_fact:
+    jdbc_kerberos: "principal={{ kerberos_principal }}"
+  when: kerberos_indexima == 1
+  ignore_errors: yes
+
+- name: Set the full JDBC URL
+  set_fact:
+    jdbc_url: "{{ ';'.join((jdbc_base_url, jdbc_zookeeper|d(), jdbc_kerberos|d())) }}"
+  ignore_errors: yes
