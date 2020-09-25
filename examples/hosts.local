@@ -2,7 +2,7 @@
 # internal_host is the host as seen by all the Indexima cluster nodes.
 # both are required
 [indexima]
-master ansible_host=localhost internal_host=locahost is_master=1
+node1 ansible_host=localhost internal_host=locahost is_master=1
 
 [indexima:vars]
 
@@ -193,7 +193,7 @@ galactica_admins="admin"
 #yarn_name=Indexima
 
 ## HA and Zookeeper
-ha=0
+#ha=0
 #zookeeper_quorum=
 #zookeeper_namespace=
 
