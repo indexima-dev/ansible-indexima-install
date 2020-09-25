@@ -3,24 +3,24 @@ stages:
   - test
   - deploy
 
+language: python
+python: "3.7"
+
+# Use the new container infrastructure
+os: linux
+dist: bionic
+
+services:
+  - docker
+env:
+  - distribution: centos
+    version: 7
+  - distribution: ubuntu
+    version: bionic
+
 jobs:
   include:
   - stage: test
-    language: python
-    python: "3.7"
-
-    # Use the new container infrastructure
-    os: linux
-    dist: bionic
-
-    services:
-      - docker
-    env:
-      - distribution: centos
-        version: 7
-      - distribution: ubuntu
-        version: bionic
-
     before_install:
       - 'sudo docker pull ${distribution}:${version}'
       - 'sudo docker build --no-cache --rm --file=travis/Dockerfile.${distribution}-${version} --tag=${distribution}-${version}:ansible travis'   
