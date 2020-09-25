@@ -2,10 +2,7 @@
 # internal_host is the host as seen by all the Indexima cluster nodes.
 # both are required
 [indexima]
-master
-ansible_host=localhost 
-internal_host=locahost 
-is_master=1
+master ansible_host=localhost internal_host=locahost is_master=1
 
 [indexima:vars]
 
