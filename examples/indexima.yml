@@ -1,0 +1,6 @@
+---
+- hosts: indexima
+  become: yes
+  become_user: "{{ service_user | d('root') }}"
+  roles:
+    -  { role: indexima_team.ansible_indexima_install }
