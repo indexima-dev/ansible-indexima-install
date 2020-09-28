@@ -14,8 +14,8 @@
     name: 'openjdk-8-jdk'
 
 - name: Find Java bin path
-  shell: 
-    set -o pipefail 
+  shell:
+    set -o pipefail
     readlink -f $(which java) |sed -e 's/\jre\/bin\/java//'
   register: java_path
   tags: ['java', 'env']
