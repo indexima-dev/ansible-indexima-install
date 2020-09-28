@@ -11,10 +11,6 @@
 - import_tasks: install_prep.yaml
   tags: ['install', 'update', 'install-galactica', 'update-galactica', 'install-visualdoop', 'update-visualdoop']
 
-# tasks file for indexima-prerequisites
-- import_tasks: set_facts.yaml
-  tags: [ 'always' ]
-
 - import_tasks: centos.yaml
   when: ansible_facts['distribution'] == "CentOS" or ansible_facts['distribution'] == "RedHat" or ansible_facts['distribution'] == "Amazon"
   tags: ['centos']
