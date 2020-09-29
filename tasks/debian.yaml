@@ -13,18 +13,18 @@
   apt:
     name: 'openjdk-8-jdk'
 
-- name: Find Java bin path
-  shell:
-    set -o pipefail
-    readlink -f $(which java) |sed -e 's/\jre\/bin\/java//'
-  register: java_path
-  tags: ['java', 'env']
+# - name: Find Java bin path
+#   shell:
+#     set -o pipefail
+#     readlink -f $(which java) |sed -e 's/\jre\/bin\/java//'
+#   register: java_path
+#   tags: ['java', 'env']
 
 - name: Add java_path to JAVA_HOME Env
   lineinfile:
     path: /etc/environment
     regexp: 'JAVA_HOME'
-    line: "JAVA_HOME={{ java_path.stdout }}"
+    line: "JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64"
   tags: ['java', 'env']
 
 - name: Download Hadoop {{ hadoop_version }}
