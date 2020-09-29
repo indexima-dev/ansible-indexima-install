@@ -1,5 +1,7 @@
 ---
-- hosts: indexima
-  remote_user: root
+- hosts: localhost
+  become: yes
   roles:
     - ansible-indexima-install
+  vars:
+    is_master: 1

@@ -1,0 +1,21 @@
+---
+- name: Wait for Hive server
+  wait_for:
+    host: "{{ ansible_host }}"
+    port: "{{ hive_port }}"
+    timeout: 30
+  when: is_master == 1
+
+- name: Wait for Monitor server
+  wait_for:
+    host: "{{ ansible_host }}"
+    port: 9999
+    timeout: 30
+  when: is_master == 1
+
+- name: Wait for Dev console
+  wait_for:
+    host: "{{ ansible_host }}"
+    port: 8082
+    timeout: 30
+  when: is_master == 1
