@@ -11,7 +11,7 @@
 
 - name: Install jdk-8 with apt-get
   apt:
-    name: 'openjdk-8-jdk'
+    name: '{{ java_package_debian }}'
 
 # - name: Find Java bin path
 #   shell:

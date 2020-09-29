@@ -7,7 +7,7 @@
 
 - name: Install JAVA with yum
   yum:
-    name: "{{ java_package }}"
+    name: "{{ java_package_centos }}"
   tags: ['java']
 
 # - name: Find Java bin path
@@ -21,7 +21,7 @@
   lineinfile:
     path: /etc/environment
     regexp: 'JAVA_HOME'
-    line: "JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk"
+    line: "JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk"
   tags: ['java', 'env']
 
 - name: Create Install Path Dir
