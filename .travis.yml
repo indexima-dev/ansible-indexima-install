@@ -24,7 +24,19 @@ script:
     -v /etc/ansible/roles/ansible-indexima-install/tests/test.yml --syntax-check'
   - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook
     -v /etc/ansible/roles/ansible-indexima-install/tests/test.yml -i /etc/ansible/roles/ansible-indexima-install/examples/hosts.local'
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook
+  -v /etc/ansible/roles/ansible-indexima-install/tests/test.yml -i /etc/ansible/roles/ansible-indexima-install/examples/hosts.local -t "istart" 
+  | grep -q "changed=0.*failed=0"
+    && (echo "Idempotence test: pass" && exit 0)
+    || (echo "Idempotence test: fail" && exit 1)'
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook
+  -v /etc/ansible/roles/ansible-indexima-install/tests/test.yml -i /etc/ansible/roles/ansible-indexima-install/examples/hosts.local -t "istop"'
   - sudo docker rm -f "$(cat ${container_id})"
+  - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook
+  -v /etc/ansible/roles/ansible-indexima-install/tests/test.yml -i /etc/ansible/roles/ansible-indexima-install/examples/hosts.local -t "istop" 
+  | grep -q "changed=0.*failed=0"
+    && (echo "Idempotence test: pass" && exit 0)
+    || (echo "Idempotence test: fail" && exit 1)'
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/?branch=master
   slack:
