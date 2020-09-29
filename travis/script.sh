@@ -4,9 +4,11 @@
 ### Needs to be executed in the root directory of the role
 
 ## Env
+## Distribution: ubuntu or centos
+## Version: bionic (ubuntu) or 7 (centos)
 
-distribution=ubuntu
-version=bionic
+distribution=$1
+version=$2
 
 ## Before Test
 sudo docker pull ${distribution}:${version}
