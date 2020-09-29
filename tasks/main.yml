@@ -4,7 +4,7 @@
   tags: [ 'always' ]
 
 - import_tasks: uninstall.yaml
-  tags: [ 'never', 'reinstall', 'uninstall' ]
+  tags: [ 'never', 'uninstall' ]
 
 ### Install
 ## Install Prep
@@ -13,11 +13,11 @@
 
 - import_tasks: centos.yaml
   when: ansible_facts['distribution'] == "CentOS" or ansible_facts['distribution'] == "RedHat" or ansible_facts['distribution'] == "Amazon"
-  tags: ['centos']
+  tags: [ 'install', 'prerequisites', 'centos' ]
 
 - import_tasks: debian.yaml
   when: ansible_facts['distribution']  == "Debian" or ansible_facts['distribution'] == "Ubuntu"
-  tags: ['debian']
+  tags: [ 'install', 'prerequisites', 'debian' ]
 
 ## Galactica
 
@@ -31,19 +31,20 @@
   when: is_master == 1
 
 - import_tasks: deploy_service.yaml
+  tags: [ 'service', install', 'update' ]
 
 - import_tasks: config_galactica.yaml
-  tags: ['conf', 'install', 'conf-galactica', 'install-galactica']
+  tags: [ 'conf', 'conf-galactica' ]
 
 - import_tasks: config_custom.yaml
-  tags: ['never', 'conf-custom']
+  tags: [ 'never', 'conf-custom' ]
 
 - import_tasks: config_visualdoop.yaml
-  tags: ['conf', 'install', 'conf-visualdoop', 'install-visualdoop']
+  tags: [ 'conf', 'conf-visualdoop' ]
   when: is_master == 1
 
 - import_tasks: drivers.yaml
-  tags: [ 'never', 'driver', 'update', 'update-galactica', 'install', 'install-galactica', 'reinstall' ]
+  tags: [ 'never', 'driver', 'update', 'update-galactica', 'install', 'install-galactica' ]
 
 - import_tasks: hadoop.yaml
   become: yes
@@ -53,9 +54,6 @@
 - import_tasks: license.yaml
   tags: [ 'never', 'license' ]
 
-- import_tasks: owner.yaml
-  tags: [ 'never', 'owner' ]
-
 - import_tasks: stop_indexima.yaml
   tags: [ 'never', 'restart', 'stop' ]
 
@@ -63,6 +61,7 @@
   tags: [ 'never', 'restart', 'start' ]
 
 - import_tasks: manage_service.yaml
+  tags: [ 'irestart' ]
 
 - import_tasks: jdbc_url.yaml
   tags: [ 'always', 'jdbc']

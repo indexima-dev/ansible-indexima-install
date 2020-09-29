@@ -1,4 +1,4 @@
----   
+---
 - name: Split version
   set_fact:
     version_split: "{{ version.split('.') }}"
