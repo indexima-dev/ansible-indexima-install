@@ -6,7 +6,7 @@
     name: indeximas
     daemon_reload: yes
     state: stopped
-  tags: [ 'grestart', 'gstop', 'istop']
+  tags: [ 'never', 'grestart', 'gstop', 'istop']
   when:
     - is_master == 0
     - ha == 0
@@ -18,7 +18,7 @@
     name: indeximam
     daemon_reload: yes
     state: stopped
-  tags: [ 'grestart', 'gstop', 'istop']
+  tags: [ 'never', 'grestart', 'gstop', 'istop']
   when:
     - is_master == 1
     - ha == 0
@@ -31,7 +31,7 @@
     name: indexima
     daemon_reload: yes
     state: stopped
-  tags: [ 'grestart', 'gstop', 'istop']
+  tags: [ 'never', 'grestart', 'gstop', 'istop']
   when: ha == 1
 
 # VD 2
@@ -42,7 +42,7 @@
     name: visualdoop
     daemon_reload: yes
     state: stopped
-  tags: [ 'vrestart', 'vstop', 'istop']
+  tags: [ 'never', 'vrestart', 'vstop', 'istop']
   when: is_master == 1
 
 # Standard
