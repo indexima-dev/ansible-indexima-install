@@ -20,7 +20,10 @@ hadoop_path: "{{ install_path }}/{{ hadoop_file }}"
 #standalone
 #don't change
 version: 1.7.10.1132.0
+internal_host: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] | d('LOCAL_IP') }}"
+internet: 1
 internal_use: 0
+is_master: 0
 indexima_base_url: "https://download.indexima.com/release"
 indexima_path: "{{ install_path }}/indexima"
 indexima_logs_path: "/var/log/indexima"
@@ -43,7 +46,12 @@ vd2_path: "{{ indexima_path }}/visualdoop2"
 vd_path: "{{ indexima_path }}/visualdoop"
 
 # Config parameters
+nodes: 1
+cores: 2
+ram: 600
+disk: 1
 warehouse_type: local
+warehouse: "{{ indexima_path }}/warehouse"
 partitions_default: "{{ cores * nodes }}"
 partitions_number: "{{ partitions | d(partitions_default) }}"
 
