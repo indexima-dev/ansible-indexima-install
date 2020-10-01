@@ -1,24 +1,12 @@
 ---
 # tasks file for indexima-prerequisites
-- name: Install unzip
+- name: Install unzip, software-properties-common, and java8
   apt:
-    name: unzip
+    name:
+      - unzip
+      - software-properties-common
+      - "{{ java_package_debian }}"
     update_cache: yes
-
-- name: Install software-properties-common
-  apt:
-    name: software-properties-common
-
-- name: Install jdk-8 with apt-get
-  apt:
-    name: '{{ java_package_debian }}'
-
-# - name: Find Java bin path
-#   shell:
-#     set -o pipefail
-#     readlink -f $(which java) |sed -e 's/\jre\/bin\/java//'
-#   register: java_path
-#   tags: ['java', 'env']
 
 - name: Add java_path to JAVA_HOME Env
   lineinfile:
