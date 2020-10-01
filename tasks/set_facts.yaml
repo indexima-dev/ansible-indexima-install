@@ -1,4 +1,9 @@
 ---
+- name: Set is_master to 1 if single node
+  set_fact:
+    is_master: 1
+  when: groups['indexima'] | length == 1
+
 - name: Split version
   set_fact:
     version_split: "{{ version.split('.') }}"
@@ -30,23 +35,36 @@
 - name: Set the JDBC URL for the cluster
   set_fact:
     jdbc_base_url: "jdbc:hive2://{% if zookeeper_quorum is defined %}{{ zookeeper_quorum }}\
-    {% else %}{% for host in groups['indexima'] %}{% if hostvars[host]['is_master'] %}{{ hostvars[host]['internal_host'] }}{% endif %}{% endfor %}\
+    {% else %}{{ ansible_host }}\
     :{{ hive_port }}/default{% endif %}"
   ignore_errors: yes
+  when: is_master == 1
 
 - name: Set the Zookeeper namespace for the jdbc url
   set_fact:
     jdbc_zookeeper: "serviceDiscoveryMode=zooKeeper;zooKeeperNamespace={{ zookeeper_namespace }}"
-  when: ha == 1 and zookeeper_namespace is defined
+  when:
+    - ha == 1
+    - is_master == 1
+    - zookeeper_namespace is defined
   ignore_errors: yes
 
 - name: Set the Kerberos principal for the jdbc url
   set_fact:
     jdbc_kerberos: "principal={{ kerberos_principal }}"
-  when: kerberos_indexima == 1
+  when:
+    - kerberos_indexima == 1
+    - is_master == 1
   ignore_errors: yes
 
 - name: Set the full JDBC URL
   set_fact:
     jdbc_url: "{{ ';'.join((jdbc_base_url, jdbc_zookeeper|d(), jdbc_kerberos|d())) }}"
   ignore_errors: yes
+  when: is_master == 1
+
+- name: Print the JDBC URL
+  debug:
+    msg: "{{ jdbc_url }}"
+  ignore_errors: yes
+  when: is_master == 1

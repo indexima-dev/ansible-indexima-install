@@ -3,3 +3,4 @@
   debug:
     msg: "{{ jdbc_url }}"
   ignore_errors: yes
+  when: is_master == 1

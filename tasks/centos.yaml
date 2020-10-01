@@ -3,19 +3,7 @@
 
 - name: Install unzip
   yum:
-    name: unzip
-
-- name: Install JAVA with yum
-  yum:
-    name: "{{ java_package_centos }}"
-  tags: ['java']
-
-# - name: Find Java bin path
-#   shell:
-#     set -o pipefail
-#     readlink -f $(which java) |sed -e 's/\/bin\/java//'
-#   register: java_path
-#   tags: ['java', 'env']
+    name: unzip, {{ java_package_centos }}
 
 - name: Add java_path to JAVA_HOME Env
   lineinfile:

@@ -9,7 +9,7 @@
 ### Install
 ## Install Prep
 - import_tasks: install_prep.yaml
-  tags: ['install', 'update', 'install-galactica', 'update-galactica', 'install-visualdoop', 'update-visualdoop']
+  tags: ['install', 'prerequisites', 'install-galactica', 'install-visualdoop' ]
 
 - import_tasks: centos.yaml
   when: ansible_facts['distribution'] == "CentOS" or ansible_facts['distribution'] == "RedHat" or ansible_facts['distribution'] == "Amazon"

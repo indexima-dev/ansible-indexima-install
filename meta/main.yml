@@ -45,7 +45,6 @@ galaxy_info:
     - vstop
     - vrestart
     - license
-    - reinstall
     - uninstall
     - hadoop
     - driver
