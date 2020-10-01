@@ -43,7 +43,7 @@
 - name: Set the Zookeeper namespace for the jdbc url
   set_fact:
     jdbc_zookeeper: "serviceDiscoveryMode=zooKeeper;zooKeeperNamespace={{ zookeeper_namespace }}"
-  when: 
+  when:
     - ha == 1
     - is_master == 1
     - zookeeper_namespace is defined
