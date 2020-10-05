@@ -9,18 +9,23 @@ env:
     - MOLECULE_AMI_NAME: "amzn2-ami-hvm-2.0*"
       MOLECULE_AMI_OWNER: "amazon"
       MOLECULE_SSH_USER: "ec2-user"
+      MOLECULE_ENV_NAME: "amazon"
     - MOLECULE_AMI_NAME: "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"
       MOLECULE_AMI_OWNER: "099720109477"
       MOLECULE_SSH_USER: "ubuntu"
+      MOLECULE_ENV_NAME: ubuntu18
     - MOLECULE_AMI_NAME: "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
       MOLECULE_AMI_OWNER: "099720109477"
       MOLECULE_SSH_USER: "ubuntu"
+      MOLECULE_ENV_NAME: ubuntu16
     - MOLECULE_AMI_NAME: "CentOS Linux 7*"
       MOLECULE_AMI_OWNER: "aws-marketplace"
       MOLECULE_SSH_USER: "centos"
+      MOLECULE_ENV_NAME: centos7
     - MOLECULE_AMI_NAME: "debian-stretch-hvm-x86_64-gp2*"
       MOLECULE_AMI_OWNER: "aws-marketplace"
       MOLECULE_SSH_USER: "admin"
+      MOLECULE_ENV_NAME: debian9
 
 install:
   - pip install molecule molecule-ec2 boto3 yamllint ansible-lint docker

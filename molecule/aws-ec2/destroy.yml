@@ -4,6 +4,8 @@
   connection: local
   gather_facts: false
   no_log: "{{ molecule_no_log }}"
+  vars:
+    keypair_name: molecule_key_{{ molecule_env_name }}
   tasks:
     - block:
         - name: Populate instance config
@@ -33,6 +35,11 @@
       until: ec2_jobs.finished
       retries: 300
       with_items: "{{ server.results }}"
+
+    - name: Delete remote keypair
+      ec2_key:
+        name: "{{ keypair_name }}"
+        state: absent
 
     # Mandatory configuration for Molecule to function.
 

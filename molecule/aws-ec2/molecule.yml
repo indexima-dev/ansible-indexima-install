@@ -21,7 +21,7 @@ platforms:
     instance_type: t2.micro
     vpc_subnet_id: subnet-ac1190cb
     instance_tags:
-      - Name: molecule_instance2
+      - Name: molecule_instance2_${MOLECULE_ENV_NAME}
 provisioner:
   name: ansible
   log: True
@@ -33,6 +33,7 @@ provisioner:
     host_vars:
       localhost:
         remote_user: ${MOLECULE_SSH_USER}
+        molecule_env_name: ${MOLECULE_ENV_NAME}
       instance1:
         is_master: 1
       instance2:
