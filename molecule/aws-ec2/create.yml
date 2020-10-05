@@ -23,6 +23,10 @@
         from_port: "8082"
         to_port: "10000"
         cidr_ip: '0.0.0.0/0'
+      - proto: -1
+        from_port: 0
+        to_port: 0
+        group_name:  "{{ security_group_name }}"
     security_group_rules_egress:
       - proto: -1
         from_port: 0

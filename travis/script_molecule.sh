@@ -8,7 +8,6 @@
 
 set -e
 
-## Before Test
 if [ ! -z "${MOLECULE_AMI_NAME}" ]; then
   molecule test -s aws-ec2
 else

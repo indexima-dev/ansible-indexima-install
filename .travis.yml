@@ -14,8 +14,8 @@ env:
     - MOLECULE_AMI_NAME: "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"
       MOLECULE_AMI_OWNER: "099720109477"
       MOLECULE_SSH_USER: "ubuntu"
-    - MOLECULE_AMI_NAME: "ubuntu/images/hvm-ssd/ubuntu-bionic-16.04-amd64-server-*"
-      MOLECULE_AMI_OWNER: "aws-marketplace"
+    - MOLECULE_AMI_NAME: "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
+      MOLECULE_AMI_OWNER: "099720109477"
       MOLECULE_SSH_USER: "ubuntu"
     - MOLECULE_AMI_NAME: "CentOS Linux 7*"
       MOLECULE_AMI_OWNER: "aws-marketplace"
@@ -32,6 +32,5 @@ notifications:
   webhooks:
     urls:
       - https://galaxy.ansible.com/api/v1/notifications/?branch=master
-    on_pull_requests: false
   slack:
     secure: UKmi5zLnAW3y5yyiDdBt3HtYGoB2G9sMv72vTnwiANeBDuktwfAiA5FoI2MKTzCmkBh/ZvSJtQxo6zCdsxZ66Vzz+rWfaG/oGdG/3l4KGHln5NFpggHZ3DS1OlkDpP9oMbVRXQ0m0l/cgGiMRbxil2oW3uFEXCttmm9BuwUhc9Tn43ftqh4+fV9XO5o6gDMk4FcQLwpFoU5dMwWGZjVWNelYNNj0lxfbaKHxp+MvjhpJ2iE5Fd55XO6TSA8hVXHClfOlO/8hQEQmR4Mtnxb0rm36NIzdeiDCHXytBhn0ETpXEAOGX1jZxT/udzutSMlRheTXaMe0U3F5DlkxligmtOiW0i+NOx6RgT3upxAITxT5W7xXsO3CCtGmN5SOocqGOPbWRMil52WGgt2HfR7bvBe3t+z4EB4NdKt5tSYHWEoKJ90/Olj2tTCrUWRIatvxBznDrWH7Y6S5cuigtGcoiRYVTrzQBMcMohcJCEevAk3q1RtQtJ2Nxxy0FqMQ5lDlYCOmIM9O3XmeYCCqYCtGgNVgYrBO56mqRQyHnOFfJicbxnSQNoZlt5Heouf0BzC3zXNQ9E+DSBCUD3PW3ztF7u0761Il2lF1uiV8yeVvdNJWm/CzQN4XbcY8XtAbRY4cuolUt900yLFae4yh/lua8jMIzhAPv4+ayOJQ5FR6T48=
