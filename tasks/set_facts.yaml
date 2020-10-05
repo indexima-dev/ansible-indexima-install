@@ -9,6 +9,11 @@
     internal_host: localhost
   when: inventory_hostname == 'localhost'
 
+- name: Set internal_host on all nodes
+  set_fact:
+    internal_host: "{{ internal_host }}"
+  when: groups['indexima'] is defined
+
 - name: Split version
   set_fact:
     version_split: "{{ version.split('.') }}"
