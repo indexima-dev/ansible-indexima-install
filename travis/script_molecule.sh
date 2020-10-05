@@ -8,6 +8,8 @@
 
 set -e
 
+mkdir -p $HOME/.cache/molecule/ansible-indexima-install/aws-ec2
+
 if [ ! -z "${MOLECULE_AMI_NAME}" ]; then
   molecule test -s aws-ec2
 else
