@@ -10,7 +10,7 @@ platforms:
     image_owner: ${MOLECULE_AMI_OWNER}
     image_name: ${MOLECULE_AMI_NAME}
     instance_type: t2.micro
-    vpc_subnet_id: subnet-ac1190cb
+    vpc_subnet_id: subnet-a53d65cc
     instance_tags:
       - Name: molecule_instance1_${MOLECULE_ENV_NAME}
   - name: instance2
@@ -19,7 +19,7 @@ platforms:
     image_owner: ${MOLECULE_AMI_OWNER}
     image_name: ${MOLECULE_AMI_NAME}
     instance_type: t2.micro
-    vpc_subnet_id: subnet-ac1190cb
+    vpc_subnet_id: subnet-a53d65cc
     instance_tags:
       - Name: molecule_instance2_${MOLECULE_ENV_NAME}
 provisioner:
