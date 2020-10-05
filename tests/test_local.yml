@@ -3,5 +3,3 @@
   become: yes
   roles:
     - ansible-indexima-install
-  vars:
-    is_master: 1

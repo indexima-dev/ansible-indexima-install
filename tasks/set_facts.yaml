@@ -2,7 +2,12 @@
 - name: Set is_master to 1 if single node
   set_fact:
     is_master: 1
-  when: groups['indexima'] | length == 1
+  when: groups['indexima'] is defined and groups['indexima'] | length == 1 or inventory_hostname == 'localhost'
+
+- name: Set internal_host if localhost
+  set_fact:
+    internal_host: localhost
+  when: inventory_hostname == 'localhost'
 
 - name: Split version
   set_fact:
