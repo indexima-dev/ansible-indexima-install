@@ -12,7 +12,7 @@ platforms:
     instance_type: t2.micro
     vpc_subnet_id: subnet-ac1190cb
     instance_tags:
-      - Name: molecule_instance1
+      - Name: molecule_instance1_${MOLECULE_ENV_NAME}
   - name: instance2
     groups:
       - indexima

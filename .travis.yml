@@ -18,7 +18,7 @@ env:
       MOLECULE_AMI_OWNER: "099720109477"
       MOLECULE_SSH_USER: "ubuntu"
       MOLECULE_ENV_NAME: ubuntu16
-    - MOLECULE_AMI_NAME: "CentOS Linux 7*"
+    - MOLECULE_AMI_NAME: 'CentOS Linux 7*'
       MOLECULE_AMI_OWNER: "aws-marketplace"
       MOLECULE_SSH_USER: "centos"
       MOLECULE_ENV_NAME: centos7
