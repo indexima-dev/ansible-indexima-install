@@ -12,7 +12,7 @@ mkdir -p $HOME/.cache/molecule/ansible-indexima-install/aws-ec2
 touch $HOME/.cache/molecule/ansible-indexima-install/aws-ec2/instance_config.yml
 
 if [ ! -z "${MOLECULE_AMI_NAME}" ]; then
-  molecule test -s aws-ec2
+  molecule --debug test -s aws-ec2
 else
   molecule test -s default
 fi
