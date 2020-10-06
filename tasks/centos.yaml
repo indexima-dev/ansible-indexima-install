@@ -44,7 +44,7 @@
     dest: "{{ install_path }}"
     owner: "{{ service_user |d('root') }}"
     group: "{{ service_user |d('root') }}"
-    mode: '0644'
+    mode: '0755'
   tags: ['hadoop']
 
 - name: Add {{ hadoop_path }} to HADOOP_BASE Env
