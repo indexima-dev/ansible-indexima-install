@@ -13,6 +13,8 @@
 
 - import_tasks: os_prerequisites.yaml
   tags: [ 'install', 'prerequisites', 'centos' ]
+  become: yes
+  become_user: root
 
 ## Galactica
 
