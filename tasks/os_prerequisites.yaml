@@ -4,14 +4,14 @@
 - name: Install unzip
   package:
     name: unzip
-    state: latest
+    state: present
 
 - name : Install java_package_centos
   yum:
     name: "{{ java_package_centos }}"
   when: ansible_facts['distribution'] == "CentOS"
 
-- name: Install software-properties-common, and java8
+- name: Install software-properties-common, and java8 on Debian 
   apt:
     name:
       - software-properties-common
@@ -23,9 +23,18 @@
   lineinfile:
     path: /etc/environment
     regexp: 'JAVA_HOME'
-    line: "JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk"
+    line: "JAVA_HOME=/usr/lib/jvm/{{java_package_centos}}"
   tags: ['java', 'env']
   when: ansible_facts['distribution'] == "CentOS"
+
+- name: Add java_path to JAVA_HOME Env
+  lineinfile:
+    path: /etc/environment
+    regexp: 'JAVA_HOME'
+    line: "JAVA_HOME=/usr/lib/jvm/{{java_package_debian}}"
+  tags: ['java', 'env']
+  when: ansible_facts['distribution'] == "Debian"
+
 
 - name: Create Install Path Dir
   file:
