@@ -8,7 +8,7 @@
       - "{{ java_package_centos }}"
   when: ansible_facts['distribution'] == "CentOS"
 
-- name: Install software-properties-common, and java8 on Debian 
+- name: Install unzip, software-properties-common, and java8 on Debian 
   apt:
     name:
       - unzip
@@ -17,21 +17,21 @@
     update_cache: yes
   when: ansible_facts['os_family'] == "Debian"
 
-- name: Add java_path to JAVA_HOME Env
+- name: Add java_path to JAVA_HOME Env on CentOS
   lineinfile:
     path: /etc/environment
     regexp: 'JAVA_HOME'
-    line: "JAVA_HOME=/usr/lib/jvm/{{java_package_centos}}"
+    line: "JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk"
   tags: ['java', 'env']
   when: ansible_facts['distribution'] == "CentOS"
 
-- name: Add java_path to JAVA_HOME Env
+- name: Add java_path to JAVA_HOME Env on Debian
   lineinfile:
     path: /etc/environment
     regexp: 'JAVA_HOME'
-    line: "JAVA_HOME=/usr/lib/jvm/{{java_package_debian}}"
+    line: "JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64"
   tags: ['java', 'env']
-  when: ansible_facts['distribution'] == "Debian"
+  when: ansible_facts['os_family'] == "Debian"
 
 
 - name: Create Install Path Dir
