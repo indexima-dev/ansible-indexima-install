@@ -5,9 +5,18 @@
   gather_facts: false
   no_log: "{{ molecule_no_log }}"
   tasks:
+    - name: List all objects in warehouse
+      amazon.aws.aws_s3:
+        bucket: "{{ warehouse_bucket }}"
+        prefix: "{{ warehouse_key }}"
+        mode: list
+      register: _s3_list
+      delegate_to: localhost
+
     - name: Delete warehouse if created
       amazon.aws.aws_s3:
         bucket: "{{ warehouse_bucket }}"
-        object: "{{ warehouse_key }}"
+        object: "{{ item }}"
         mode: delobj
       delegate_to: localhost
+      with_items: "{{ _s3_list.s3_keys }}"
