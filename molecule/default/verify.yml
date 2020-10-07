@@ -3,6 +3,8 @@
 
 - name: Verify
   hosts: all
+  vars:
+    hive_port: 10000
   tasks:
     - name: Wait for Hive server
       wait_for:

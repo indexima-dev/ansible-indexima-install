@@ -37,6 +37,8 @@ provisioner:
       localhost:
         remote_user: ${MOL_SSH_USER}
         molecule_env_name: ${MOL_ENV_NAME}
+        warehouse_bucket: ${AWS_TEST_BUCKET_NAME}
+        warehouse_key: molecule/s3test/warehouse
       instance1:
         is_master: 1
       instance2:
