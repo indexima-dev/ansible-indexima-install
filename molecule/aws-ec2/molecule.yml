@@ -31,6 +31,8 @@ provisioner:
         nodes: 2
         warehouse_type: s3
         warehouse: "s3a://${AWS_TEST_BUCKET_NAME}/molecule/s3test"
+        warehouse_bucket: ${AWS_TEST_BUCKET_NAME}
+        warehouse_key: molecule/s3test/warehouse
     host_vars:
       localhost:
         remote_user: ${MOL_SSH_USER}
