@@ -1,0 +1,42 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: ec2
+platforms:
+  - name: instance1
+    groups:
+      - indexima
+    image_owner: ${MOLECULE_AMI_OWNER}
+    image_name: ${MOLECULE_AMI_NAME}
+    instance_type: t2.micro
+    vpc_subnet_id: subnet-a53d65cc
+    instance_tags:
+      - Name: molecule_instance1_${MOLECULE_ENV_NAME}
+  - name: instance2
+    groups:
+      - indexima
+    image_owner: ${MOLECULE_AMI_OWNER}
+    image_name: ${MOLECULE_AMI_NAME}
+    instance_type: t2.micro
+    vpc_subnet_id: subnet-a53d65cc
+    instance_tags:
+      - Name: molecule_instance2_${MOLECULE_ENV_NAME}
+provisioner:
+  name: ansible
+  log: True
+  inventory:
+    group_vars:
+      indexima:
+        nodes: 2
+        warehouse: "/opt/indexima/warehouse"
+    host_vars:
+      localhost:
+        remote_user: ${MOLECULE_SSH_USER}
+        molecule_env_name: ${MOLECULE_ENV_NAME}
+      instance1:
+        is_master: 1
+      instance2:
+        is_master: 0
+verifier:
+  name: ansible
