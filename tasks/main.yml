@@ -11,13 +11,10 @@
 - import_tasks: install_prep.yaml
   tags: ['install', 'prerequisites', 'install-galactica', 'install-visualdoop' ]
 
-- import_tasks: centos.yaml
-  when: ansible_facts['distribution'] == "CentOS" or ansible_facts['distribution'] == "RedHat" or ansible_facts['distribution'] == "Amazon"
-  tags: [ 'install', 'prerequisites', 'centos' ]
-
-- import_tasks: debian.yaml
-  when: ansible_facts['distribution']  == "Debian" or ansible_facts['distribution'] == "Ubuntu"
-  tags: [ 'install', 'prerequisites', 'debian' ]
+- import_tasks: os_prerequisites.yaml
+  tags: [ 'install', 'prerequisites', 'centos', 'debian' ]
+  become: yes
+  become_user: root
 
 ## Galactica
 
