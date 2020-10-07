@@ -29,7 +29,8 @@ provisioner:
     group_vars:
       indexima:
         nodes: 2
-        warehouse: "/opt/indexima/warehouse"
+        warehouse_type: s3
+        warehouse: "s3a://${AWS_TEST_BUCKET_NAME}/molecule/s3test"
     host_vars:
       localhost:
         remote_user: ${MOLECULE_SSH_USER}
