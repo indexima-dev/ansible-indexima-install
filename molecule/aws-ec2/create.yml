@@ -87,6 +87,7 @@
         instance_tags: "{{ item.instance_tags | combine({'instance': item.name})
           if item.instance_tags is defined
           else {'instance': item.name} }}"
+        instance_profile_name: "AccessTestBucketRole"
         wait: true
         assign_public_ip: true
         exact_count: 1
