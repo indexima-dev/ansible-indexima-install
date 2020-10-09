@@ -7,21 +7,21 @@ platforms:
   - name: instance1
     groups:
       - indexima
-    image_owner: ${MOLECULE_AMI_OWNER}
-    image_name: ${MOLECULE_AMI_NAME}
+    image_owner: ${MOL_AMI_OWNER}
+    image_name: ${MOL_AMI_NAME}
     instance_type: t2.micro
     vpc_subnet_id: subnet-a53d65cc
     instance_tags:
-      - Name: molecule_instance1_${MOLECULE_ENV_NAME}
+      - Name: molecule_instance1_${MOL_ENV_NAME}
   - name: instance2
     groups:
       - indexima
-    image_owner: ${MOLECULE_AMI_OWNER}
-    image_name: ${MOLECULE_AMI_NAME}
+    image_owner: ${MOL_AMI_OWNER}
+    image_name: ${MOL_AMI_NAME}
     instance_type: t2.micro
     vpc_subnet_id: subnet-a53d65cc
     instance_tags:
-      - Name: molecule_instance2_${MOLECULE_ENV_NAME}
+      - Name: molecule_instance2_${MOL_ENV_NAME}
 provisioner:
   name: ansible
   log: True
@@ -29,11 +29,16 @@ provisioner:
     group_vars:
       indexima:
         nodes: 2
-        warehouse: "/opt/indexima/warehouse"
+        warehouse_type: s3
+        warehouse: "s3a://${AWS_TEST_BUCKET_NAME}/molecule/s3test"
+        warehouse_bucket: ${AWS_TEST_BUCKET_NAME}
+        warehouse_key: molecule/s3test/warehouse
     host_vars:
       localhost:
-        remote_user: ${MOLECULE_SSH_USER}
-        molecule_env_name: ${MOLECULE_ENV_NAME}
+        remote_user: ${MOL_SSH_USER}
+        molecule_env_name: ${MOL_ENV_NAME}
+        warehouse_bucket: ${AWS_TEST_BUCKET_NAME}
+        warehouse_key: molecule/s3test/warehouse
       instance1:
         is_master: 1
       instance2:

@@ -64,4 +64,4 @@
   tags: [ 'always', 'jdbc']
 
 - import_tasks: wait_for_service.yml
-  tags: [ 'irestart', 'istart', 'wait']
+  tags: [ 'wait' ]

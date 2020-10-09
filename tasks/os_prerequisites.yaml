@@ -3,10 +3,10 @@
 
 - name : Install unzip and java8 on CentOS
   yum:
-    name: 
+    name:
       - unzip
       - "{{ java_package_centos }}"
-  when: ansible_facts['distribution'] == "CentOS"
+  when: ansible_facts['os_family'] == "RedHat"
 
 - name: Install unzip, software-properties-common and java8 on Debian 
   apt:
@@ -23,7 +23,7 @@
     regexp: 'JAVA_HOME'
     line: "JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk"
   tags: ['java', 'env']
-  when: ansible_facts['distribution'] == "CentOS"
+  when: ansible_facts['os_family'] == "RedHat"
 
 - name: Add java_path to JAVA_HOME Env on Debian
   lineinfile:
