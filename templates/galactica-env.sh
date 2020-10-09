@@ -6,6 +6,8 @@ export GALACTICA_MEM={{ indexima_ram }}m
 {% else %}
 {% set memory = (ram * 0.70) | int %}
 export GALACTICA_MEM={{ memory }}m
+
+{% endif %}
 # If you installed java on your own, you need to manually specify an JAVA_HOME variable
 {% if java_home is defined %}
 export JAVA_HOME={{ java_home }}
