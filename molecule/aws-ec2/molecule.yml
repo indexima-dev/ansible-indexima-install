@@ -6,7 +6,7 @@ driver:
 platforms:
   - name: instance1
     groups:
-      - indexima
+      - ec2
     image_owner: ${MOL_AMI_OWNER}
     image_name: ${MOL_AMI_NAME}
     instance_type: t2.micro
@@ -15,7 +15,7 @@ platforms:
       - Name: molecule_instance1_${MOL_ENV_NAME}
   - name: instance2
     groups:
-      - indexima
+      - ec2
     image_owner: ${MOL_AMI_OWNER}
     image_name: ${MOL_AMI_NAME}
     instance_type: t2.micro
@@ -27,7 +27,7 @@ provisioner:
   log: True
   inventory:
     group_vars:
-      indexima:
+      ec2:
         nodes: 2
         warehouse_type: s3
         warehouse: "s3a://${AWS_TEST_BUCKET_NAME}/molecule/s3test"
