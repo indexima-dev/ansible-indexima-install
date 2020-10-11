@@ -13,7 +13,7 @@
   set_fact:
     internal_host: "{{ internal_host }}"
 
-- name: debug
+- name: Display internal host value
   debug:
     msg: "{{ internal_host }}"
 
