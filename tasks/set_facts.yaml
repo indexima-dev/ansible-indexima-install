@@ -13,6 +13,10 @@
   set_fact:
     internal_host: "{{ internal_host }}"
 
+- name: debug
+  debug:
+    msg: "{{ internal_host }}"
+
 - name: Set warehouse on S3 if needed
   set_fact:
     warehouse: "s3a://{{ indexima_bucket_name }}/{{ indexima_bucket_prefix }}"

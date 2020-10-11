@@ -14,11 +14,14 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 RUN yum -y install epel-release
 RUN yum -y install git ansible sudo
+RUN yum -y install python3
+RUN pip3 install molecule-ec2
 
 RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 
 RUN echo -e '[local]\nlocalhost ansible_connection=local warehouse=/opt/indexima/warehouse' > /etc/ansible/hosts
 
+ENV LC_ALL=en_US.utf-8 LANG=en_US.utf-8
 VOLUME ["/sys/fs/cgroup"]
 
 CMD ["/usr/sbin/init"]

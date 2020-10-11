@@ -1,0 +1,21 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: delegated
+  options:
+    managed: False
+    ansible_connection_options:
+      ansible_connection: local
+platforms:
+  - name: localhost
+provisioner:
+  name: ansible
+  log: True
+  inventory:
+    host_vars:
+      localhost:
+        is_master: 1
+        nodes: 1
+verifier:
+  name: ansible
