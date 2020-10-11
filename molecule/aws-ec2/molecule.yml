@@ -30,15 +30,14 @@ provisioner:
       ec2:
         nodes: 2
         warehouse_type: s3
-        warehouse: "s3a://${AWS_TEST_BUCKET_NAME}/molecule/s3test"
-        warehouse_bucket: ${AWS_TEST_BUCKET_NAME}
-        warehouse_key: molecule/s3test/warehouse
+        indexima_bucket_name: ${AWS_TEST_BUCKET_NAME}
+        indexima_bucket_prefix: molecule/s3test
     host_vars:
       localhost:
         remote_user: ${MOL_SSH_USER}
         molecule_env_name: ${MOL_ENV_NAME}
-        warehouse_bucket: ${AWS_TEST_BUCKET_NAME}
-        warehouse_key: molecule/s3test/warehouse
+        indexima_bucket_name: ${AWS_TEST_BUCKET_NAME}
+        indexima_bucket_prefix: molecule/s3test
       instance1:
         is_master: 1
       instance2:

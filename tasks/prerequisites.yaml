@@ -8,7 +8,7 @@
       - "{{ java_package_centos }}"
   when: ansible_facts['os_family'] == "RedHat"
 
-- name: Install unzip, software-properties-common and java8 on Debian 
+- name: Install unzip, software-properties-common and java8 on Debian
   apt:
     name:
       - unzip

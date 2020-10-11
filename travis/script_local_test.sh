@@ -15,4 +15,4 @@ sudo docker run --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --volu
 sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 bash -c 'cd /etc/ansible/roles/ansible-indexima-install && molecule test -s local'
 
 ## Cleanup
-sudo docker rm --force ${container_id}
+sudo docker rm --force "$(cat ${container_id})"
