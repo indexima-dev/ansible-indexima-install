@@ -11,8 +11,10 @@ set -e
 mkdir -p $HOME/.cache/molecule/ansible-indexima-install/aws-ec2
 touch $HOME/.cache/molecule/ansible-indexima-install/aws-ec2/instance_config.yml
 
-if [ ! -z "${MOL_AMI_NAME}" ]; then
+if [ "${MOL_TEST}" == "amazon" ]; then
   molecule test -s aws-ec2
+elif [ "${MOL_TEST}" == "local" ]; then
+  ./travis/script_local_test.sh centos 7
 else
   molecule test -s default
 fi

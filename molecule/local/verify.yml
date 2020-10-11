@@ -1,5 +1,5 @@
 ---
-  # Verify that Hive, Monitor and Dev Console are reachable. Check that the number of up node is the requested one
+# This is an example playbook to execute Ansible tests.
 
 - name: Verify
   hosts: all
@@ -37,14 +37,6 @@
         - _result.status == 200
         - _result.json.nodesDown |length == 0
         - _result.json.nodesUp | length == nodes
-      retries: 12 # 12 * 5 seconds = 1min
+      retries: 5 # 12 * 5 seconds = 1min
       delay: 5 # Every 5 seconds
 
-    - name: Check if warehouse is created
-      amazon.aws.aws_s3:
-        bucket: "{{ indexima_bucket_name }}"
-        prefix: "{{ indexima_bucket_prefix }}/warehouse"
-        mode: list
-      register: _s3_list
-      delegate_to: localhost
-      failed_when: _s3_list.s3_keys | length != 1

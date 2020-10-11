@@ -34,7 +34,7 @@
         cidr_ip: '0.0.0.0/0'
 
     keypair_name: molecule_key_{{ molecule_env_name }}
-    keypair_path: "{{ lookup('env', 'MOLECULE_EPHEMERAL_DIRECTORY') }}/ssh_key"
+    keypair_path: "{{ lookup('env', 'MOLECULE_EPHEMERAL_DIRECTORY') }}/ssh_key_{{ molecule_env_name }}"
   tasks:
     - name: Create security group
       ec2_group:

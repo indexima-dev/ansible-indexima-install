@@ -2,7 +2,27 @@
 - name: Set is_master to 1 if single node
   set_fact:
     is_master: 1
-  when: groups['indexima'] | length == 1
+  when: groups['all'] | length == 1 or inventory_hostname == 'localhost'
+
+- name: Set internal_host if localhost
+  set_fact:
+    internal_host: localhost
+  when: inventory_hostname == 'localhost'
+
+- name: Set internal_host on all nodes
+  set_fact:
+    internal_host: "{{ internal_host }}"
+
+- name: Display internal host value
+  debug:
+    msg: "{{ internal_host }}"
+
+- name: Set warehouse on S3 if needed
+  set_fact:
+    warehouse: "s3a://{{ indexima_bucket_name }}/{{ indexima_bucket_prefix }}"
+  when:
+    - indexima_bucket_name is defined
+    - indexima_bucket_prefix is defined
 
 - name: Split version
   set_fact:

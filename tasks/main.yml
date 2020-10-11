@@ -11,7 +11,7 @@
 - import_tasks: install_prep.yaml
   tags: ['install', 'prerequisites', 'install-galactica', 'install-visualdoop' ]
 
-- import_tasks: os_prerequisites.yaml
+- import_tasks: prerequisites.yaml
   tags: [ 'install', 'prerequisites', 'centos', 'debian' ]
   become: yes
   become_user: root

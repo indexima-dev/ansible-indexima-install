@@ -7,15 +7,15 @@
   tasks:
     - name: List all objects in warehouse
       amazon.aws.aws_s3:
-        bucket: "{{ warehouse_bucket }}"
-        prefix: "{{ warehouse_key }}"
+        bucket: "{{ indexima_bucket_name }}"
+        prefix: "{{ indexima_bucket_prefix }}/warehouse"
         mode: list
       register: _s3_list
       delegate_to: localhost
 
     - name: Delete warehouse if created
       amazon.aws.aws_s3:
-        bucket: "{{ warehouse_bucket }}"
+        bucket: "{{ indexima_bucket_name }}"
         object: "{{ item }}"
         mode: delobj
       delegate_to: localhost
