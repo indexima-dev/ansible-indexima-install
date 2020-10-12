@@ -48,3 +48,29 @@
       register: _s3_list
       delegate_to: localhost
       failed_when: _s3_list.s3_keys | length != 1
+
+    - name: Cat galactica.conf
+      shell: cat /opt/indexima/galactica/conf/galactica.conf
+      register: _galactica_conf
+
+    - name: Check that partitions = 2
+      assert:
+        that:
+          - "'partitions = 2' in _galactica_conf.stdout"
+        fail_msg: "partitions is not equal 2 in galactica.conf: {{ _galactica_conf.stdout }}"
+
+    - name: Check that cores = 1
+      assert:
+        that:
+          - "'cores = 1' in _galactica_conf.stdout"
+        fail_msg: "cores is not equal 1 in galactica.conf: {{ _galactica_conf.stdout }}"
+
+    - name: Cat galactica-env.sh
+      shell: cat /opt/indexima/galactica/conf/galactica-env.sh
+      register: _galactica_env
+
+    - name: Check that galactica mem = 1393m
+      assert:
+        that:
+          - "'GALACTICA_MEM=1393m' in _galactica_env.stdout"
+        fail_msg: "ram is not equal 1991: {{ ansible_memtotal_mb }} in galactica-env: {{ _galactica_env.stdout }}"

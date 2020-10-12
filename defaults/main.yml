@@ -47,12 +47,12 @@ vd_path: "{{ indexima_path }}/visualdoop"
 
 # Config parameters
 nodes: 1
-cores: 2
-ram: 600
+cores: "{{ ansible_processor_vcpus }}"
+ram: "{{ ansible_memtotal_mb }}"
 disk: 1
 warehouse_type: local
 warehouse: "{{ indexima_path }}/warehouse"
-partitions_default: "{{ cores * nodes }}"
+partitions_default: "{{ cores|int * nodes }}"
 partitions_number: "{{ partitions | d(partitions_default) }}"
 
 # Drivers
