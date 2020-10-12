@@ -9,7 +9,7 @@ platforms:
       - ec2
     image_owner: ${MOL_AMI_OWNER}
     image_name: ${MOL_AMI_NAME}
-    instance_type: t2.micro
+    instance_type: t2.small
     vpc_subnet_id: subnet-a53d65cc
     instance_tags:
       - Name: molecule_instance1_${MOL_ENV_NAME}
@@ -18,7 +18,7 @@ platforms:
       - ec2
     image_owner: ${MOL_AMI_OWNER}
     image_name: ${MOL_AMI_NAME}
-    instance_type: t2.micro
+    instance_type: t2.small
     vpc_subnet_id: subnet-a53d65cc
     instance_tags:
       - Name: molecule_instance2_${MOL_ENV_NAME}
