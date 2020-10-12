@@ -4,7 +4,7 @@
 export GALACTICA_MEM={{ indexima_ram }}m
 
 {% else %}
-{% set memory = (ram * 0.70) | int %}
+{% set memory = (ram|float * 0.70) | int %}
 export GALACTICA_MEM={{ memory }}m
 
 {% endif %}
