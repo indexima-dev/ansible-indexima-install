@@ -17,5 +17,6 @@ provisioner:
       localhost:
         is_master: 1
         nodes: 1
+        ha: 0
 verifier:
   name: ansible
