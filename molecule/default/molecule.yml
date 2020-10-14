@@ -23,6 +23,7 @@ provisioner:
         ram: 600
         partitions: 8
         warehouse: "/opt/indexima/warehouse"
+        ha: 0
     host_vars:
       instance:
         is_master: 1
