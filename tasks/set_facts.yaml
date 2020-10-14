@@ -24,6 +24,13 @@
     - indexima_bucket_name is defined
     - indexima_bucket_prefix is defined
 
+- name: Set edge if yarn deploy
+  set_fact:
+    is_edge: 0
+  when:
+    - yarn_deploy
+    - is_edge == 0
+
 - name: Split version
   set_fact:
     version_split: "{{ version.split('.') }}"

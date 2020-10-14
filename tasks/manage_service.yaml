@@ -10,6 +10,7 @@
   when:
     - is_master == 0
     - ha == 0
+    - yarn_deploy == 0
 
 - name: Stop Galactica service on master
   become: yes
@@ -22,6 +23,7 @@
   when:
     - is_master == 1
     - ha == 0
+    - yarn_deploy == 0
 
 # HA
 - name: Stop Galactica service on ha cluster
@@ -32,7 +34,9 @@
     daemon_reload: yes
     state: stopped
   tags: [ 'never', 'grestart', 'gstop', 'istop']
-  when: ha == 1
+  when:
+    - ha == 1
+    - yarn_deploy == 0
 
 # VD 2
 - name: Stop Visualdoop service
@@ -43,7 +47,7 @@
     daemon_reload: yes
     state: stopped
   tags: [ 'never', 'vrestart', 'vstop', 'istop']
-  when: is_master == 1
+  when: is_master == 1 or is_edge == 1
 
 # Standard
 - name: Enable Galactica service on workers
@@ -57,6 +61,7 @@
   when:
     - is_master == 0
     - ha == 0
+    - yarn_deploy == 0
 
 - name: Start Galactica service on workers
   become: yes
@@ -69,6 +74,7 @@
   when:
     - is_master == 0
     - ha == 0
+    - yarn_deploy == 0
 
 - name: Enable Galactica service on master
   become: yes
@@ -81,6 +87,7 @@
   when:
     - is_master == 1
     - ha == 0
+    - yarn_deploy == 0
 
 - name: Start Galactica service on master
   become: yes
@@ -93,6 +100,7 @@
   when:
     - is_master == 1
     - ha == 0
+    - yarn_deploy == 0
 
 # HA
 - name: Enable Galactica service on ha cluster
@@ -103,7 +111,9 @@
     daemon_reload: yes
     enabled: yes
   tags: [ 'grestart', 'gstart', 'istart']
-  when: ha == 1
+  when:
+    - ha == 1
+    - yarn_deploy == 0
 
 - name: Start Galactica service on ha cluster
   become: yes
@@ -113,7 +123,9 @@
     daemon_reload: yes
     state: started
   tags: [ 'grestart', 'gstart', 'istart']
-  when: ha == 1
+  when:
+    - ha == 1
+    - yarn_deploy == 0
 
 # VD2
 - name: Enable Visualdoop service
@@ -124,7 +136,7 @@
     daemon_reload: yes
     enabled: yes
   tags: [ 'vrestart', 'vstart', 'istart']
-  when: is_master == 1
+  when: is_master == 1 or is_edge == 1
 
 - name: Start Visualdoop service
   become: yes
@@ -134,4 +146,4 @@
     daemon_reload: yes
     state: started
   tags: [ 'vrestart', 'vstart', 'istart']
-  when: is_master == 1
+  when: is_master == 1 or is_edge == 1

@@ -91,14 +91,15 @@ kerberos_zookeeper: "{{ kerberos_full }}"
 
 # Hadoop
 hadoop_base: "{{ install_path }}/hadoop-2.8.3"
-yarn_deploy: 0
-yarn_classpath: "{{ yarn_deploy }}"
 hive_port: 10000
 hive_type: binary
+yarn_deploy: 0
+yarn_classpath: "{{ yarn_deploy }}"
 yarn_resourcemanager_hostname: localhost
-yarn_memory: "{{ ram }}"
+yarn_memory: "{{ ram|float * 0.9 }}"
 yarn_tmp_dir: hdfs://localhost:8020/tmp/indexima
 yarn_name: Indexima
+is_edge: 0
 
 # HD Insight
 core_site_path: "{{ hadoop_base }}/etc/hadoop"

@@ -12,20 +12,28 @@
   tags: ['install', 'prerequisites', 'install-galactica', 'install-visualdoop' ]
 
 - import_tasks: prerequisites.yaml
-  tags: [ 'install', 'prerequisites', 'centos', 'debian' ]
+  tags: [ 'install', 'prerequisites' ]
   become: yes
   become_user: root
+  when: yarn_deploy == 0
 
 ## Galactica
 
 - import_tasks: install_galactica.yaml
   tags: [ 'install', 'update', 'install-galactica', 'update-galactica']
+  when: yarn_deploy == 0
+
+- import_tasks: install_galactica.yaml
+  tags: [ 'install', 'update', 'install-galactica', 'update-galactica']
+  when:
+    - yarn_deploy == 1
+    - is_edge == 1
 
 ## Visualdoop2
 
 - import_tasks: install_visualdoop.yaml
   tags: ['install', 'update', 'install-visualdoop', 'update-visualdoop']
-  when: is_master == 1
+  when: is_master == 1 or is_edge == 1
 
 - import_tasks: deploy_service.yaml
   tags: [ 'service', install', 'update' ]
@@ -38,7 +46,7 @@
 
 - import_tasks: config_visualdoop.yaml
   tags: [ 'conf', 'conf-visualdoop' ]
-  when: is_master == 1
+  when: is_master == 1 or is_edge == 1
 
 - import_tasks: drivers.yaml
   tags: [ 'never', 'driver', 'update', 'update-galactica', 'install', 'install-galactica' ]
@@ -53,15 +61,19 @@
 
 - import_tasks: stop_indexima.yaml
   tags: [ 'never', 'restart', 'stop' ]
+  when: yarn_deploy == 0
 
 - import_tasks: start_indexima.yaml
   tags: [ 'never', 'restart', 'start' ]
+  when: yarn_deploy == 0
 
 - import_tasks: manage_service.yaml
   tags: [ 'irestart' ]
 
 - import_tasks: jdbc_url.yaml
   tags: [ 'always', 'jdbc']
+  when: yarn_deploy == 0
 
 - import_tasks: wait_for_service.yml
   tags: [ 'wait' ]
+  when: yarn_deploy == 0

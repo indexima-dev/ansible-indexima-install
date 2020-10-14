@@ -92,5 +92,10 @@
     </property>
     {% endif %}
     {% endif %}
-
+    {% if yarn_deploy %}
+    <property>
+      <name>hive.exec.scratchdir</name>
+      <value>/tmp/indexima/scratchdir</value>
+    </property>
+    {% endif %}
 </configuration>

@@ -11,6 +11,7 @@
   when:
     - is_master == 1
     - ha == 0
+    - yarn_deploy == 0
   tags: [ 'install-galactica', 'update-galactica' ]
 
 - name: Copy Galactica Worker service file to all nodes
@@ -25,6 +26,7 @@
   when:
     - is_master == 0
     - ha == 0
+    - yarn_deploy == 0
   tags: [ 'install-galactica', 'update-galactica' ]
 
 - name: Copy Visualdoop service file to master node
@@ -37,7 +39,7 @@
     group: "root"
     mode: '0644'
   when:
-    - is_master == 1
+    - is_master == 1 or is_edge == 1
   tags: [ 'install-visualdoop', 'update-visualdoop' ]
 
 - name: Copy Galactica ha service file to all nodes
@@ -49,5 +51,7 @@
     owner: "root"
     group: "root"
     mode: '0644'
-  when: ha == 1
+  when:
+    - ha == 1
+    - yarn_deploy == 0
   tags: [ 'install-galactica', 'update-galactica' ]

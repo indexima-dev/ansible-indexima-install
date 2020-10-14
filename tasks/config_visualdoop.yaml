@@ -6,7 +6,6 @@
     owner: "{{ service_user |d('root') }}"
     group: "{{ service_user |d('root') }}"
     mode: '0644'
-  when: is_master == 1
 
 - name: Copy log4j2_vd2.xml template to master
   template:
@@ -15,4 +14,3 @@
     owner: "{{ service_user |d('root') }}"
     group: "{{ service_user |d('root') }}"
     mode: '0644'
-  when: is_master == 1
