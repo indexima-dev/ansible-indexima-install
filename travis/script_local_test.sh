@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 distribution=$1
 version=$2
 
