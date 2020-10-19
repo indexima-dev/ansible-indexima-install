@@ -74,7 +74,7 @@
 
 - name: Copy google_credentials.json file to servers
   copy:
-    src: "credentials.json"
+    src: "{{ google_credentials |d('credentials.json') }}"
     dest: "{{ google_credentials }}"
     owner: "{{ service_user |d('root') }}"
     group: "{{ service_user |d('root') }}"

@@ -11,10 +11,11 @@ sudo docker build --file=travis/Dockerfile.${distribution}-${version} --tag=${di
 
 ## Test
 container_id=$(mktemp)
-sudo docker run --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/etc/ansible/roles/ansible-indexima-install:ro \
+sudo docker run --env ANSIBLE_FORCE_COLOR=1 --env GCP_PROJECT="${GCP_PROJECT}" --env GCS_BUCKET="${GCS_BUCKET}" --env GCS_PREFIX="${GCS_PREFIX}" --env GCP_SERVICE_ACCOUNT="${GCP_SERVICE_ACCOUNT}" \
+    --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/etc/ansible/roles/ansible-indexima-install:ro \
     ${distribution}-${version}:ansible > "${container_id}"
   
-sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 bash -c 'cd /etc/ansible/roles/ansible-indexima-install && molecule test -s local'
+sudo docker exec "$(cat ${container_id})" bash -c 'cd /etc/ansible/roles/ansible-indexima-install && molecule test -s local'
 
 ## Cleanup
-sudo docker rm --force "$(cat ${container_id})"
+# sudo docker rm --force "$(cat ${container_id})"

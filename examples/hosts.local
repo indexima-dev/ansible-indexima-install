@@ -128,7 +128,7 @@ vd_data=/opt/indexima/visualdoop-data
 ## GCP // If you need Indexima to use some GCP services (typically Google Storage), you need to uncomment the following line and set the google_credentials_path to the file.
 ## The credential file must be placed in roles/indexima-standalone/files and named credentials.json
 #gcp=1
-#google_credentials_path=
+#google_credentials=
 
 
 ##### HIVE CONFIG #####

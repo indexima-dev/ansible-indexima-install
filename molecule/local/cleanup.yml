@@ -1,0 +1,18 @@
+---
+- name: Destroy
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  no_log: "{{ molecule_no_log }}"
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Delete warehouse in GS
+      google.cloud.gcp_storage_object:
+        action: delete
+        bucket: "{{ gcp_bucket }}"
+        src: "{{ gcp_prefix }}/warehouse"
+        project: "{{ gcp_project }}"
+        auth_kind: serviceaccount
+        service_account_file: "{{ google_credentials }}"
+      delegate_to: localhost

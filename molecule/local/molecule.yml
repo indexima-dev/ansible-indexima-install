@@ -17,5 +17,11 @@ provisioner:
       localhost:
         is_master: 1
         nodes: 1
+        warehouse_type: gs
+        gcp_project: demonyc
+        gcp_bucket: indexima-tests
+        gcp_prefix: ansible
+        gcp_service_account: ${GCP_SERVICE_ACCOUNT}
+        google_credentials: /tmp/credentials.json
 verifier:
   name: ansible

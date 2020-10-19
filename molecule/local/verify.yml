@@ -5,6 +5,7 @@
   hosts: all
   vars:
     hive_port: 10000
+    ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Wait for Hive server
       wait_for:
@@ -40,3 +41,14 @@
       retries: 5 # 12 * 5 seconds = 1min
       delay: 5 # Every 5 seconds
 
+    - name: Download myfile to check GS
+      google.cloud.gcp_storage_object:
+        action: download
+        bucket: "{{ gcp_bucket }}"
+        src: "{{ gcp_prefix }}/warehouse/started.nodes"
+        dest: "/tmp/ok"
+        project: "{{ gcp_project }}"
+        auth_kind: serviceaccount
+        service_account_file: "{{ google_credentials }}"
+      register: gcp_obj
+      delegate_to: localhost

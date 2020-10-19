@@ -24,6 +24,13 @@
     - indexima_bucket_name is defined
     - indexima_bucket_prefix is defined
 
+- name: Set warehouse on GCS if needed
+  set_fact:
+    warehouse: "gs://{{ gcp_bucket }}/{{ gcp_prefix }}"
+  when:
+    - gcp_bucket is defined
+    - gcp_prefix is defined
+
 - name: Split version
   set_fact:
     version_split: "{{ version.split('.') }}"
