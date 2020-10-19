@@ -32,7 +32,7 @@ env:
     #   MOL_ENV_NAME: debian9
 
 install:
-  - pip install molecule molecule-ec2 boto3 yamllint ansible-lint docker
+  - pip install ansible==2.10.0 molecule==3.0.8 molecule-ec2=0.2 molecule-docker=0.2.4 boto3 yamllint ansible-lint docker
 script:
   - ./travis/script_molecule.sh
 notifications:
