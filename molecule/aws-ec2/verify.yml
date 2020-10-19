@@ -53,16 +53,28 @@
       shell: cat /opt/indexima/galactica/conf/galactica.conf
       register: _galactica_conf
 
-    - name: Check that partitions = 2
+    - name: Check that partitions = 4
       assert:
         that:
-          - "'partitions = 2' in _galactica_conf.stdout"
-        fail_msg: "partitions is not equal 2 in galactica.conf: {{ _galactica_conf.stdout }}"
+          - "'partitions = 4' in _galactica_conf.stdout"
+        fail_msg: "partitions is not equal 4 in galactica.conf: {{ _galactica_conf.stdout }}"
 
-    - name: Check that cores = 1
+    - name: Check that cores = 2
       assert:
         that:
-          - "'cores = 1' in _galactica_conf.stdout"
+          - "'cores = 2' in _galactica_conf.stdout"
+        fail_msg: "cores is not equal 2 in galactica.conf: {{ _galactica_conf.stdout }}"
+
+    - name: Check that readers = 1
+      assert:
+        that:
+          - "'readers = 1' in _galactica_conf.stdout"
+        fail_msg: "readers is not equal 1 in galactica.conf: {{ _galactica_conf.stdout }}"
+
+    - name: Check this comes from s3
+      assert:
+        that:
+          - "'this comes from s3' in _galactica_conf.stdout"
         fail_msg: "cores is not equal 1 in galactica.conf: {{ _galactica_conf.stdout }}"
 
     - name: Cat galactica-env.sh

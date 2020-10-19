@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
   become: yes
+  become_user: "{{ service_user }}"
   roles:
     - ansible-indexima-install
