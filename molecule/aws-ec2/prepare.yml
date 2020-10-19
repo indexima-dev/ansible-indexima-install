@@ -7,3 +7,59 @@
       raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal python-zipstream)
       become: true
       changed_when: false
+
+    - name: Install pip
+      become: yes
+      become_user: root
+      package:
+        name: python-pip
+
+    - name: Install boto3
+      become: yes
+      become_user: ec2-user
+      pip:
+        name: boto3
+        extra_args: --user
+
+    - name: Write custom galactica conf
+      copy:
+        content: 'cores = 2
+
+        readers = 1
+
+        loaders = 1
+
+        queries = 36
+
+        hybrid = 6
+
+        partitions = 4
+
+        this comes from s3
+
+        ## Logging
+
+        log.dir = /var/log/indexima/logs
+
+        hive.log.dir = /var/log/indexima/hive
+
+        history.dir = /var/log/indexima/history
+
+        history.export = /var/log/indexima/history_new'
+
+        dest: /tmp/galactica.conf
+
+    - name: Set bucket and path to galactica_conf when s3
+      set_fact:
+        galactica_conf_bucket: "{{ galactica_conf.split('/')[2] }}"
+        galactica_conf_path: "{{ galactica_conf.split('/')[3:] |join('/') }}"
+      when:
+        - galactica_conf is defined
+        - '"s3://" in galactica_conf'
+
+    - name: Upload custom galactica conf file to s3
+      amazon.aws.aws_s3:
+        bucket: "{{ galactica_conf_bucket }}"
+        object: "{{ galactica_conf_path }}"
+        mode: put
+        src: /tmp/galactica.conf
