@@ -24,6 +24,14 @@
     - indexima_bucket_name is defined
     - indexima_bucket_prefix is defined
 
+- name: Set visualdoop-data on S3 if needed
+  set_fact:
+    vd_bucket: "{{ indexima_bucket_name }}"
+    vd_data: "{{ indexima_bucket_prefix }}"
+    when:
+    - indexima_bucket_name is defined
+    - indexima_bucket_prefix is defined
+
 - name: Split version
   set_fact:
     version_split: "{{ version.split('.') }}"

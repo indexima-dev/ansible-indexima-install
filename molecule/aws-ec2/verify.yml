@@ -49,6 +49,15 @@
       delegate_to: localhost
       failed_when: _s3_list.s3_keys | length != 1
 
+    - name: Check if visualdoop-data are created
+      amazon.aws.aws_s3:
+        bucket: "{{ indexima_bucket_name }}"
+        prefix: "{{ indexima_bucket_prefix }}/visualdoop-data"
+        mode: list
+      register: _s3_list_vd
+      delegate_to: localhost
+      failed_when: _s3_list_vd.s3_keys | length == 0
+
     - name: Cat galactica.conf
       shell: cat /opt/indexima/galactica/conf/galactica.conf
       register: _galactica_conf
