@@ -28,9 +28,9 @@
   set_fact:
     vd_bucket: "{{ indexima_bucket_name }}"
     vd_data: "{{ indexima_bucket_prefix }}"
-    when:
-    - indexima_bucket_name is defined
-    - indexima_bucket_prefix is defined
+  when:
+  - indexima_bucket_name is defined
+  - indexima_bucket_prefix is defined
 
 - name: Split version
   set_fact:
