@@ -20,3 +20,19 @@
         mode: delobj
       delegate_to: localhost
       with_items: "{{ _s3_list.s3_keys }}"
+
+    - name: List all objects in visualdoop-data
+      amazon.aws.aws_s3:
+        bucket: "{{ indexima_bucket_name }}"
+        prefix: "{{ indexima_bucket_prefix }}/visualdoop-data"
+        mode: list
+      register: _s3_list_vd
+      delegate_to: localhost
+
+    - name: Delete warehouse if created
+      amazon.aws.aws_s3:
+        bucket: "{{ indexima_bucket_name }}"
+        object: "{{ item }}"
+        mode: delobj
+      delegate_to: localhost
+      with_items: "{{ _s3_list_vd.s3_keys }}"

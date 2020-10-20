@@ -31,6 +31,7 @@ provisioner:
         service_user: ${MOL_SSH_USER}
         nodes: 2
         warehouse_type: s3
+        admin_type: s3
         indexima_bucket_name: ${AWS_TEST_BUCKET_NAME}
         indexima_bucket_prefix: molecule/s3test
         galactica_conf: ${AWS_CUSTOM_CONF}
