@@ -1,4 +1,31 @@
 ---
+- name: Copy custom galactica.conf from local file
+  shell: "cat {{ galactica_conf }}"
+  register: _custom_galactica_conf_local
+  when:
+    - galactica_conf is defined
+    - '"s3://" not in galactica_conf'
+  changed_when: false
+
+- name: Set bucket and path to galactica_conf when s3
+  set_fact:
+    galactica_conf_bucket: "{{ galactica_conf.split('/')[2] }}"
+    galactica_conf_path: "{{ galactica_conf.split('/')[3:] |join('/') }}"
+  when:
+    - galactica_conf is defined
+    - '"s3://" in galactica_conf'
+
+- name: Copy custom galactica.conf from s3 file
+  amazon.aws.aws_s3:
+    bucket: "{{ galactica_conf_bucket }}"
+    object: "{{ galactica_conf_path }}"
+    mode: getstr
+  register: _custom_galactica_conf_s3
+  when:
+    - galactica_conf is defined
+    - '"s3://" in galactica_conf'
+  changed_when: false
+
 - name: Copy galactica.conf template to servers
   template:
     src: galactica.conf

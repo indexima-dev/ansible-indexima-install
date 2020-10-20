@@ -28,16 +28,19 @@ provisioner:
   inventory:
     group_vars:
       ec2:
+        service_user: ${MOL_SSH_USER}
         nodes: 2
         warehouse_type: s3
         indexima_bucket_name: ${AWS_TEST_BUCKET_NAME}
         indexima_bucket_prefix: molecule/s3test
+        galactica_conf: ${AWS_CUSTOM_CONF}
     host_vars:
       localhost:
         remote_user: ${MOL_SSH_USER}
         molecule_env_name: ${MOL_ENV_NAME}
         indexima_bucket_name: ${AWS_TEST_BUCKET_NAME}
         indexima_bucket_prefix: molecule/s3test
+        galactica_conf: ${AWS_CUSTOM_CONF}
       instance1:
         is_master: 1
       instance2:

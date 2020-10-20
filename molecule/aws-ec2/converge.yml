@@ -2,6 +2,7 @@
 - name: Converge
   hosts: all
   become: yes
+  become_user: "{{ service_user }}"
   tasks:
     - name: "Include ansible-indexima-install"
       include_role:
