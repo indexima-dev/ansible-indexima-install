@@ -68,8 +68,13 @@ export VISUALDOOP_ADMIN={{ admin_users }}
 export VISUALDOOP_DEFAULT_PASS={{ vd_pass }}
 
 {% endif %}
-{% if vd_cluster %}
+{% if vd_cluster_mode %}
 export CLUSTER_MODE=true
-export PROJECT_MODE=false
+{% endif %}
+{% if vd_project_mode %}
+export PROJECT_MODE=true
+{% endif %}
 
+{% if monitor_api_key is defined %}
+export MONITOR_API_KEY={{ monitor_api_key }}
 {% endif %}

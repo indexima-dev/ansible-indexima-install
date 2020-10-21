@@ -35,6 +35,9 @@ provisioner:
         indexima_bucket_name: ${AWS_TEST_BUCKET_NAME}
         indexima_bucket_prefix: molecule/s3test
         galactica_conf: ${AWS_CUSTOM_CONF}
+        monitor_api_key: MyTestApiKey
+        vd_cluster_mode: 1
+        vd_project_mode: 1
     host_vars:
       localhost:
         remote_user: ${MOL_SSH_USER}
