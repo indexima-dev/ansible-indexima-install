@@ -44,6 +44,8 @@ vd2_archive: "{{ indexima_path }}/{{ vd2_file }}"
 vd2_url: "{{ indexima_base_url }}/{{ indexima_release }}/{{ indexima_sp }}/{{ vd2_file }}"
 vd2_path: "{{ indexima_path }}/visualdoop2"
 vd_path: "{{ indexima_path }}/visualdoop"
+vd_cluster_mode: 0
+vd_project_mode: 1
 
 # Config parameters
 nodes: 1
@@ -115,4 +117,3 @@ fs_AbstractFileSystem_adl_impl: "org.apache.hadoop.fs.adl.Adl"
 clean: 1
 ssl: 0
 ha: 1
-vd_cluster: 0
