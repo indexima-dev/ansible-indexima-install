@@ -27,6 +27,15 @@ is_master: 0
 indexima_base_url: "https://download.indexima.com/release"
 indexima_path: "{{ install_path }}/indexima"
 indexima_logs_path: "/var/log/indexima"
+indexima_log_dir: "{{ indexima_logs_path }}/logs"
+indexima_hive_log_dir: "{{ indexima_logs_path }}/hive"
+indexima_history_dir: "{{ indexima_logs_path }}/history"
+indexima_history_export: "{{ indexima_logs_path }}/history_csv"
+indexima_logs:
+  - "{{ indexima_log_dir }}"
+  - "{{ indexima_hive_log_dir }}"
+  - "{{ indexima_history_dir }}"
+  - "{{ indexima_history_export }}"
 indexima_version: "{{ indexima_release }}{% if indexima_build is defined %}.{{ indexima_build }}{% endif %}{% if indexima_sp is defined %}.{{ indexima_sp }}{% endif %}"
 
 # Indexima installer
