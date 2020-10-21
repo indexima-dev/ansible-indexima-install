@@ -3,42 +3,40 @@ python: "3.7"
 services:
   - docker
 env:
-  matrix:
-    - MOL_TEST: "local"
-    - MOL_TEST: "docker"
-      MOL_DISTRO: "centos7"
-    - MOL_TEST: "docker"
-      MOL_DISTRO: "ubuntu1604"
-    - MOL_TEST: "amazon"
-      MOL_AMI_NAME: "amzn2-ami-hvm-2.0*"
-      MOL_AMI_OWNER: "amazon"
-      MOL_SSH_USER: "ec2-user"
-      MOL_ENV_NAME: "amazon"
-    # - MOL_AMI_NAME: "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"
-    #   MOL_AMI_OWNER: "099720109477"
-    #   MOL_SSH_USER: "ubuntu"
-    #   MOL_ENV_NAME: ubuntu18
-    # - MOL_AMI_NAME: "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
-    #   MOL_AMI_OWNER: "099720109477"
-    #   MOL_SSH_USER: "ubuntu"
-    #   MOL_ENV_NAME: ubuntu16
-    # - MOL_AMI_NAME: 'CentOS Linux 7*'
-    #   MOL_AMI_OWNER: "aws-marketplace"
-    #   MOL_SSH_USER: "centos"
-    #   MOL_ENV_NAME: centos7
-    # - MOL_AMI_NAME: "debian-stretch-hvm-x86_64-gp2*"
-    #   MOL_AMI_OWNER: "aws-marketplace"
-    #   MOL_SSH_USER: "admin"
-    #   MOL_ENV_NAME: debian9
-
+  - MOL_TEST: "local"
+  - MOL_TEST: "docker"
+    MOL_DISTRO: "centos7"
+  - MOL_TEST: "docker"
+    MOL_DISTRO: "ubuntu1604"
+  - MOL_TEST: "amazon"
+    MOL_AMI_NAME: "amzn2-ami-hvm-2.0*"
+    MOL_AMI_OWNER: "amazon"
+    MOL_SSH_USER: "ec2-user"
+    MOL_ENV_NAME: "amazon"
+  # - MOL_AMI_NAME: "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"
+  #   MOL_AMI_OWNER: "099720109477"
+  #   MOL_SSH_USER: "ubuntu"
+  #   MOL_ENV_NAME: ubuntu18
+  # - MOL_AMI_NAME: "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
+  #   MOL_AMI_OWNER: "099720109477"
+  #   MOL_SSH_USER: "ubuntu"
+  #   MOL_ENV_NAME: ubuntu16
+  # - MOL_AMI_NAME: 'CentOS Linux 7*'
+  #   MOL_AMI_OWNER: "aws-marketplace"
+  #   MOL_SSH_USER: "centos"
+  #   MOL_ENV_NAME: centos7
+  # - MOL_AMI_NAME: "debian-stretch-hvm-x86_64-gp2*"
+  #   MOL_AMI_OWNER: "aws-marketplace"
+  #   MOL_SSH_USER: "admin"
+  #   MOL_ENV_NAME: debian9
+jobs:
+  exclude:
+    - if: branch != master
+      env: MOL_TEST=amazon
 install:
   - pip install ansible==2.10.0 molecule==3.0.8 molecule-ec2==0.2 molecule-docker==0.2.4 boto3 yamllint ansible-lint docker
 script:
   - ./travis/script_molecule.sh
-jobs:
-  exlude:
-    if: branch != master
-    env: MOL_TEST=amazon
 notifications:
   webhooks:
     urls:
