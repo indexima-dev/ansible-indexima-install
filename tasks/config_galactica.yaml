@@ -4,6 +4,7 @@
   register: _custom_galactica_conf_local
   when:
     - galactica_conf is defined
+    - galactica_conf != ''
     - '"s3://" not in galactica_conf'
   changed_when: false
 
