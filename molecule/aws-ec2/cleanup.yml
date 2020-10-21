@@ -29,7 +29,7 @@
       register: _s3_list_vd
       delegate_to: localhost
 
-    - name: Delete warehouse if created
+    - name: Delete vd2-data if created
       amazon.aws.aws_s3:
         bucket: "{{ indexima_bucket_name }}"
         object: "{{ item }}"

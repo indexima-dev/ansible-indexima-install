@@ -63,3 +63,15 @@
       assert:
         that:
           - "'history.export = /var/log/indexima/history_csv' in _galactica_conf.stdout"
+
+    - name: List all files in galactica/driver
+      find:
+        paths: "/opt/indexima/galactica/driver"
+        patterns: "*.jar"
+      register: _jdbc_drivers
+
+    - name: Check that there are 4 drivers
+      assert:
+        that: "_jdbc_drivers.matched == 4"
+
+

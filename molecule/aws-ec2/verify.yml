@@ -47,7 +47,7 @@
         mode: list
       register: _s3_list
       delegate_to: localhost
-      failed_when: _s3_list.s3_keys | length != 1
+      failed_when: _s3_list.s3_keys | length == 0
 
     - name: Check if visualdoop-data are created
       amazon.aws.aws_s3:
@@ -94,4 +94,30 @@
       assert:
         that:
           - "'GALACTICA_MEM=1393m' in _galactica_env.stdout"
-        fail_msg: "ram is not equal 1991: {{ ansible_memtotal_mb }} in galactica-env: {{ _galactica_env.stdout }}"
+        fail_msg: "ram is not equal 1393: {{ ansible_memtotal_mb }} in galactica-env: {{ _galactica_env.stdout }}"
+
+    - name: Cat visualdoop2/config..sh
+      shell: cat /opt/indexima/visualdoop2/config.sh
+      register: _vd2_config
+      when: inventory_hostname == "instance1"
+
+    - name: Check that MONITOR_API_KEY is MyTestApiKey
+      assert:
+        that:
+          - "'MONITOR_API_KEY=MyTestApiKey' in _vd2_config.stdout"
+        fail_msg: "MONITOR_API_KEY is not MyTestApiKey"
+      when: inventory_hostname == "instance1"
+
+    - name: Check that CLUSTER_MODE is true
+      assert:
+        that:
+          - "'CLUSTER_MODE=true' in _vd2_config.stdout"
+        fail_msg: "CLUSTER_MODE is not true"
+      when: inventory_hostname == "instance1"
+
+    - name: Check that PROJECT_MODE is true
+      assert:
+        that:
+          - "'PROJECT_MODE=true' in _vd2_config.stdout"
+        fail_msg: "PROJECT_MODE is not true"
+      when: inventory_hostname == "instance1"
