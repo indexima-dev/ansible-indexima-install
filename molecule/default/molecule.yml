@@ -24,6 +24,7 @@ provisioner:
         partitions: 8
         warehouse: "/opt/indexima/warehouse"
         ha: 0
+        cluster_name: docker_test
     host_vars:
       instance:
         is_master: 1
