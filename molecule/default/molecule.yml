@@ -23,6 +23,10 @@ provisioner:
         ram: 600
         partitions: 8
         warehouse: "/opt/indexima/warehouse"
+        indexima_log_path: "/var/log/indexima"
+        indexima_hive_log_dir: "/tmp/indexima/hive"
+        indexima_history_dir: "/opt/indexima/oldhistory"
+        indexima_history_export: "/opt/indexima/newhistory"
         ha: 0
     host_vars:
       instance:
