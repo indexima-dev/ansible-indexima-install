@@ -16,7 +16,7 @@
     - '"s3://" in galactica_conf'
 
 - name: Copy custom galactica.conf from s3 file
-  amazon.aws.aws_s3:
+  aws_s3:
     bucket: "{{ galactica_conf_bucket }}"
     object: "{{ galactica_conf_path }}"
     mode: getstr
