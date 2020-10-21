@@ -40,3 +40,13 @@
       retries: 5 # 12 * 5 seconds = 1min
       delay: 5 # Every 5 seconds
 
+    - name: List all files in galactica/driver
+      find:
+        paths: "/opt/indexima/galactica/driver"
+        patterns: "*.jar"
+      register: _jdbc_drivers
+
+    - name: Check that there are 4 drivers
+      assert:
+        that: "_jdbc_drivers.matched == 4"
+

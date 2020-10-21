@@ -41,7 +41,7 @@
   when: is_master == 1
 
 - import_tasks: drivers.yaml
-  tags: [ 'never', 'driver', 'update', 'update-galactica', 'install', 'install-galactica' ]
+  tags: [ 'driver', 'update', 'update-galactica', 'install', 'install-galactica' ]
 
 - import_tasks: hadoop.yaml
   become: yes
