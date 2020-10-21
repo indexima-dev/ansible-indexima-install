@@ -76,6 +76,11 @@
         that:
           - "'history.export = /opt/indexima/newhistory' in _galactica_conf.stdout"
 
+    - name: Check that cluster.name = docker_test
+      assert:
+        that:
+          - "'cluster.name = docker_test' in _galactica_conf.stdout"
+
     - name: Cat galactica-env.sh
       shell: cat /opt/indexima/galactica/conf/galactica-env.sh
       register: _galactica_env

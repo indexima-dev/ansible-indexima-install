@@ -28,6 +28,7 @@ provisioner:
         indexima_history_dir: "/opt/indexima/oldhistory"
         indexima_history_export: "/opt/indexima/newhistory"
         ha: 0
+        cluster_name: docker_test
     host_vars:
       instance:
         is_master: 1
