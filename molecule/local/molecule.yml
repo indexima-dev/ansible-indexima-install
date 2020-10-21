@@ -17,5 +17,9 @@ provisioner:
       localhost:
         is_master: 1
         nodes: 1
+        redshift: 1
+        oracle: 1
+        snowflake: 1
+        postgres: 1
 verifier:
   name: ansible
