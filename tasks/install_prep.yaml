@@ -14,11 +14,12 @@
   become: yes
   become_user: root
   file:
-    path: "{{ indexima_logs_path }}"
+    path: "{{ item }}"
     state: directory
     owner: "{{ service_user }}"
     group: "{{ service_user }}"
     mode: '0755'
+  with_items: "{{ indexima_logs }}"
 
 - name: Create extract dir
   become: yes

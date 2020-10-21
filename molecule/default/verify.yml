@@ -56,6 +56,31 @@
           - cores == 1
           - "'cores = 1' in _galactica_conf.stdout"
 
+    - name: Check that log.dir is /var/log/indexima/logs
+      assert:
+        that:
+          - "'log.dir = /var/log/indexima/logs' in _galactica_conf.stdout"
+
+    - name: Check that hive.log.dir is /tmp/indexima/hive
+      assert:
+        that:
+          - "'hive.log.dir = /tmp/indexima/hive' in _galactica_conf.stdout"
+
+    - name: Check that history.dir is /opt/indexima/oldhistory
+      assert:
+        that:
+          - "'history.dir = /opt/indexima/oldhistory' in _galactica_conf.stdout"
+
+    - name: Check that history.export
+      assert:
+        that:
+          - "'history.export = /opt/indexima/newhistory' in _galactica_conf.stdout"
+
+    - name: Check that cluster.name = docker_test
+      assert:
+        that:
+          - "'cluster.name = docker_test' in _galactica_conf.stdout"
+
     - name: Cat galactica-env.sh
       shell: cat /opt/indexima/galactica/conf/galactica-env.sh
       register: _galactica_env

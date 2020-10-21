@@ -86,6 +86,11 @@
           - "'this comes from s3' in _galactica_conf.stdout"
         fail_msg: "cores is not equal 1 in galactica.conf: {{ _galactica_conf.stdout }}"
 
+    - name: Check that cluster.name does not exist
+      assert:
+        that:
+          - "'cluster.name = ' not in _galactica_conf.stdout"
+
     - name: Cat galactica-env.sh
       shell: cat /opt/indexima/galactica/conf/galactica-env.sh
       register: _galactica_env

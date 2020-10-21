@@ -40,6 +40,30 @@
       retries: 5 # 12 * 5 seconds = 1min
       delay: 5 # Every 5 seconds
 
+    - name: Cat galactica.conf
+      shell: cat /opt/indexima/galactica/conf/galactica.conf
+      register: _galactica_conf
+
+    - name: Check that log.dir is /var/log/indexima/logs
+      assert:
+        that:
+          - "'log.dir = /var/log/indexima/logs' in _galactica_conf.stdout"
+
+    - name: Check that hive.log.dir is /tmp/hive
+      assert:
+        that:
+          - "'hive.log.dir = /var/log/indexima/hive' in _galactica_conf.stdout"
+
+    - name: Check that history.dir is /opt/indexima/oldhistory
+      assert:
+        that:
+          - "'history.dir = /var/log/indexima/history' in _galactica_conf.stdout"
+
+    - name: Check that history.export is /var/log/indexima/history_csv
+      assert:
+        that:
+          - "'history.export = /var/log/indexima/history_csv' in _galactica_conf.stdout"
+
     - name: List all files in galactica/driver
       find:
         paths: "/opt/indexima/galactica/driver"
@@ -49,4 +73,5 @@
     - name: Check that there are 4 drivers
       assert:
         that: "_jdbc_drivers.matched == 4"
+
 
