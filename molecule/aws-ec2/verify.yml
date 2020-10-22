@@ -91,6 +91,26 @@
         that:
           - "'cluster.name = ' not in _galactica_conf.stdout"
 
+    - name: Check that log.dir is /var/log/indexima/logs
+      assert:
+        that:
+          - "'log.dir = /var/log/indexima/logs' in _galactica_conf.stdout"
+
+    - name: Check that hive.log.dir is /var/log/indexima/hive
+      assert:
+        that:
+          - "'hive.log.dir = /var/log/indexima/hive' in _galactica_conf.stdout"
+
+    - name: Check that history.dir is in S3
+      assert:
+        that:
+          - "'history.dir = s3a://{{ indexima_bucket_name }}/molecule/s3test/history' in _galactica_conf.stdout"
+
+    - name: Check that history.export is in S3
+      assert:
+        that:
+          - "'history.export = s3a://{{ indexima_bucket_name }}/molecule/s3test/history_csv' in _galactica_conf.stdout"
+
     - name: Cat galactica-env.sh
       shell: cat /opt/indexima/galactica/conf/galactica-env.sh
       register: _galactica_env
