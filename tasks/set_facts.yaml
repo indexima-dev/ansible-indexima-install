@@ -37,6 +37,14 @@
   - indexima_bucket_name is defined
   - indexima_bucket_prefix is defined
 
+- name: Set history logs on S3 if needed
+  set_fact:
+    indexima_history_dir: "s3a://{{ indexima_bucket_name }}/{{ indexima_bucket_prefix }}/history"
+    indexima_history_export: "s3a://{{ indexima_bucket_name }}/{{ indexima_bucket_prefix }}/history_csv"
+  when:
+    - indexima_bucket_name is defined
+    - indexima_bucket_prefix is defined
+
 - name: Split version
   set_fact:
     version_split: "{{ version.split('.') }}"
