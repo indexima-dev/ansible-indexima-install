@@ -75,6 +75,6 @@ export CLUSTER_MODE=true
 export PROJECT_MODE=true
 {% endif %}
 
-{% if monitor_api_key is defined %}
+{% if monitor_api_key is defined and monitor_api_key != '' %}
 export MONITOR_API_KEY={{ monitor_api_key }}
 {% endif %}
