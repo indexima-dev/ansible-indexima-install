@@ -2,7 +2,7 @@
 - name: Set is_master to 1 if single node
   set_fact:
     is_master: 1
-  when: groups['all'] | length == 1 or inventory_hostname == 'localhost'
+  when: ansible_play_hosts | length == 1 or inventory_hostname == 'localhost'
 
 - name: Set is_master to 0 if is_master is not defined
   set_fact:
