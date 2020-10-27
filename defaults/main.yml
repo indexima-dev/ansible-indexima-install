@@ -126,3 +126,4 @@ clean: 1
 ssl: 0
 ha: 1
 galactica_gc_options: "-XX:+UseConcMarkSweepGC -XX:-OmitStackTraceInFastThrow"
+galactica_perf_mode: stable
