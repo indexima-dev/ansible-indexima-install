@@ -16,7 +16,6 @@ hadoop_url: http://archive.apache.org/dist/hadoop/common/{{ hadoop_file }}/{{ ha
 hadoop_archive: "{{ install_path }}/{{ hadoop_file }}.tar.gz"
 hadoop_path: "{{ install_path }}/{{ hadoop_file }}"
 
-
 #standalone
 #don't change
 version: 1.7.8.1078.1
@@ -126,3 +125,4 @@ fs_AbstractFileSystem_adl_impl: "org.apache.hadoop.fs.adl.Adl"
 clean: 1
 ssl: 0
 ha: 1
+galactica_gc_options: "-XX:+UseConcMarkSweepGC -XX:-OmitStackTraceInFastThrow"

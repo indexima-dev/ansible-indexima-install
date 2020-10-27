@@ -90,3 +90,8 @@
         that:
           - ram == 600
           - "'GALACTICA_MEM=420m' in _galactica_env.stdout"
+
+    - name: Check that GC_OPTIONS are customized
+      assert:
+        that:
+          - '"-XX:NewRatio=3" in _galactica_env.stdout'

@@ -34,7 +34,7 @@ export NODESERVER_JVM_OPTIONS="-Djava.security.auth.login.config={{ galactica_pa
 
 {% endif %}
 # JVM parameters
-export GC_OPTIONS="-XX:+UseConcMarkSweepGC -XX:-OmitStackTraceInFastThrow"
+export GC_OPTIONS="{{ galactica_gc_options }}"
 
 {% if warehouse_type == "s3" or warehouse_type == "s3like" or aws == 1 %}
 # AWS credentials for loading from S3

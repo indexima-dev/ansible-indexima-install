@@ -1,5 +1,5 @@
 ---
-  # Verify that Hive, Monitor and Dev Console are reachable. Check that the number of up node is the requested one
+# Verify that Hive, Monitor and Dev Console are reachable. Check that the number of up node is the requested one
 
 - name: Verify
   hosts: all
@@ -120,6 +120,11 @@
         that:
           - "'GALACTICA_MEM=1393m' in _galactica_env.stdout"
         fail_msg: "ram is not equal 1393: {{ ansible_memtotal_mb }} in galactica-env: {{ _galactica_env.stdout }}"
+
+    - name: Check that GC_OPTIONS is default
+      assert:
+        that:
+          - '''GC_OPTIONS="-XX:+UseConcMarkSweepGC -XX:-OmitStackTraceInFastThrow"'' in _galactica_env.stdout'
 
     - name: Cat visualdoop2/config..sh
       shell: cat /opt/indexima/visualdoop2/config.sh
