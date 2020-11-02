@@ -33,7 +33,7 @@ env:
   #   MOL_ENV_NAME: debian9
 jobs:
   exclude:
-    - if: branch != master
+    - if: branch != master AND tags IS blank
       env:
         - MOL_TEST: "amazon"
           MOL_AMI_NAME: "amzn2-ami-hvm-2.0*"
