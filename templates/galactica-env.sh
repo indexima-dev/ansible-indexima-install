@@ -51,5 +51,9 @@ export AWS_SECRET_KEY={{ aws_secret_access_key }}
 export GOOGLE_APPLICATION_CREDENTIALS={{ google_credentials }}
 
 {% endif %}
+{% endif %}
+
+{% if galactica_jmx_options is defined and galactica_jmx_options != '' %}
+export JMX_OPTIONS='{{ galactica_jmx_options }}'
 
 {% endif %}
