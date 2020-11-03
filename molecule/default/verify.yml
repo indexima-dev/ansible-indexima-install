@@ -95,3 +95,9 @@
       assert:
         that:
           - '"-XX:NewRatio=3" in _galactica_env.stdout'
+
+    - name: Check that JMX_OPTIONS are present and customized
+      assert:
+        that:
+          - >
+            "export JMX_OPTIONS='-verbose:gc'" in _galactica_env.stdout
