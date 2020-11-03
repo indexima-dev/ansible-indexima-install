@@ -74,4 +74,14 @@
       assert:
         that: "_jdbc_drivers.matched == 4"
 
+    - name: Cat galactica-env.sh
+      shell: cat /opt/indexima/galactica/conf/galactica-env.sh
+      register: _galactica_env
+
+    - name: Check that JMX_OPTIONS is absent
+      assert:
+        that:
+          - >
+            "export JMX_OPTIONS=" not in _galactica_env.stdout
+
 
