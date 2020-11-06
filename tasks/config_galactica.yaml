@@ -67,28 +67,31 @@
     group: "{{ service_user |d('root') }}"
     mode: '0644'
 
-- name: Copy optimize_index.json template to servers
-  template:
-    src: optimize_index.json
+- name: Rename optimize_index.json.template
+  copy:
+    src: "{{ galactica_path }}/conf/optimize_index.json.template"
     dest: "{{ galactica_path }}/conf/optimize_index.json"
     owner: "{{ service_user |d('root') }}"
     group: "{{ service_user |d('root') }}"
+    remote_src: yes
     mode: '0644'
 
-- name: Copy notifications.json template to servers
-  template:
-    src: notifications.json
+- name: Rename notifications.json.template
+  copy:
+    src: "{{ galactica_path }}/conf/notifications.json.template"
     dest: "{{ galactica_path }}/conf/notifications.json"
     owner: "{{ service_user |d('root') }}"
     group: "{{ service_user |d('root') }}"
+    remote_src: yes
     mode: '0644'
 
-- name: Copy supported_dbs.json template to servers
-  template:
-    src: supported_dbs.json
+- name: Rename supported_dbs.json.template
+  copy:
+    src: "{{ galactica_path }}/conf/supported_dbs.json.template"
     dest: "{{ galactica_path }}/conf/supported_dbs.json"
     owner: "{{ service_user |d('root') }}"
     group: "{{ service_user |d('root') }}"
+    remote_src: yes
     mode: '0644'
 
 - name: Copy jaas.conf template to servers
