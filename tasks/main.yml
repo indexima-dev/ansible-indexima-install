@@ -28,7 +28,7 @@
   when: is_master == 1
 
 - import_tasks: deploy_service.yaml
-  tags: [ 'service', install', 'update' ]
+  tags: [ 'service', 'install', 'update' ]
 
 - import_tasks: config_galactica.yaml
   tags: [ 'conf', 'conf-galactica' ]
