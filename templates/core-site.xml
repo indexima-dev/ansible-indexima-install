@@ -13,7 +13,7 @@
   </property>
   <property>
     <name>dfs.adls.oauth2.credential</name>
-    <value>{{ dfs_adls_oauth2_credential }}</value>
+    <value>{{ dfs_adls_oauth2_password }}</value>
   </property>
   <property>
     <name>fs.defaultFS</name>
