@@ -31,7 +31,7 @@
     group: "{{ service_user }}"
     mode: '0644'
 
-- name: Copy hadoop-azure-datalake-2.8.5.jar
+- name: Copy jackson-core-2.8.6.jar
   copy:
     src: jackson-core-2.8.6.jar
     dest: "{{ azure_hadoop_jars_path }}"
@@ -39,7 +39,7 @@
     group: "{{ service_user }}"
     mode: '0644'
 
-- name: Copy hadoop-azure-datalake-2.8.5.jar
+- name: Copy okhttp-2.4.0.jar
   copy:
     src: okhttp-2.4.0.jar
     dest: "{{ azure_hadoop_jars_path }}"
@@ -47,7 +47,7 @@
     group: "{{ service_user }}"
     mode: '0644'
 
-- name: Copy hadoop-azure-datalake-2.8.5.jar
+- name: Copy okio-1.4.0.jar
   copy:
     src: okio-1.4.0.jar
     dest: "{{ azure_hadoop_jars_path }}"
@@ -55,7 +55,7 @@
     group: "{{ service_user }}"
     mode: '0644'
 
-- name: Copy hadoop-azure-datalake-2.8.5.jar
+- name: Copy slf4j-api-1.7.21.jar
   copy:
     src: slf4j-api-1.7.21.jar
     dest: "{{ azure_hadoop_jars_path }}"
@@ -63,7 +63,7 @@
     group: "{{ service_user }}"
     mode: '0644'
 
-- name: Copy hadoop-azure-datalake-2.8.5.jar
+- name: Copy wildfly-openssl-1.0.7.Final.jar
   copy:
     src: wildfly-openssl-1.0.7.Final.jar
     dest: "{{ azure_hadoop_jars_path }}"
