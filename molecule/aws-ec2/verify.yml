@@ -111,6 +111,12 @@
         that:
           - "'history.export = s3a://{{ indexima_bucket_name }}/molecule/s3test/history_csv' in _galactica_conf.stdout"
 
+    - name: Check that monitor.api.key is MyTestApiKey
+      assert:
+        that:
+          - "'monitor.api.key = MyTestApiKey' in _galactica_conf.stdout"
+        fail_msg: "monitor.api.key is not MyTestApiKey"
+
     - name: Cat galactica-env.sh
       shell: cat /opt/indexima/galactica/conf/galactica-env.sh
       register: _galactica_env
