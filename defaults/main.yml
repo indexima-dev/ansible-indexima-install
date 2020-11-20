@@ -66,16 +66,7 @@ partitions_default: "{{ cores|int * nodes }}"
 partitions_number: "{{ partitions | d(partitions_default) }}"
 
 # Drivers
-oracle: 0
-db2: 0
-snowflake: 0
-hive: 0
-postgres: 0
-mysql: 0
-sqlserver: 0
-bigquery: 0
-redshift: 0
-impala: 0
+drivers: 0
 
 # Cloud Storage
 aws: 0
