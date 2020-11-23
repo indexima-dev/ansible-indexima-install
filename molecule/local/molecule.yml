@@ -17,7 +17,11 @@ provisioner:
       localhost:
         is_master: 1
         nodes: 1
-        drivers: 1
+        drivers: true
         drivers_url: https://download.indexima.com/jdbc_drivers
+        driver_list: ['db2jcc4.jar', 'googlebigquery.jdbc42-1.2.2.1004.jar', 'hive-jdbc-1.2.1.jar', 'ImpalaJDBC42-2.6.15.1017.jar',
+                      'jconn4.jar', 'jdbc-2.5.5.1007.jar', 'mssql-jdbc-7.4.1.jre8-shaded.jar', 'mysql-connector-java-8.0.18.jar',
+                      'ojdbc8.jar', 'ora-jdbc-12.2.0.1.0.jar', 'postgresql-42.2.18.jar', 'redshift-jdbc42-1.2.37.1061.jar', 'snowflake-jdbc-3.9.2.jar',
+                      'sqljdbc42.jar']
 verifier:
   name: ansible
