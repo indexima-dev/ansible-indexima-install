@@ -67,6 +67,10 @@ partitions_number: "{{ partitions | d(partitions_default) }}"
 
 # Drivers
 drivers: 0
+# Driver URL> if you want to download the required jdbc drivers from a custom http url, set drivers_url to 1, and
+# Fill the driver_list with the names of the files, These parameters are unset by default
+#drivers_url: 0
+#driver_list: []
 
 # Cloud Storage
 aws: 0
