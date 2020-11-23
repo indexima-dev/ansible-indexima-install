@@ -1,0 +1,14 @@
+---
+- name: Prepare
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Create drivers directory
+      file:
+        path: /etc/ansible/roles/ansible-indexima-install/files/drivers
+        state: directory
+
+    - name: Write custom driver
+      copy:
+        content: 'mydriver'
+        dest: /etc/ansible/roles/ansible-indexima-install/files/drivers/mydriver.jar

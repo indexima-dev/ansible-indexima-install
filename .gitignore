@@ -1,6 +1,7 @@
 *.retry
 
 .vscode/
+.venv/
 
 script_local.sh
 script.sh

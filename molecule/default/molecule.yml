@@ -31,6 +31,7 @@ provisioner:
         cluster_name: docker_test
         galactica_gc_options: "-XX:+UseConcMarkSweepGC -XX:-OmitStackTraceInFastThrow -XX:NewRatio=3"
         galactica_jmx_options: '-verbose:gc'
+        drivers: 1
     host_vars:
       instance:
         is_master: 1

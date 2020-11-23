@@ -101,3 +101,13 @@
         that:
           - >
             "export JMX_OPTIONS='-verbose:gc'" in _galactica_env.stdout
+
+    - name: Stat mydriver.jar
+      stat:
+        path: /etc/ansible/roles/ansible-indexima-install/files/drivers/mydriver.jar
+      register: _mydriver
+
+    - name: Check that mydriver.jar exists
+      assert:
+        that:
+          - _mydriver.stat.exists |bool
