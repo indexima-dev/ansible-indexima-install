@@ -17,5 +17,7 @@ provisioner:
       localhost:
         is_master: 1
         nodes: 1
+        drivers: 1
+        drivers_url: https://download.indexima.com/jdbc_drivers
 verifier:
   name: ansible
