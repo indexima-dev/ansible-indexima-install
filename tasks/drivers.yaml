@@ -11,4 +11,23 @@
     - files/drivers/*
   when:
     - drivers |bool
-    - drivers_url is not defined
+    - drivers_url is not defined or drivers_url == ""
+
+# - name: List all files present in {{ drivers_url }}
+#   uri:
+#     url: "{{ drivers_url }}"
+#     return_content: yes
+#   register: driver_files
+#   when:
+#     - drivers |bool
+#     - drivers_url is defined and drivers_url != ""
+
+- name: Download all jar files present in {{ drivers_url }}
+  get_url:
+    url: "{{ drivers_url }}/{{ item }}"
+    dest: "{{ galactica_path }}/driver"
+  with_items: '{{ driver_list }}'
+  when:
+    - drivers |bool
+    - drivers_url is defined and drivers_url != ""
+    - driver_list is defined and driver_list != []

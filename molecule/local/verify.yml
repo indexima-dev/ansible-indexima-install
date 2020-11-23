@@ -70,6 +70,10 @@
         patterns: "*.jar"
       register: _jdbc_drivers
 
+    - name: Check that there are more than 2 drivers
+      assert:
+        that: "_jdbc_drivers.matched > 2"
+
     - name: Cat galactica-env.sh
       shell: cat /opt/indexima/galactica/conf/galactica-env.sh
       register: _galactica_env
