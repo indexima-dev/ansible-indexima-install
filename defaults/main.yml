@@ -64,7 +64,7 @@ warehouse_type: local
 warehouse: "{{ indexima_path }}/warehouse"
 partitions_default: "{{ cores|int * nodes }}"
 partitions_number: "{{ partitions | d(partitions_default) }}"
-
+indexima_service_user: "{{ service_user }}"
 # Drivers
 drivers: 0
 # Driver URL> if you want to download the required jdbc drivers from a custom http url, set drivers_url to 1, and
