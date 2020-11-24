@@ -5,7 +5,7 @@
     state: directory
     owner: "{{ service_user }}"
     group: "{{ service_user }}"
-    mode: '0644'
+    mode: '0755'
 
 - name: Copy core-site.xml template
   template:
