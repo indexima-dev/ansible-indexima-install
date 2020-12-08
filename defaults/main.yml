@@ -57,6 +57,7 @@ vd_project_mode: 1
 
 # Config parameters
 nodes: 1
+node_connect_timeout: 120
 cores: "{{ ansible_processor_vcpus }}"
 ram: "{{ ansible_memtotal_mb }}"
 disk: 1
