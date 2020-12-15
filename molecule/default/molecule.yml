@@ -18,6 +18,7 @@ provisioner:
   inventory:
     group_vars:
       indexima:
+        version: 1.7.10.1132.4
         nodes: 1
         cores: 1
         ram: 600

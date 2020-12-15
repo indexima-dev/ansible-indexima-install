@@ -18,7 +18,7 @@ hadoop_path: "{{ install_path }}/{{ hadoop_file }}"
 
 #standalone
 #don't change
-version: 1.7.8.1078.1
+version: 1.7.10.1132.4
 internal_host: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] | d('LOCAL_IP') }}"
 internet: 1
 internal_use: 0
