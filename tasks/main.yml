@@ -29,6 +29,7 @@
 
 - import_tasks: deploy_service.yaml
   tags: [ 'service', 'install', 'update' ]
+  when: systemd| bool
 
 - import_tasks: config_galactica.yaml
   tags: [ 'conf', 'conf-galactica' ]
@@ -53,12 +54,15 @@
 
 - import_tasks: stop_indexima.yaml
   tags: [ 'never', 'restart', 'stop' ]
+  when: not systemd| bool
 
 - import_tasks: start_indexima.yaml
-  tags: [ 'never', 'restart', 'start' ]
+  tags: [ 'restart', 'start' ]
+  when: not systemd| bool
 
 - import_tasks: manage_service.yaml
   tags: [ 'irestart' ]
+  when: systemd| bool
 
 - import_tasks: jdbc_url.yaml
   tags: [ 'always', 'jdbc']
