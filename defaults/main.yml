@@ -40,7 +40,8 @@ indexima_version: "{{ indexima_release }}{% if indexima_build is defined %}.{{ i
 # Indexima installer
 indexima_file: indexima-installer-{{ indexima_version }}.zip
 indexima_gold: "{{ indexima_release | replace('.', '') }}-{{ indexima_build | omitempty}}"
-indexima_url: "{{ indexima_base_url }}/{{ indexima_release }}/{{ indexima_sp |d('') }}/{{ indexima_file }}"
+indexima_url: "{% if indexima_release |length != 4 %}{{ indexima_base_url }}/{{ indexima_release }}/{{ indexima_sp |d('') }}{% else %}{{ indexima_base_url }}/{{ indexima_year }}/{{ indexima_month |d('') }}{% endif %}"
+galactica_url: "{{ indexima_url }}/{{ indexima_file }}"
 indexima_archive: "{{ indexima_path }}/{{ indexima_file }}"
 galactica_path: "{{ indexima_path }}/galactica"
 
@@ -49,7 +50,7 @@ admin_type: local
 vd_data: "$HOME/visualdoop-data"
 vd2_file: indexima-installer-visual2-{{ indexima_version }}.zip
 vd2_archive: "{{ indexima_path }}/{{ vd2_file }}"
-vd2_url: "{{ indexima_base_url }}/{{ indexima_release }}/{{ indexima_sp }}/{{ vd2_file }}"
+vd2_url: "{{ indexima_url }}/{{ vd2_file }}"
 vd2_path: "{{ indexima_path }}/visualdoop2"
 vd_path: "{{ indexima_path }}/visualdoop"
 vd_cluster_mode: 0
