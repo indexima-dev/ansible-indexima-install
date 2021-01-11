@@ -28,7 +28,7 @@
 
 - name: Download Indexima zip archive
   get_url:
-    url: "{{ indexima_url }}"
+    url: "{{ galactica_url }}"
     dest: "{{ indexima_archive }}"
   when:
     - internet == 1

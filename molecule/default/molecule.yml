@@ -18,7 +18,7 @@ provisioner:
   inventory:
     group_vars:
       indexima:
-        version: 1.7.10.1132.4
+        version: 2021.1.1259
         nodes: 1
         cores: 1
         ram: 600
