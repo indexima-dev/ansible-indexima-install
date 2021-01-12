@@ -6,7 +6,7 @@
     name: indeximas
     daemon_reload: yes
     state: stopped
-  tags: [ 'never', 'grestart', 'gstop', 'istop']
+  tags: [ 'never', 'grestart', 'gstop', 'istop', 'stop']
   when:
     - is_master == 0
     - ha == 0
@@ -18,7 +18,7 @@
     name: indeximam
     daemon_reload: yes
     state: stopped
-  tags: [ 'never', 'grestart', 'gstop', 'istop']
+  tags: [ 'never', 'grestart', 'gstop', 'istop', 'stop']
   when:
     - is_master == 1
     - ha == 0
@@ -31,7 +31,7 @@
     name: indexima
     daemon_reload: yes
     state: stopped
-  tags: [ 'never', 'grestart', 'gstop', 'istop']
+  tags: [ 'never', 'grestart', 'gstop', 'istop', 'stop']
   when: ha == 1
 
 # VD 2
@@ -42,7 +42,7 @@
     name: visualdoop
     daemon_reload: yes
     state: stopped
-  tags: [ 'never', 'vrestart', 'vstop', 'istop']
+  tags: [ 'never', 'vrestart', 'vstop', 'istop', 'stop']
   when: is_master == 1
 
 # Standard
@@ -53,7 +53,7 @@
     name: indeximas
     daemon_reload: yes
     enabled: yes
-  tags: [ 'grestart', 'gstart', 'istart']
+  tags: [ 'grestart', 'gstart', 'istart', 'start']
   when:
     - is_master == 0
     - ha == 0
@@ -65,7 +65,7 @@
     name: indeximas
     daemon_reload: yes
     state: started
-  tags: [ 'grestart', 'gstart', 'istart']
+  tags: [ 'grestart', 'gstart', 'istart', 'start']
   when:
     - is_master == 0
     - ha == 0
@@ -77,7 +77,7 @@
     name: indeximam
     daemon_reload: yes
     enabled: yes
-  tags: [ 'grestart', 'gstart', 'istart']
+  tags: [ 'grestart', 'gstart', 'istart', 'start']
   when:
     - is_master == 1
     - ha == 0
@@ -89,7 +89,7 @@
     name: indeximam
     daemon_reload: yes
     state: started
-  tags: [ 'grestart', 'gstart', 'istart']
+  tags: [ 'grestart', 'gstart', 'istart', 'start']
   when:
     - is_master == 1
     - ha == 0
@@ -102,7 +102,7 @@
     name: indexima
     daemon_reload: yes
     enabled: yes
-  tags: [ 'grestart', 'gstart', 'istart']
+  tags: [ 'grestart', 'gstart', 'istart', 'start']
   when: ha == 1
 
 - name: Start Galactica service on ha cluster
@@ -112,7 +112,7 @@
     name: indexima
     daemon_reload: yes
     state: started
-  tags: [ 'grestart', 'gstart', 'istart']
+  tags: [ 'grestart', 'gstart', 'istart', 'start']
   when: ha == 1
 
 # VD2
@@ -123,7 +123,7 @@
     name: visualdoop
     daemon_reload: yes
     enabled: yes
-  tags: [ 'vrestart', 'vstart', 'istart']
+  tags: [ 'vrestart', 'vstart', 'istart', 'start']
   when: is_master == 1
 
 - name: Start Visualdoop service
@@ -133,5 +133,5 @@
     name: visualdoop
     daemon_reload: yes
     state: started
-  tags: [ 'vrestart', 'vstart', 'istart']
+  tags: [ 'vrestart', 'vstart', 'istart', 'start']
   when: is_master == 1
