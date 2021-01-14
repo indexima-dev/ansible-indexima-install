@@ -29,6 +29,7 @@ provisioner:
         indexima_history_dir: "/opt/indexima/oldhistory"
         indexima_history_export: "/opt/indexima/newhistory"
         ha: 0
+        systemd: false
         cluster_name: docker_test
         galactica_gc_options: "-XX:+UseConcMarkSweepGC -XX:-OmitStackTraceInFastThrow -XX:NewRatio=3"
         galactica_jmx_options: '-verbose:gc'
@@ -36,5 +37,20 @@ provisioner:
     host_vars:
       instance:
         is_master: 1
+scenario:
+  test_sequence:
+    - dependency
+    - lint
+    - cleanup
+    - destroy
+    - syntax
+    - create
+    - prepare
+    - converge
+    #- idempotence # commented because of script start
+    - side_effect
+    - verify
+    - cleanup
+    - destroy
 verifier:
   name: ansible

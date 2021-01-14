@@ -23,6 +23,7 @@ internal_host: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address
 internet: 1
 internal_use: 0
 is_master: 0
+systemd: true
 indexima_base_url: "https://download.indexima.com/release"
 indexima_path: "{{ install_path }}/indexima"
 indexima_logs_path: "/var/log/indexima"
