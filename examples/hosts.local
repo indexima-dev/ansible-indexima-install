@@ -109,6 +109,8 @@ vd_data=/opt/indexima/visualdoop-data
 #vd_pass=
 #admin_users=
 #vd_cluster=0
+#main_connection_user=
+#main_connection_password=
 
 ## SSL for Dev Console
 #vd_ssl=1

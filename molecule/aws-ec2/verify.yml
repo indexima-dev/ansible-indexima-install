@@ -137,7 +137,7 @@
         that:
           - '''GC_OPTIONS="-XX:+UseConcMarkSweepGC -XX:-OmitStackTraceInFastThrow"'' in _galactica_env.stdout'
 
-    - name: Cat visualdoop2/config..sh
+    - name: Cat visualdoop2/config.sh
       shell: cat /opt/indexima/visualdoop2/config.sh
       register: _vd2_config
       when: inventory_hostname == "instance1"
@@ -154,6 +154,26 @@
         that:
           - "'CLUSTER_MODE=true' in _vd2_config.stdout"
         fail_msg: "CLUSTER_MODE is not true"
+      when: inventory_hostname == "instance1"
+
+    - name: Check that Default Cluster is defined
+      assert:
+        that:
+          - "'MAIN_CLUSTER_IP=' in _vd2_config.stdout"
+          - "'MAIN_CLUSTER_NAME=' in _vd2_config.stdout"
+          - "'MAIN_CLUSTER_PORT=9999' in _vd2_config.stdout"
+          - "'MAIN_CLUSTER_API_KEY=MyTestApiKey' in _vd2_config.stdout"
+        fail_msg: "Default Cluster is not correctly defined"
+      when: inventory_hostname == "instance1"
+
+    - name: Check that Default Connection is defined
+      assert:
+        that:
+          - "'MAIN_CONNECTION_IP=' in _vd2_config.stdout"
+          - "'MAIN_CONNECTION_NAME=' in _vd2_config.stdout"
+          - "'MAIN_CONNECTION_USER=admin' in _vd2_config.stdout"
+          - "'MAIN_CONNECTION_PASSWORD=admin' in _vd2_config.stdout"
+        fail_msg: "Default Connection is not correctly defined"
       when: inventory_hostname == "instance1"
 
     - name: Check that PROJECT_MODE is true
