@@ -70,6 +70,18 @@ export VISUALDOOP_DEFAULT_PASS={{ vd_pass }}
 {% endif %}
 {% if vd_cluster_mode %}
 export CLUSTER_MODE=true
+# Default Cluster
+export MAIN_CLUSTER_IP={{ service_master_ip}}
+export MAIN_CLUSTER_NAME="Default Cluster"
+export MAIN_CLUSTER_PORT=9999
+export MAIN_CLUSTER_API_KEY={{ monitor_api_key }}
+
+# Default Connection
+export MAIN_CONNECTION_IP={{ service_master_ip}}
+export MAIN_CONNECTION_NAME="Default Connection"
+export MAIN_CONNECTION_USER={{ main_connection_user }}
+export MAIN_CONNECTION_PASSWORD={{ main_connection_password }}
+
 {% endif %}
 {% if vd_project_mode %}
 export PROJECT_MODE=true

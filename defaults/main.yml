@@ -83,13 +83,16 @@ src_google_credentials: credentials.json
 # Auth
 monitor_auth: false
 monitor_rights: false
+monitor_api_key: ChangeMe
 ldap: false
 ldap_url: null
 ldap_user_dnpattern: null
 
-galactica_users: null
-galactica_passwords: null
-galactica_admins: null
+galactica_users: admin
+galactica_passwords: admin
+galactica_admins: admin
+main_connection_user: admin
+main_connection_password: admin
 
 kerberos_full: 0
 kerberos_indexima: "{{ kerberos_full }}"
