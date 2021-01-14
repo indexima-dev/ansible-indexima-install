@@ -6,7 +6,7 @@
 
 - name: Stop master node
   shell: "(cd {{ indexima_path }}/galactica ; ./stop.sh)"
-  when: 
+  when:
     - is_master == 1
 
 - name: Stop Dev Console on master node
@@ -17,7 +17,7 @@
 
 - name: Stop worker nodes
   shell: "(cd {{ indexima_path }}/galactica ; ./stop.sh)"
-  when: 
+  when:
     - is_master == 0
     - ha == 1
 
