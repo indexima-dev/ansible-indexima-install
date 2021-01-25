@@ -36,12 +36,12 @@ indexima_logs:
   - "{{ indexima_hive_log_dir }}"
   - "{{ indexima_history_dir }}"
   - "{{ indexima_history_export }}"
-indexima_version: "{{ indexima_release }}{% if indexima_build is defined %}.{{ indexima_build }}{% endif %}{% if indexima_sp is defined %}.{{ indexima_sp }}{% endif %}"
+indexima_version: "{{ indexima_release }}{% if indexima_month is defined %}.{{ indexima_month }}{% endif %}{% if indexima_build is defined %}.{{ indexima_build }}{% endif %}{% if indexima_sp is defined %}.{{ indexima_sp }}{% endif %}"
 
 # Indexima installer
 indexima_file: indexima-installer-{{ indexima_version }}.zip
 indexima_gold: "{{ indexima_release | replace('.', '') }}-{{ indexima_build | omitempty}}"
-indexima_url: "{% if indexima_release |length != 4 %}{{ indexima_base_url }}/{{ indexima_release }}/{{ indexima_sp |d('') }}{% else %}{{ indexima_base_url }}/{{ indexima_year }}/{{ indexima_month |d('') }}{% endif %}"
+indexima_url: "{% if indexima_release |length != 4 %}{{ indexima_base_url }}/{{ indexima_release }}/{{ indexima_sp |d('') }}{% else %}{{ indexima_base_url }}/{{ indexima_year }}.{{ indexima_month |d('') }}/{{ indexima_sp }}{% endif %}"
 galactica_url: "{{ indexima_url }}/{{ indexima_file }}"
 indexima_archive: "{{ indexima_path }}/{{ indexima_file }}"
 galactica_path: "{{ indexima_path }}/galactica"
