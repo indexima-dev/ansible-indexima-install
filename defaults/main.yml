@@ -48,6 +48,7 @@ galactica_path: "{{ indexima_path }}/galactica"
 
 # Dev Console
 admin_type: local
+devconsole: false
 vd_data: "$HOME/visualdoop-data"
 vd2_file: indexima-installer-visual2-{{ indexima_version }}.zip
 vd2_archive: "{{ indexima_path }}/{{ vd2_file }}"
@@ -56,6 +57,10 @@ vd2_path: "{{ indexima_path }}/visualdoop2"
 vd_path: "{{ indexima_path }}/visualdoop"
 vd_cluster_mode: 0
 vd_project_mode: 1
+dc_file: indexima-installer-devconsole-{{ indexima_version }}.zip
+dc_archive: "{{ indexima_path }}/{{ dc_file }}"
+dc_url: "{{ indexima_url }}/{{ dc_file }}"
+dc_path: "{{ indexima_path }}/devconsole"
 
 # Config parameters
 nodes: 1

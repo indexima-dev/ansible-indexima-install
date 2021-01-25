@@ -1,27 +1,27 @@
 ---
-- name: Copy VD2 zip archive (No internet mode)
+- name: Copy Dev Console zip archive (No internet mode)
   copy:
-    src: "{{ vd2_file }}"
-    dest: "{{ vd2_archive }}"
+    src: "{{ dc_file }}"
+    dest: "{{ dc_archive }}"
     owner: "{{ service_user }}"
     group: "{{ service_user }}"
     mode: '0644'
   when: internet == 0
   register: copy_result
 
-- name: Download VD2 zip archive
+- name: Download Dev Console zip archive
   get_url:
-    url: "{{ vd2_url }}"
-    dest: "{{ vd2_archive }}"
+    url: "{{ dc_url }}"
+    dest: "{{ dc_archive }}"
   when:
     - internet == 1
     - internal_use == 0
   register: download_result
 
-- name: Download VD2 zip archive from internal repository (internal use only)
+- name: Download Dev Console zip archive from internal repository (internal use only)
   get_url:
-    url: "{{ internal_url }}/indexima-installer-visual2/{{ indexima_version }}/indexima-installer-visual2-{{ indexima_version }}.zip"
-    dest: "{{ vd2_archive }}"
+    url: "{{ internal_url }}/indexima-installer-devconsole/{{ indexima_version }}/indexima-installer-devconsole-{{ indexima_version }}.zip"
+    dest: "{{ dc_archive }}"
     url_username: "{{ internal_username }}"
     url_password: "{{ internal_password }}"
   when:
@@ -29,25 +29,25 @@
     - internal_use == 1
   register: download_result
 
-- name: Check if something changed in VD2
+- name: Check if something changed in Dev console
   check_mode: true
   unarchive:
     remote_src: yes
-    src: "{{ vd2_archive }}"
+    src: "{{ dc_archive }}"
     dest: "{{ indexima_path }}"
     owner: "{{ service_user }}"
     group: "{{ service_user }}"
-  register: check_vd2
+  register: check_dc
   tags: ['check']
 
-- import_tasks: clean_vd2.yaml
+- import_tasks: clean_dc.yaml
   tags: ['clean']
-  when: check_vd2.changed
+  when: check_dc.changed
 
-- name: Extract VD2 release
+- name: Extract Dev console release
   unarchive:
     remote_src: yes
-    src: "{{ vd2_archive }}"
+    src: "{{ dc_archive }}"
     dest: "{{ indexima_path }}"
     owner: "{{ service_user }}"
     group: "{{ service_user }}"
@@ -55,7 +55,7 @@
 - name: Copy keystore file if SSL is enabled
   copy:
     src: "{{ keystore_file }}"
-    dest: "{{ vd2_path }}"
+    dest: "{{ dc_path }}"
     owner: "{{ service_user }}"
     group: "{{ service_user }}"
     mode: '0644'
