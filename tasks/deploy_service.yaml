@@ -36,6 +36,20 @@
     mode: '0644'
   when:
     - is_master == 1
+    - visualdoop|bool
+
+- name: Copy Dev Console service file to master node
+  become: yes
+  become_user: root
+  template:
+    src: devconsole.service
+    dest: /etc/systemd/system/devconsole.service
+    owner: "root"
+    group: "root"
+    mode: '0644'
+  when:
+    - is_master == 1
+    - devconsole|bool
 
 - name: Copy Galactica ha service file to all nodes
   become: yes

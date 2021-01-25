@@ -6,14 +6,19 @@
 
 - name: Stop master node
   shell: "(cd {{ indexima_path }}/galactica ; ./stop.sh)"
+  when: is_master == 1
+
+- name: Stop VD2 on master node
+  shell: "(cd {{ vd2_path }} ; ./stop.sh)"
   when:
+    - visualdoop|bool
     - is_master == 1
 
 - name: Stop Dev Console on master node
-  shell: "(cd {{ vd2_path }} ; ./stop.sh)"
+  shell: "(cd {{ dc_path }} ; ./stop.sh)"
   when:
+    - devconsole|bool
     - is_master == 1
-  tags: ['visualdoop']
 
 - name: Stop worker nodes
   shell: "(cd {{ indexima_path }}/galactica ; ./stop.sh)"

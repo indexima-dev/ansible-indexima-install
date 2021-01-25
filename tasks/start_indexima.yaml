@@ -19,11 +19,17 @@
     - is_master == 1
     - ha == 0
 
-- name: Start Dev Console on master node
+- name: Start VD2 on master node
   shell: "(cd {{ vd2_path }} ; nohup {{ vd2_path }}/start.sh </dev/null >/dev/null 2>&1 & )"
   when:
     - is_master == 1
-  tags: ['visualdoop']
+    - visualdoop|bool
+
+- name: Start Dev Console on master node
+  shell: "(cd {{ dc_path }} ; nohup {{ dc_path }}/start.sh </dev/null >/dev/null 2>&1 & )"
+  when:
+    - is_master == 1
+    - devconsole|bool
 
 # HA = 1
 - name: Start nodes
@@ -34,4 +40,3 @@
 - name: Waiting 5 seconds for workers to start
   pause:
     seconds: 5
-

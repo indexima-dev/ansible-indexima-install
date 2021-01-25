@@ -14,7 +14,7 @@ export VISUALDOOP_SSL_KEYSTORE_LOCATION={{ vd2_path }}/{{ keystore_file }}
 export VISUALDOOP_SSL_KEYSTORE_PASSWORD={{ keystore_password }}
 
 {% else %}
-export VISUALDOOP_WEB_PORT=8082
+export VISUALDOOP_WEB_PORT={{ vd2_port }}
 
 {% endif %}
 # Agent port number
