@@ -9,6 +9,8 @@ java_name: "{{ install_path }}/jdk1.8.0_05"
 java_archive: "{{ install_path }}/jdk-8u5-linux-x64.tar.gz"
 java_package_centos: java-1.8.0-openjdk # Redhat family
 java_package_debian: openjdk-8-jdk # Debian family
+java_jdk_rhel: java-1.8.0-openjdk-devel #OpenJDK 8 JDK
+java_jre_debian: openjdk-8-jre-headless
 
 hadoop_version: "2.8.3"
 hadoop_file: hadoop-{{ hadoop_version }}
