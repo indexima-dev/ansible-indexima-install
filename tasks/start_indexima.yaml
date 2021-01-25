@@ -18,18 +18,14 @@
   when:
     - is_master == 1
 
-# Deprecated since 173
-- name: Start visualdoop on master node
-  shell: "(cd {{ indexima_path }}/visualdoop ; nohup {{ indexima_path }}/visualdoop/start-visualdoop.sh </dev/null >/dev/null 2>&1 & )"
-  when:
-    - is_master == 1
-    - indexima_release | replace('.', '') |int < 173
-  tags: ['visualdoop']
-
-# Only used if version >= 1.7.3
-- name: Start Dev Console on master node
+- name: Start VD2 on master node
   shell: "(cd {{ vd2_path }} ; nohup {{ vd2_path }}/start.sh </dev/null >/dev/null 2>&1 & )"
   when:
     - is_master == 1
-    - indexima_release | replace('.', '') |int >= 173
-  tags: ['visualdoop']
+    - not devconsole|bool
+
+- name: Start Dev Console on master node
+  shell: "(cd {{ dc_path }} ; nohup {{ dc_path }}/start.sh </dev/null >/dev/null 2>&1 & )"
+  when:
+    - is_master == 1
+    - devconsole|bool
