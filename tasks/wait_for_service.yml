@@ -13,9 +13,11 @@
     timeout: 300
   when: is_master == 1
 
-- name: Wait for Dev console
+- name: Wait for VD2
   wait_for:
     host: "{{ ansible_host }}"
     port: 8082
     timeout: 300
-  when: is_master == 1
+  when:
+    - is_master == 1
+    - visualdoop|bool

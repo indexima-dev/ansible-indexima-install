@@ -27,7 +27,7 @@
   tags: ['install', 'update', 'install-visualdoop', 'update-visualdoop']
   when:
     - is_master == 1
-    - not devconsole |bool
+    - visualdoop |bool
 
 ## Dev Console
 - import_tasks: install_devconsole.yaml
@@ -50,10 +50,10 @@
   tags: [ 'conf', 'conf-visualdoop' ]
   when: 
     - is_master == 1
-    - not devconsole | bool
+    - visualdoop | bool
 
 - import_tasks: config_devconsole.yaml
-  tags: [ 'conf', 'conf-devconsole' ]
+  tags: [ 'conf', 'conf-visualdoop' ]
   when:
     - is_master == 1
     - devconsole | bool

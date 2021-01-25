@@ -43,7 +43,22 @@
     daemon_reload: yes
     state: stopped
   tags: [ 'never', 'vrestart', 'vstop', 'istop', 'stop']
-  when: is_master == 1
+  when:
+    - is_master == 1
+    - visualdoop|bool
+
+# Dev Console
+- name: Stop Devconsole service
+  become: yes
+  become_user: root
+  service:
+    name: devconsole
+    daemon_reload: yes
+    state: stopped
+  tags: [ 'never', 'vrestart', 'vstop', 'istop', 'stop']
+  when:
+    - is_master == 1
+    - devconsole|bool
 
 # Standard
 - name: Enable Galactica service on workers
@@ -124,7 +139,9 @@
     daemon_reload: yes
     enabled: yes
   tags: [ 'vrestart', 'vstart', 'istart', 'start']
-  when: is_master == 1
+  when:
+    - is_master == 1
+    - visualdoop|bool
 
 - name: Start Visualdoop service
   become: yes
@@ -134,4 +151,31 @@
     daemon_reload: yes
     state: started
   tags: [ 'vrestart', 'vstart', 'istart', 'start']
-  when: is_master == 1
+  when:
+    - is_master == 1
+    - visualdoop|bool
+
+# Dev Console
+- name: Enable Devconsole service
+  become: yes
+  become_user: root
+  service:
+    name: devconsole
+    daemon_reload: yes
+    enabled: yes
+  tags: [ 'vrestart', 'vstart', 'istart', 'start']
+  when:
+    - is_master == 1
+    - devconsole|bool
+
+- name: Start Devconsole service
+  become: yes
+  become_user: root
+  service:
+    name: devconsole
+    daemon_reload: yes
+    state: started
+  tags: [ 'vrestart', 'vstart', 'istart', 'start']
+  when:
+    - is_master == 1
+    - devconsole|bool
