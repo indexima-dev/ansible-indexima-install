@@ -20,6 +20,12 @@
     - devconsole|bool
     - is_master == 1
 
+- name: Stop worker nodes
+  shell: "(cd {{ indexima_path }}/galactica ; ./stop.sh)"
+  when:
+    - is_master == 0
+    - ha == 1
+
 - name: Waiting 5 seconds
   pause:
     seconds: 5

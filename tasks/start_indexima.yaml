@@ -1,5 +1,4 @@
 ---
-# tasks file for indexima-prerequisites
 - name: Echo Starting Indexima
   debug:
     msg: "Starting Indexima"
@@ -8,6 +7,7 @@
   shell: "(cd {{ galactica_path }} ; nohup {{ galactica_path }}/start-node.sh </dev/null >/dev/null 2>&1 & )"
   when:
     - is_master == 0
+    - ha == 0
 
 - name: Waiting 5 seconds for workers to start
   pause:
@@ -17,6 +17,7 @@
   shell: "(cd {{ galactica_path }} ; nohup {{ galactica_path }}/start-node.sh --master </dev/null >/dev/null 2>&1 & )"
   when:
     - is_master == 1
+    - ha == 0
 
 - name: Start VD2 on master node
   shell: "(cd {{ vd2_path }} ; nohup {{ vd2_path }}/start.sh </dev/null >/dev/null 2>&1 & )"
@@ -29,3 +30,13 @@
   when:
     - is_master == 1
     - devconsole|bool
+
+# HA = 1
+- name: Start nodes
+  shell: "(cd {{ galactica_path }} ; nohup {{ galactica_path }}/start-node.sh --host {{ service_local_ip }} --attach {{ service_master_ip }} </dev/null >/dev/null 2>&1 & )"
+  when:
+    - ha == 1
+
+- name: Waiting 5 seconds for workers to start
+  pause:
+    seconds: 5
