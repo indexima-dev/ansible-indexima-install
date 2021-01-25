@@ -6,22 +6,20 @@
 
 - name: Stop master node
   shell: "(cd {{ indexima_path }}/galactica ; ./stop.sh)"
-  when: is_master == 1
-
-# Deprecated since 173
-- name: Stop visualdoop on master node
-  shell: "(cd {{ indexima_path }}/visualdoop ; ./stop-visualdoop.sh)"
   when:
-    - indexima_release | replace('.', '') |int < 173
     - is_master == 1
-  tags: ['visualdoop']
 
 - name: Stop Dev Console on master node
   shell: "(cd {{ vd2_path }} ; ./stop.sh)"
   when:
-    - indexima_release | replace('.', '') |int >= 173
     - is_master == 1
   tags: ['visualdoop']
+
+- name: Stop worker nodes
+  shell: "(cd {{ indexima_path }}/galactica ; ./stop.sh)"
+  when:
+    - is_master == 0
+    - ha == 1
 
 - name: Waiting 5 seconds
   pause:
