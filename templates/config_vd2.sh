@@ -58,6 +58,8 @@ export VISUALDOOP_LOGIN=LDAP
 export VISUALDOOP_LDAP_URL={{ ldap_url }}
 export VISUALDOOP_LDAP_USER_DN_PATTERN={{ ldap_user_dnpattern }}
 
+# Setting default value to admin
+export VISUALDOOP_ADMIN=admin
 {% endif %}
 {% if admin_users is defined %}
 # VISUALDOOP Admin Users
