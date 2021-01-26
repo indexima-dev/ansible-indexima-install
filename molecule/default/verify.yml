@@ -111,3 +111,9 @@
       assert:
         that:
           - _mydriver.stat.exists |bool
+
+    - name: Check that jstack is installed
+      command: "jstack -h"
+
+    - name: Check that jmap is installed
+      command: "jmap -h"
