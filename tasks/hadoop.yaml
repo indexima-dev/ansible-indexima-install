@@ -15,6 +15,14 @@
     group: "{{ service_user }}"
     mode: '0644'
 
+- name: Copy azure-data-lake-store-sdk-2.3.7.jar
+  copy:
+    src: azure-data-lake-store-sdk-2.3.7.jar
+    dest: "{{ azure_hadoop_jars_path }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+    mode: '0644'
+
 - name: Copy hadoop-azure-datalake-2.8.5.jar
   copy:
     src: hadoop-azure-datalake-2.8.5.jar
