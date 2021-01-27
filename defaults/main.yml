@@ -67,6 +67,9 @@ dc_archive: "{{ indexima_path }}/{{ dc_file }}"
 dc_url: "{{ indexima_url }}/{{ dc_file }}"
 dc_path: "{{ indexima_path }}/devconsole"
 
+# Default admin user in vd2
+admin_users: "admin"
+
 # Config parameters
 nodes: 1
 node_connect_timeout: 120
