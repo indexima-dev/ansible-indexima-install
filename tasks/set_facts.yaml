@@ -68,7 +68,7 @@
 - name: Set indexima_year
   set_fact:
     indexima_year: "{{ version_split[0] }}"
-    indexima_release: "{{ version_split[0] }}"
+    indexima_release: "{{ version_split[0:2] |join('.') }}"
   when:
     - indexima_year is not defined
     - version_format_new|bool
