@@ -64,7 +64,7 @@
 - import_tasks: hadoop.yaml
   become: yes
   become_user: root
-  tags: [ 'never', 'hadoop_azure' ]
+  tags: [ 'never', 'azure_datalake' ]
 
 - import_tasks: license.yaml
   tags: [ 'never', 'license' ]
