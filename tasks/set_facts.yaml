@@ -83,7 +83,7 @@
 
 - name: Set indexima_build
   set_fact:
-    indexima_new_build: "{{ version_split[3] }}"
+    indexima_new_build: "{{ version_split[2] }}"
     indexima_sp: "{{ version_split[3] }}"
   when:
     - indexima_new_build is not defined
