@@ -61,7 +61,7 @@
 - import_tasks: drivers.yaml
   tags: [ 'driver', 'update', 'update-galactica', 'install', 'install-galactica' ]
 
-- import_tasks: hadoop.yaml
+- import_tasks: azure_datalake.yaml
   become: yes
   become_user: root
   tags: [ 'never', 'azure_datalake' ]
