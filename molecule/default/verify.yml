@@ -122,8 +122,8 @@
       shell: cat /opt/indexima/visualdoop2/config.sh
       register: _vd2_config
     
-    - name: Check that vd_config.sh has admin as admin_user
+    - name: Check that vd_config.sh has the correct admin_user
       assert:
         that:
-          - "'VISUALDOOP_ADMIN=' in _vd2_config.stdout"
+          - "'VISUALDOOP_ADMIN=test_admin' in _vd2_config.stdout"
         fail_msg: "VISUALDOOP_ADMIN not defined"
