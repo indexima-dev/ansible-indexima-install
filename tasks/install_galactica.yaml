@@ -21,7 +21,7 @@
     src: "{{ indexima_file }}"
     dest: "{{ indexima_archive }}"
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
   when: internet == 0
   register: copy_result
@@ -53,7 +53,7 @@
     src: "{{ indexima_archive }}"
     dest: "{{ indexima_path }}"
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
   register: check_galactica
   tags: ['check']
 
@@ -67,13 +67,13 @@
     src: "{{ indexima_archive }}"
     dest: "{{ indexima_path }}"
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
 
 - name: Copy keystore file if SSL is enabled
   copy:
     src: "{{ keystore_file }}"
     dest: "{{ galactica_path }}/conf"
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
   when: ssl == 1

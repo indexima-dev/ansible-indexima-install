@@ -47,7 +47,7 @@
     src: "{{ hadoop_file }}.tar.gz"
     dest: "{{ hadoop_archive }}"
     owner: "{{ service_user |d('root') }}"
-    group: "{{ service_user |d('root') }}"
+    group: "{{ service_group |d('root') }}"
     mode: '0644'
   tags: ['hadoop']
   when: internet == 0
@@ -58,7 +58,7 @@
     src: "{{ hadoop_archive }}"
     dest: "{{ install_path }}"
     owner: "{{ service_user |d('root') }}"
-    group: "{{ service_user |d('root') }}"
+    group: "{{ service_group |d('root') }}"
   tags: ['hadoop']
 
 - name: Add {{ hadoop_path }} to HADOOP_BASE Env

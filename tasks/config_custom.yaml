@@ -4,7 +4,7 @@
     src: conf/galactica.conf
     dest: "{{ indexima_path }}/galactica/conf/galactica.conf"
     owner: "{{ service_user |d('root') }}"
-    group: "{{ service_user |d('root') }}"
+    group: "{{ service_group |d('root') }}"
     mode: '0644'
   ignore_errors: yes
 
@@ -13,7 +13,7 @@
     src: conf/galactica-env.sh
     dest: "{{ indexima_path }}/galactica/conf/galactica-env.sh"
     owner: "{{ service_user |d('root') }}"
-    group: "{{ service_user |d('root') }}"
+    group: "{{ service_group |d('root') }}"
     mode: '0755'
   ignore_errors: yes
 
@@ -22,7 +22,7 @@
     src: conf/monitor-site.xml
     dest: "{{ indexima_path }}/galactica/conf/monitor-site.xml"
     owner: "{{ service_user |d('root') }}"
-    group: "{{ service_user |d('root') }}"
+    group: "{{ service_group |d('root') }}"
     mode: '0644'
   ignore_errors: yes
 
@@ -31,7 +31,7 @@
     src: conf/hive-site.xml
     dest: "{{ indexima_path }}/galactica/conf/hive-site.xml"
     owner: "{{ service_user |d('root') }}"
-    group: "{{ service_user |d('root') }}"
+    group: "{{ service_group |d('root') }}"
     mode: '0644'
   ignore_errors: yes
 
@@ -40,7 +40,7 @@
     src: conf/log4j2.xml
     dest: "{{ indexima_path }}/galactica/conf/log4j2.xml"
     owner: "{{ service_user |d('root') }}"
-    group: "{{ service_user |d('root') }}"
+    group: "{{ service_group |d('root') }}"
     mode: '0644'
   ignore_errors: yes
 
@@ -49,7 +49,7 @@
     src: conf/log4j.xml
     dest: "{{ indexima_path }}/galactica/conf/log4j.xml"
     owner: "{{ service_user |d('root') }}"
-    group: "{{ service_user |d('root') }}"
+    group: "{{ service_group |d('root') }}"
     mode: '0644'
   ignore_errors: yes
 
@@ -58,7 +58,7 @@
     src: conf/optimize_index.json
     dest: "{{ galactica_path }}/conf/optimize_index.json"
     owner: "{{ service_user |d('root') }}"
-    group: "{{ service_user |d('root') }}"
+    group: "{{ service_group |d('root') }}"
     mode: '0644'
   ignore_errors: yes
 
@@ -67,7 +67,7 @@
     src: conf/notifications.json
     dest: "{{ galactica_path }}/conf/notifications.json"
     owner: "{{ service_user |d('root') }}"
-    group: "{{ service_user |d('root') }}"
+    group: "{{ service_group |d('root') }}"
     mode: '0644'
   ignore_errors: yes
 
@@ -76,6 +76,6 @@
     src: conf/supported_dbs.json
     dest: "{{ galactica_path }}/conf/supported_dbs.json"
     owner: "{{ service_user |d('root') }}"
-    group: "{{ service_user |d('root') }}"
+    group: "{{ service_group |d('root') }}"
     mode: '0644'
   ignore_errors: yes

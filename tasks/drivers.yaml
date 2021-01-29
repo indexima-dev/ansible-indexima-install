@@ -5,7 +5,7 @@
     src: "{{ item }}"
     dest: "{{ galactica_path }}/driver"
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
   with_fileglob:
     - files/drivers/*

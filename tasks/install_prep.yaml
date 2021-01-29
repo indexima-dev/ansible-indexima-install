@@ -6,7 +6,7 @@
     path: "{{ install_path }}"
     state: directory
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0755'
   register: install
 
@@ -17,7 +17,7 @@
     path: "{{ item }}"
     state: directory
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0755'
   with_items: "{{ indexima_logs }}"
 
@@ -28,6 +28,6 @@
     path: "{{ indexima_path }}"
     state: directory
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0755'
   register: dir
