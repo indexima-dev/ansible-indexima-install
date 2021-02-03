@@ -68,7 +68,7 @@
 - name: Set indexima_year
   set_fact:
     indexima_year: "{{ version_split[0] }}"
-    indexima_release: "{{ version_split[0] }}"
+    indexima_release: "{{ version_split[0:2] |join('.') }}"
   when:
     - indexima_year is not defined
     - version_format_new|bool
@@ -76,17 +76,23 @@
 - name: Set indexima_month
   set_fact:
     indexima_month: "{{ version_split[1] }}"
-    indexima_build: "{{ version_split[1] }}"
   when:
     - indexima_month is not defined
     - version_format_new|bool
 
-- name: Set indexima_build
+- name: Set indexima_build new
   set_fact:
-    indexima_new_build: "{{ version_split[2] }}"
-    indexima_sp: "{{ version_split[2] }}"
+    indexima_build: "{{ version_split[2] }}"
   when:
-    - indexima_new_build is not defined
+    - indexima_build is not defined
+    - version_format_new|bool
+
+- name: Set indexima_sp new
+  set_fact:
+    indexima_sp: "{{ version_split[3] }}"
+  when:
+    - indexima_sp is not defined
+    - version_split[3] is defined
     - version_format_new|bool
 
 - name: Set indexima_release
