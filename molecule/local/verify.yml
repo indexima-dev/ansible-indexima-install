@@ -67,7 +67,7 @@
     - name: Check that node timeout is adapted to 1.7.11
       assert:
         that:
-          - "'nodes.connect.timeout.ms = 120000' in _galactica_conf.stdout"
+          - "'nodes.connect.timeout.seconds = 120' in _galactica_conf.stdout"
 
     - name: List all files in galactica/driver
       find:
