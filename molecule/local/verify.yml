@@ -98,5 +98,11 @@
         that:
           - "'VISUALDOOP_ADMIN=admin_local' in _vd2_config.stdout"
         fail_msg: "VISUALDOOP_ADMIN not defined"
+    
+    - name: Check that service_group has the correct values
+      assert:
+        that:
+          - service_group == "root"
+        fail_msg: "service_group not correctly set"
 
 
