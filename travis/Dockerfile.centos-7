@@ -15,6 +15,7 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 RUN yum -y install epel-release
 RUN yum -y install git ansible sudo
 RUN yum -y install python3
+RUN pip3 install --upgrade pip 
 RUN pip3 install ansible==2.10.0 molecule==3.0.8 molecule-ec2==0.2 molecule-docker==0.2.4
 
 RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
