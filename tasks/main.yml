@@ -78,7 +78,7 @@
   when: not systemd| bool
 
 - import_tasks: manage_service.yaml
-  tags: [ 'irestart' ]
+  tags: [ 'irestart', 'restart' ]
   when: systemd| bool
 
 - import_tasks: jdbc_url.yaml

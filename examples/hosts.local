@@ -2,7 +2,7 @@
 # internal_host is the host as seen by all the Indexima cluster nodes.
 # both are required
 [indexima]
-node1 ansible_host=localhost internal_host=locahost is_master=1
+node1 ansible_host=localhost is_master=1
 
 [indexima:vars]
 
@@ -42,16 +42,16 @@ internet=1
 ## Total number of nodes
 nodes=1
 ## Number of cores per node
-cores=2
+#cores=2
 ## Amount of RAM per node (Mb)
-ram=600
+#ram=600
 ## Number of disk per node
-disk=1
+#disk=1
 ## If you want to set the partitions number manually, uncomment next field and write the desired value
 #partitions=4
 
 ## Change according to desired version and service pack
-#version=1.7.7.1000.0
+#version=1.7.12.1257.0
 
 ## Set a custom install path. 'indexima' will automatically be appended to the variable
 ## Eg. install_path=/opt ; Indexima will be installed in /opt/indexima
