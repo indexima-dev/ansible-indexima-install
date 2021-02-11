@@ -128,14 +128,17 @@
           - "'VISUALDOOP_ADMIN=test_admin' in _vd2_config.stdout"
         fail_msg: "VISUALDOOP_ADMIN not defined"
 
-    - name: Check that service_group has the correct values
+    - name: Register galactica-env.sh path
+      stat:
+        path: "/opt/indexima/galactica/conf/galactica-env.sh"
+      register: _file_driver
+
+    - name: Check that group is correct
       assert:
         that:
-          - service_group == "root"
-        fail_msg: "service_group not correctly set"
+          - _file_driver.stat.gr_name == "{{ service_group }}"
     
-    - name: Check that service_group has the correct values
+    - name: Check that user is correct
       assert:
         that:
-          - service_group == "root"
-        fail_msg: "service_group not correctly set"
+          - _file_driver.stat.pw_name == "root"

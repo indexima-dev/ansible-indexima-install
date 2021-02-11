@@ -24,7 +24,7 @@ provisioner:
         ram: 600
         partitions: 8
         admin_users: "test_admin"
-        service_group: "root"
+        service_group: "index_group"
         warehouse: "/opt/indexima/warehouse"
         indexima_log_path: "/var/log/indexima"
         indexima_hive_log_dir: "/tmp/indexima/hive"
