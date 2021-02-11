@@ -9,7 +9,7 @@ EnvironmentFile=/etc/environment
 Restart=always
 RestartSec=10
 WorkingDirectory={{ dc_path }}
-User={{ service_user | d('root') }}
+User={{ service_user }}
 ExecStart=/bin/bash {{ dc_path }}/start.sh
 
 [Install]

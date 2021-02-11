@@ -31,48 +31,48 @@
   template:
     src: galactica.conf
     dest: "{{ indexima_path }}/galactica/conf/galactica.conf"
-    owner: "{{ service_user |d('root') }}"
-    group: "{{ service_group |d('root') }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
 
 - name: Copy galactica-env.sh template to servers
   template:
     src: galactica-env.sh
     dest: "{{ indexima_path }}/galactica/conf/galactica-env.sh"
-    owner: "{{ service_user |d('root') }}"
-    group: "{{ service_group |d('root') }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0755'
 
 - name: Copy monitor-site.xml template to servers
   template:
     src: monitor-site.xml
     dest: "{{ indexima_path }}/galactica/conf/monitor-site.xml"
-    owner: "{{ service_user |d('root') }}"
-    group: "{{ service_group |d('root') }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
 
 - name: Copy hive-site.xml template to servers
   template:
     src: hive-site.xml
     dest: "{{ indexima_path }}/galactica/conf/hive-site.xml"
-    owner: "{{ service_user |d('root') }}"
-    group: "{{ service_group |d('root') }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
 
 - name: Copy log4j2.xml template to servers
   template:
     src: log4j2.xml
     dest: "{{ indexima_path }}/galactica/conf/log4j2.xml"
-    owner: "{{ service_user |d('root') }}"
-    group: "{{ service_group |d('root') }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
 
 - name: Rename optimize_index.json.template
   copy:
     src: "{{ galactica_path }}/conf/optimize_index.json.template"
     dest: "{{ galactica_path }}/conf/optimize_index.json"
-    owner: "{{ service_user |d('root') }}"
-    group: "{{ service_group |d('root') }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
     remote_src: yes
     mode: '0644'
 
@@ -80,8 +80,8 @@
   copy:
     src: "{{ galactica_path }}/conf/notifications.json.template"
     dest: "{{ galactica_path }}/conf/notifications.json"
-    owner: "{{ service_user |d('root') }}"
-    group: "{{ service_group |d('root') }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
     remote_src: yes
     mode: '0644'
 
@@ -89,8 +89,8 @@
   copy:
     src: "{{ galactica_path }}/conf/supported_dbs.json.template"
     dest: "{{ galactica_path }}/conf/supported_dbs.json"
-    owner: "{{ service_user |d('root') }}"
-    group: "{{ service_group |d('root') }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
     remote_src: yes
     mode: '0644'
 
@@ -98,8 +98,8 @@
   template:
     src: jaas.conf
     dest: "{{ galactica_path }}/jaas.conf"
-    owner: "{{ service_user |d('root') }}"
-    group: "{{ service_group |d('root') }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
   when: kerberos_principal is defined and kerberos_keytab is defined
 
@@ -107,8 +107,8 @@
   copy:
     src: "credentials.json"
     dest: "{{ google_credentials }}"
-    owner: "{{ service_user |d('root') }}"
-    group: "{{ service_group |d('root') }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
   when: google_credentials is defined
   tags: test-google

@@ -9,7 +9,7 @@ EnvironmentFile=/etc/environment
 Restart=always
 WorkingDirectory={{ galactica_path }}
 LimitNOFILE=65536
-User={{ service_user | d('root') }}
+User={{ service_user }}
 ExecStart=/bin/bash {{ galactica_path }}/start-node.sh --master
 
 [Install]
