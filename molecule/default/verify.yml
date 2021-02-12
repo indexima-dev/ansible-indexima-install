@@ -136,7 +136,7 @@
     - name: Check that group is correct
       assert:
         that:
-          - _file_driver.stat.gr_name == "{{ service_group }}"
+          - _file_driver.stat.gr_name == "index_group"
     
     - name: Check that user is correct
       assert:
