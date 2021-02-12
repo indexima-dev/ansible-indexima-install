@@ -198,9 +198,9 @@
     - name: Check that group is correct
       assert:
         that:
-          - _file_driver.stat.gr_name == 'root'
+          - _file_driver.stat.gr_name == "{{ service_user }}"
     
     - name: Check that user is correct
       assert:
         that:
-          - _file_driver.stat.pw_name == 'root'
+          - _file_driver.stat.pw_name == "{{ service_user }}"
