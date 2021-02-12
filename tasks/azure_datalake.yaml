@@ -4,7 +4,7 @@
     path: "{{ core_site_path }}"
     state: directory
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0755'
 
 - name: Copy core-site.xml template
@@ -12,7 +12,7 @@
     src: core-site.xml
     dest: "{{ core_site_path }}/core-site.xml"
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
 
 - name: Copy azure-data-lake-store-sdk-2.3.7.jar
@@ -20,7 +20,7 @@
     src: azure-data-lake-store-sdk-2.3.7.jar
     dest: "{{ azure_hadoop_jars_path }}"
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
 
 - name: Copy hadoop-azure-datalake-2.8.5.jar
@@ -28,7 +28,7 @@
     src: hadoop-azure-datalake-2.8.5.jar
     dest: "{{ azure_hadoop_jars_path }}"
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
 
 - name: Copy jackson-core-2.8.6.jar
@@ -36,7 +36,7 @@
     src: jackson-core-2.8.6.jar
     dest: "{{ azure_hadoop_jars_path }}"
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
 
 - name: Copy okhttp-2.4.0.jar
@@ -44,7 +44,7 @@
     src: okhttp-2.4.0.jar
     dest: "{{ azure_hadoop_jars_path }}"
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
 
 - name: Copy okio-1.4.0.jar
@@ -52,7 +52,7 @@
     src: okio-1.4.0.jar
     dest: "{{ azure_hadoop_jars_path }}"
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
 
 - name: Copy slf4j-api-1.7.21.jar
@@ -60,7 +60,7 @@
     src: slf4j-api-1.7.21.jar
     dest: "{{ azure_hadoop_jars_path }}"
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
 
 - name: Copy wildfly-openssl-1.0.7.Final.jar
@@ -68,5 +68,5 @@
     src: wildfly-openssl-1.0.7.Final.jar
     dest: "{{ azure_hadoop_jars_path }}"
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'

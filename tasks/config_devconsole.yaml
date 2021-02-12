@@ -5,8 +5,8 @@
   template:
     src: config_vd2.sh
     dest: "{{ dc_path }}/config.sh"
-    owner: "{{ service_user |d('root') }}"
-    group: "{{ service_user |d('root') }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
   when: is_master == 1
 
@@ -14,7 +14,7 @@
   template:
     src: log4j2_vd2.xml
     dest: "{{ dc_path }}/log4j2.xml"
-    owner: "{{ service_user |d('root') }}"
-    group: "{{ service_user |d('root') }}"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'
   when: is_master == 1

@@ -20,6 +20,7 @@ provisioner:
         drivers: true
         version: 1.7.11.1183.2
         admin_users: "admin_local"
+        service_group: "root"
         drivers_url: https://download.indexima.com/jdbc_drivers
         driver_list: ['db2jcc4.jar', 'googlebigquery.jdbc42-1.2.2.1004.jar', 'hive-jdbc-1.2.1.jar', 'ImpalaJDBC42-2.6.15.1017.jar',
                       'jconn4.jar', 'jdbc-2.5.5.1007.jar', 'mssql-jdbc-7.4.1.jre8-shaded.jar', 'mysql-connector-java-8.0.18.jar',

@@ -4,5 +4,5 @@
     src: indexima.lic
     dest: "{{ galactica_path }}/conf"
     owner: "{{ service_user }}"
-    group: "{{ service_user }}"
+    group: "{{ service_group }}"
     mode: '0644'

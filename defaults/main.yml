@@ -5,6 +5,7 @@
 download_url: http://download.oracle.com/otn-pub/java/jdk/8u5-211/jdk-8u5-linux-x64.tar.gz
 install_path: "/opt"
 service_user: "root"
+service_group: "{{ service_user }}"
 java_name: "{{ install_path }}/jdk1.8.0_05"
 java_archive: "{{ install_path }}/jdk-8u5-linux-x64.tar.gz"
 java_package_centos: java-1.8.0-openjdk # Redhat family
