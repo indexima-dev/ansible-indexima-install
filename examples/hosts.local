@@ -165,6 +165,13 @@ galactica_admins="admin"
 ## You also need to configure your user pattern
 ## Eg. cn=%s,ou=people,dc=indexima,dc=org
 #ldap_user_dnpattern=
+
+## LDAP group conf
+#ldap_group_dnpattern=
+#ldap_group_classkey=groupOfUniqueNames
+#ldap_group_membershipkey=uniqueMember
+#ldap_group_filter=
+
 ## If you need fine rights access to Indexima Monitor, uncomment monitor_rights.
 #monitor_rights=1
 

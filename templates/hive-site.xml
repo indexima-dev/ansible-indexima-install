@@ -44,6 +44,23 @@
        <value>{{ ldap_user_dnpattern }}</value>
     </property>
 
+    <property>
+      <name>hive.server2.authentication.ldap.groupFilter</name>
+      <value>{{ ldap_group_filter }}</value>
+    </property>
+    <property>
+      <name>hive.server2.authentication.ldap.groupDNPattern</name>
+      <value>{{  ldap_group_dnpattern }}</value>
+    </property>
+    <property>
+      <name>hive.server2.authentication.ldap.groupClassKey</name>
+      <value>{{ ldap_group_classkey }}</value>
+    </property>
+    <property>
+      <name>hive.server2.authentication.ldap.groupMembershipKey</name>
+      <value>{{ ldap_group_membershipkey }}</value>
+    </property>
+
     {% endif %}
     {% if kerberos_indexima == 1 %}
     <property>

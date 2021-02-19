@@ -142,3 +142,38 @@
       assert:
         that:
           - _file_driver.stat.pw_name == "root"
+
+    - name: Check that ldap variables are correctly defined
+      assert:
+        that:
+          - ldap == 1
+          - ldap_group_classkey == "groupOfUniqueNames"
+          - ldap_group_dnpattern == "cn=%s,ou=thecrew,ou=groups,dc=vision,dc=org"
+          - ldap_group_filter == "superheros"
+          - ldap_group_membershipkey == "uniqueMember"
+
+    - name : Check if webui.authenticate is true
+      assert:
+        that:
+          - "'webui.authenticate = true' in _galactica_conf.stdout"
+        fail_msg: "webui.authenticate is false. Expected true"
+    
+
+    - name : Check that webui.authenticate is true
+      assert:
+        that:
+          - "'webui.authenticate = true' in _galactica_conf.stdout"
+        fail_msg: "webui.authenticate is false. Expected true"
+
+    - name: Cat hive_site.xml
+      shell: cat /opt/indexima/galactica/conf/hive-site.xml
+      register: _hive_site
+
+    - name : Check if ldap config is correct
+      assert:
+        that:
+          - "'<value>groupOfUniqueNames</value>' in _hive_site.stdout"
+          - "'<value>uniqueMember</value>' in _hive_site.stdout"
+          - "'<value>cn=%s,ou=thecrew,ou=groups,dc=vision,dc=org</value>' in _hive_site.stdout"
+          - "'<value>superheros</value>' in _hive_site.stdout"
+        fail_msg: "LDAP config went wrong"

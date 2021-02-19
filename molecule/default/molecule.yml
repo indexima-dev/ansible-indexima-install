@@ -31,6 +31,11 @@ provisioner:
         indexima_history_dir: "/opt/indexima/oldhistory"
         indexima_history_export: "/opt/indexima/newhistory"
         ha: 0
+        ldap: 1
+        ldap_group_classkey: "groupOfUniqueNames"
+        ldap_group_dnpattern: "cn=%s,ou=thecrew,ou=groups,dc=vision,dc=org"
+        ldap_group_filter: "superheros"
+        ldap_group_membershipkey: "uniqueMember"
         systemd: false
         cluster_name: docker_test
         galactica_gc_options: "-XX:+UseConcMarkSweepGC -XX:-OmitStackTraceInFastThrow -XX:NewRatio=3"
