@@ -9,7 +9,7 @@
 ### Install
 ## Install Prep
 - import_tasks: install_prep.yaml
-  tags: ['install', 'prerequisites', 'install-galactica', 'install-visualdoop', 'install-prep' ]
+  tags: ['install', 'prerequisites', 'install-galactica', 'install-visualdoop', 'prep' ]
 
 - import_tasks: prerequisites.yaml
   tags: [ 'install', 'prerequisites', 'centos', 'debian']
