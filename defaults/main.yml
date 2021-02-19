@@ -102,6 +102,10 @@ monitor_api_key: ChangeMe
 ldap: false
 ldap_url: null
 ldap_user_dnpattern: null
+ldap_group_dnpattern: null
+ldap_group_classkey: null
+ldap_group_membershipkey: null
+ldap_group_filter: null
 
 galactica_users: admin
 galactica_passwords: admin
