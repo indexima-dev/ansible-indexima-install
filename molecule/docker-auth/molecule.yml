@@ -18,12 +18,10 @@ provisioner:
   inventory:
     group_vars:
       indexima:
-        version: 1.7.12.1257.0
+        version: 1.7.12.1257.1
         nodes: 1
-        partitions: 8
         warehouse: "/opt/indexima/warehouse"
         ldap: 1
-        is_master: 1
         ldap_url: ${LDAP_URL}
         auth_username: ${AUTH_USERNAME}
         auth_password: ${AUTH_PASSWORD}
@@ -32,26 +30,8 @@ provisioner:
         ldap_group_dnpattern: "cn=%s,ou=crews,ou=groups,dc=indexima,dc=org"
         ldap_group_filter: "supermen"
         ldap_group_membershipkey: "uniqueMember"
-        systemd: false
-        cluster_name: docker_test
-        galactica_jmx_options: '-verbose:gc'
     host_vars:
       instance:
         is_master: 1
-scenario:
-  test_sequence:
-    - dependency
-    - lint
-    - cleanup
-    - destroy
-    - syntax
-    - create
-    - prepare
-    - converge
-    #- idempotence 
-    - side_effect
-    - verify
-    - cleanup
-    - destroy
 verifier:
   name: ansible
