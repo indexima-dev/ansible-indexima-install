@@ -26,4 +26,4 @@
     mode: '0644'
   when:
     - is_master == 1
-    - "{{ ldap| bool }}"
+    - ldap| bool
