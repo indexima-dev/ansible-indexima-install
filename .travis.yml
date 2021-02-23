@@ -8,6 +8,7 @@ env:
     ANSIBLE_VERSION: "2.8.1"
   - MOL_TEST: "docker"
     MOL_DISTRO: "centos7"
+  - MOL_TEST: "docker-auth"
   - MOL_TEST: "docker"
     MOL_DISTRO: "ubuntu1604"
   - MOL_TEST: "amazon"
