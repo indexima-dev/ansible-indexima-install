@@ -39,11 +39,14 @@
        <value>{{ ldap_url }}</value>
     </property>
 
+    {% if ldap_user_dnpattern is defined %}
     <property>
        <name>hive.server2.authentication.ldap.userDNPattern</name>
        <value>{{ ldap_user_dnpattern }}</value>
     </property>
+    {% endif %}
 
+    {% if ldap_group_dnpattern is defined %}
     <property>
       <name>hive.server2.authentication.ldap.groupFilter</name>
       <value>{{ ldap_group_filter }}</value>
@@ -60,7 +63,8 @@
       <name>hive.server2.authentication.ldap.groupMembershipKey</name>
       <value>{{ ldap_group_membershipkey }}</value>
     </property>
-
+    {% endif %}
+    
     {% endif %}
     {% if kerberos_indexima == 1 %}
     <property>

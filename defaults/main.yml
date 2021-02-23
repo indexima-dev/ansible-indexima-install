@@ -100,12 +100,12 @@ monitor_auth: false
 monitor_rights: false
 monitor_api_key: ChangeMe
 ldap: false
-ldap_url: null
-ldap_user_dnpattern: null
-ldap_group_dnpattern: null
-ldap_group_classkey: null
-ldap_group_membershipkey: null
-ldap_group_filter: null
+#ldap_url: 
+#ldap_user_dnpattern: 
+#ldap_group_dnpattern: 
+#ldap_group_classkey: 
+#ldap_group_membershipkey: 
+#ldap_group_filter: 
 
 galactica_users: admin
 galactica_passwords: admin
