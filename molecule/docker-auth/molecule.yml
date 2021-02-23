@@ -20,24 +20,18 @@ provisioner:
       indexima:
         version: 1.7.12.1257.0
         nodes: 1
-        cores: 1
-        ram: 600
         partitions: 8
         warehouse: "/opt/indexima/warehouse"
-        indexima_log_path: "/var/log/indexima"
-        indexima_hive_log_dir: "/tmp/indexima/hive"
-        indexima_history_dir: "/opt/indexima/oldhistory"
-        indexima_history_export: "/opt/indexima/newhistory"
-        ha: 0
         ldap: 1
+        is_master: 1
         ldap_url: ${LDAP_URL}
         auth_username: ${AUTH_USERNAME}
         auth_password: ${AUTH_PASSWORD}
-        ldap_user_dnpattern: ${LDAP_USER_DNPATTERN}
-        ldap_group_classkey: ${LDAP_GROUP_CLASSKEY}
-        ldap_group_dnpattern: ${LDAP_GROUP_DNPATTERN}
-        ldap_group_filter: ${LDAP_GROUP_FILTER}
-        ldap_group_membershipkey: ${LDAP_GROUP_MEMBERSHIPKEY}
+        ldap_user_dnpattern: "cn=%s,ou=people,dc=indexima,dc=org"
+        ldap_group_classkey: "groupOfUniqueNames"
+        ldap_group_dnpattern: "cn=%s,ou=crews,ou=groups,dc=indexima,dc=org"
+        ldap_group_filter: "supermen"
+        ldap_group_membershipkey: "uniqueMember"
         systemd: false
         cluster_name: docker_test
         galactica_jmx_options: '-verbose:gc'
@@ -54,7 +48,7 @@ scenario:
     - create
     - prepare
     - converge
-    - idempotence 
+    #- idempotence 
     - side_effect
     - verify
     - cleanup
