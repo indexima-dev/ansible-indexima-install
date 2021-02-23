@@ -4,6 +4,7 @@ services:
   - docker
 env:
   - MOL_TEST: "local"
+  - MOL_TEST: "docker-auth"
   - MOL_TEST: "docker"
     ANSIBLE_VERSION: "2.8.1"
   - MOL_TEST: "docker"
