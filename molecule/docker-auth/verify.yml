@@ -46,12 +46,6 @@
     - name: Cat galactica.conf
       shell: cat /opt/indexima/galactica/conf/galactica.conf
       register: _galactica_conf
-
-    - name : Check if webui.authenticate is true
-      assert:
-        that:
-          - "'webui.authenticate = true' in _galactica_conf.stdout"
-        fail_msg: "webui.authenticate is false. Expected true"
     
     - name: Cat hive_site.xml
       shell: cat /opt/indexima/galactica/conf/hive-site.xml
@@ -63,5 +57,6 @@
           - "'<value>groupOfUniqueNames</value>' in _hive_site.stdout"
           - "'<value>uniqueMember</value>' in _hive_site.stdout"
           - "'<value>cn=%s,ou=crews,ou=groups,dc=indexima,dc=org</value>' in _hive_site.stdout"
+          - "'<value>cn=%s,ou=people,dc=indexima,dc=org</value>' in _hive_site.stdout"
           - "'<value>supermen</value>' in _hive_site.stdout"
         fail_msg: "LDAP config went wrong"
