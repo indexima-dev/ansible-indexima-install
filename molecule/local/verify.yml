@@ -113,5 +113,3 @@
       assert:
         that:
           - _file_driver.stat.pw_name == 'root'
-
-

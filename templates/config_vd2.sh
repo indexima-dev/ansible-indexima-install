@@ -56,8 +56,9 @@ export VISUALDOOP_DATA={{ vd_data }}
 # LDAP authentication
 export VISUALDOOP_LOGIN=LDAP
 export VISUALDOOP_LDAP_URL={{ ldap_url }}
+{% if ldap_user_dnpattern is defined %}
 export VISUALDOOP_LDAP_USER_DN_PATTERN={{ ldap_user_dnpattern }}
-
+{% endif %}
 {% endif %}
 {% if admin_users is defined %}
 # VISUALDOOP Admin Users

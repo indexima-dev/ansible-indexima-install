@@ -1,0 +1,37 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: instance
+    groups:
+      - indexima
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+provisioner:
+  name: ansible
+  inventory:
+    group_vars:
+      indexima:
+        version: 1.7.12.1257.1
+        nodes: 1
+        warehouse: "/opt/indexima/warehouse"
+        ldap: 1
+        ldap_url: ${LDAP_URL}
+        auth_username: ${LDAP_USERNAME}
+        auth_password: ${LDAP_PASSWORD}
+        ldap_user_dnpattern: "cn=%s,ou=people,dc=indexima,dc=org"
+        ldap_group_classkey: "groupOfUniqueNames"
+        ldap_group_dnpattern: "cn=%s,ou=crews,ou=groups,dc=indexima,dc=org"
+        ldap_group_filter: "supermen"
+        ldap_group_membershipkey: "uniqueMember"
+    host_vars:
+      instance:
+        is_master: 1
+verifier:
+  name: ansible

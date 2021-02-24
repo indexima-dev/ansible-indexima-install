@@ -16,3 +16,14 @@
     group: "{{ service_group }}"
     mode: '0644'
   when: is_master == 1
+
+- name: Copy ldap.properties template to servers
+  template:
+    src: ldap.properties
+    dest: "{{ vd2_path }}/config/ldap.properties"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
+    mode: '0644'
+  when:
+    - is_master == 1
+    - ldap| bool

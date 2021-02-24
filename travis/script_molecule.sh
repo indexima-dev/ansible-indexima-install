@@ -15,6 +15,8 @@ if [ "${MOL_TEST}" == "amazon" ]; then
   molecule test -s aws-ec2
 elif [ "${MOL_TEST}" == "local" ]; then
   ./travis/script_local_test.sh centos 7
+elif [ "${MOL_TEST}" == "docker-auth" ]; then
+  molecule test -s docker-auth
 else
   molecule test -s default
 fi
