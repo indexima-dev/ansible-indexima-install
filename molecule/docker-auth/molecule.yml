@@ -23,8 +23,8 @@ provisioner:
         warehouse: "/opt/indexima/warehouse"
         ldap: 1
         ldap_url: ${LDAP_URL}
-        auth_username: ${AUTH_USERNAME}
-        auth_password: ${AUTH_PASSWORD}
+        auth_username: ${LDAP_USERNAME}
+        auth_password: ${LDAP_PASSWORD}
         ldap_user_dnpattern: "cn=%s,ou=people,dc=indexima,dc=org"
         ldap_group_classkey: "groupOfUniqueNames"
         ldap_group_dnpattern: "cn=%s,ou=crews,ou=groups,dc=indexima,dc=org"
