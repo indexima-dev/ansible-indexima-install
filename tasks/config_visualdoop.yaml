@@ -27,3 +27,4 @@
   when:
     - is_master == 1
     - ldap| bool
+    - version_format_new|bool or indexima_release == "1.7.12"
