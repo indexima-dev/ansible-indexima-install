@@ -18,7 +18,8 @@ provisioner:
   inventory:
     group_vars:
       indexima:
-        version: 1.7.11.1183.4
+        hadoop_url: "https://download.indexima.com/libs/hadoop-2.8.3.tar.gz"
+        version: 1.7.12.1257.1
         nodes: 1
         cores: 1
         ram: 600
