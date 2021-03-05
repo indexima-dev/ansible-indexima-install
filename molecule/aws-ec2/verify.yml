@@ -126,11 +126,11 @@
       shell: cat /opt/indexima/galactica/conf/galactica-env.sh
       register: _galactica_env
 
-    - name: Check that galactica mem = 1393m
+    - name: Check that galactica mem = 5581m
       assert:
         that:
-          - "'GALACTICA_MEM=1393m' in _galactica_env.stdout"
-        fail_msg: "ram is not equal 1393: {{ ansible_memtotal_mb }} in galactica-env: {{ _galactica_env.stdout }}"
+          - "'GALACTICA_MEM=5581m' in _galactica_env.stdout"
+        fail_msg: "ram is not equal 5581: {{ ansible_memtotal_mb }} in galactica-env: {{ _galactica_env.stdout }}"
 
     - name: Check that GC_OPTIONS is default
       assert:
