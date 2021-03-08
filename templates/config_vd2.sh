@@ -71,6 +71,10 @@ export VISUALDOOP_DEFAULT_PASS={{ vd_pass }}
 {% endif %}
 {% if vd_cluster_mode %}
 export CLUSTER_MODE=true
+{% if vd_cluster_only %}
+export CLUSTER_ONLY=true
+
+{% endif %}
 # Default Cluster
 export MAIN_CLUSTER_IP={{ service_master_ip}}
 export MAIN_CLUSTER_NAME="Default Cluster"
