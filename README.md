@@ -32,3 +32,37 @@ You can also make your own playbook
   vars:
     is_master: 1
 ```
+
+# Variables
+
+## Prerequisites and install
+
+ Variable                 | Default                                                                                 |
+| ----------------------- | --------------------------------------------------------------------------------------- |
+| version                 | 1.7.12.1257.1                                                                           |
+| internal_host           | "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] | d('LOCAL_IP') }}" |
+| internet                | 1                                                                                       |
+| internal_use            | 0
+| is_master               | 0                                                                                       |
+| systemd                 | true                                                                                    |
+| install_path            | /opt                                                                                    |
+| indexima_path           | "{{ install_path }}/indexima"                                                           |
+| indexima_logs_path      | /var/log/indexima                                                                       |
+| indexima_log_dir        | "{{ indexima_logs_path }}/logs"                                                         |
+| indexima_hive_log_dir   | "{{ indexima_logs_path }}/hive"                                                         |
+| indexima_history_dir    | "{{ indexima_logs_path }}/history"                                                      |
+| indexima_history_export | "{{ indexima_logs_path }}/history_csv"                                                  |
+
+## Config parameters
+
+ Variable                 | Default                                                                                 |
+| ----------------------- | --------------------------------------------------------------------------------------- |
+| nodes                   | 1                                                                                       |
+| node_connect_timeout    | "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] | d('LOCAL_IP') }}" |
+| cores                   | "{{ ansible_processor_vcpus }}"                                                         |
+| ram                     | "{{ ansible_memtotal_mb }}"                                                             |
+| disk                    | 1                                                                                       |
+| warehouse_type          | local                                                                                   |
+| warehouse               | "{{ indexima_path }}/warehouse"                                                         |
+| partitions_number       | "{{ cores|int * nodes }}"                                                               |
+| cores                   | 1                                                                                       |

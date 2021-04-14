@@ -21,7 +21,7 @@ hadoop_path: "{{ install_path }}/{{ hadoop_file }}"
 
 #standalone
 #don't change
-version: 1.7.10.1132.4
+version: 1.7.12.1257.1
 internal_host: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] | d('LOCAL_IP') }}"
 internet: 1
 internal_use: 0
@@ -95,6 +95,7 @@ aws: 0
 gs: 0
 azure: 0
 src_google_credentials: credentials.json
+google_credentials: "{{ galactica_path }}/conf"
 
 # Auth
 monitor_auth: false
