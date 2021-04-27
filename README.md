@@ -37,32 +37,32 @@ You can also make your own playbook
 
 ## Prerequisites and install
 
- Variable                 | Default                                                                                 |
-| ----------------------- | --------------------------------------------------------------------------------------- |
-| version                 | 1.7.12.1257.1                                                                           |
-| internal_host           | "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] | d('LOCAL_IP') }}" |
-| internet                | 1                                                                                       |
-| internal_use            | 0
-| is_master               | 0                                                                                       |
-| systemd                 | true                                                                                    |
-| install_path            | /opt                                                                                    |
-| indexima_path           | "{{ install_path }}/indexima"                                                           |
-| indexima_logs_path      | /var/log/indexima                                                                       |
-| indexima_log_dir        | "{{ indexima_logs_path }}/logs"                                                         |
-| indexima_hive_log_dir   | "{{ indexima_logs_path }}/hive"                                                         |
-| indexima_history_dir    | "{{ indexima_logs_path }}/history"                                                      |
-| indexima_history_export | "{{ indexima_logs_path }}/history_csv"                                                  |
+ Variable                 | Description              | Possible Values  | Default                                                                                 |
+| ----------------------- | ----------------         | ---------------- | --------------------------------------------------------------------------------------- |
+| version                 | Indexima version         |                  | 1.7.12.1257.1                                                                           |
+| internal_host           | Internal IP of each host |                  | "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"                 |
+| internet                | Hosts have internet access or not | 1/0     | 1                                                                                       |
+| internal_use            | If you store your own Indexima package, you can use this instead of the official download.indexima.com/release url | 1/0 | 0                                                                                       |
+| is_master               | A host variable that set the master. Only one host must be master | 1/0 | 0                                                                                       |
+| systemd                 | Set to true to use systemd service to start/stop Indexima | true/false | true                                                                                    |
+| install_path            | The base installation path |                  | /opt                                                                                    |
+| indexima_path           | Indexima and Visualdoop2 installation path |                  | "{{ install_path }}/indexima"                                                           |
+| indexima_logs_path      | The base path for all Indexima logs |                  | /var/log/indexima                                                                       |
+| indexima_log_dir        | Indexima logs |                  | "{{ indexima_logs_path }}/logs"                                                         |
+| indexima_hive_log_dir   | Indexima embedded Hive server logs |                  | "{{ indexima_logs_path }}/hive"                                                         |
+| indexima_history_dir    | Query history in log format |                  | "{{ indexima_logs_path }}/history"                                                      |
+| indexima_history_export | Query history in csv format |                  | "{{ indexima_logs_path }}/history_csv"                                                  |
 
 ## Config parameters
 
- Variable                 | Default                                                                                 |
-| ----------------------- | --------------------------------------------------------------------------------------- |
-| nodes                   | 1                                                                                       |
-| node_connect_timeout    | "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] | d('LOCAL_IP') }}" |
-| cores                   | "{{ ansible_processor_vcpus }}"                                                         |
-| ram                     | "{{ ansible_memtotal_mb }}"                                                             |
-| disk                    | 1                                                                                       |
-| warehouse_type          | local                                                                                   |
-| warehouse               | "{{ indexima_path }}/warehouse"                                                         |
-| partitions_number       | "{{ cores|int * nodes }}"                                                               |
-| cores                   | 1                                                                                       |
+ Variable                 | Description                            | Possible values               | Default        |
+| ----------------------- | -------------------------------------- | ----------------------------- | -------------- |
+| nodes                   | Number of nodes in the cluster (required) |  | 1 |
+| node_connect_timeout    | Time (in s) after which the cluster will start even if the number of nodes specified is not met |  |"{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] | d('LOCAL_IP') }}" |
+| cores                   | Number of cores per node |  |"{{ ansible_processor_vcpus }}"                                                         |
+| ram                     | Total RAM per node. Indexima RAM will be 0.7 * ram |  |"{{ ansible_memtotal_mb }}" |
+| disk                    | Number of disk per node |  |1                                                                                       |
+| warehouse_type          | The type of filesytem used for the data warehouse | local/nfs/s3/gs/adl/hdfs | local |
+| warehouse               | Path to the warehouse. If using S3, use the full s3 path, prefixed with 's3a://' (instead of the standard s3://) |  |"{{ indexima_path }}/warehouse" |
+| partitions_number       | The number of partitions used for the data |  |"{{ cores|int * nodes }}" |
+| ha                      | Set to 1 to activate full master dynamic mode | 1/0 | 1 |
