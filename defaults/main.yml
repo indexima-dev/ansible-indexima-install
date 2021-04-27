@@ -94,8 +94,7 @@ drivers: 0
 aws: 0
 gs: 0
 azure: 0
-src_google_credentials: credentials.json
-google_credentials: "{{ galactica_path }}/conf"
+#google_credentials: "{{ galactica_path }}/conf"
 
 # Auth
 monitor_auth: false
@@ -146,6 +145,7 @@ fs_AbstractFileSystem_adl_impl: "org.apache.hadoop.fs.adl.Adl"
 clean: 1
 ssl: 0
 ha: 1
+dynamic: 1
 galactica_gc_options: "-XX:+UseConcMarkSweepGC -XX:-OmitStackTraceInFastThrow"
 galactica_perf_mode: stable
 service_master_ip: "{% for host in ansible_play_hosts |default(['localhost']) %}{% if hostvars[host]['is_master'] %}{{ hostvars[host]['internal_host'] }}{% endif %}{% endfor %}"
