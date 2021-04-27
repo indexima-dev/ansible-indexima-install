@@ -29,7 +29,7 @@ provisioner:
     group_vars:
       ec2:
         hadoop_url: "https://download.indexima.com/libs/hadoop-2.8.3.tar.gz"
-        version: 1.7.10.1132.4
+        version: 2021.1.1334.2
         service_user: ${MOL_SSH_USER}
         nodes: 2
         warehouse_type: s3
