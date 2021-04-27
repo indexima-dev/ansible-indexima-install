@@ -43,8 +43,6 @@ export AWS_SECRET_KEY={{ aws_secret_access_key }}
 
 {% endif %}
 
-{% endif %}
-
 {% if google_credentials is defined %}
 # Google Credentials for using GS
 export GOOGLE_APPLICATION_CREDENTIALS={{ google_credentials }}
