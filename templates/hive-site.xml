@@ -28,7 +28,7 @@
         <value>false</value>
     </property>
 
-    {% if ldap %}
+    {% if ldap |bool %}
     <property>
        <name>hive.server2.authentication</name>
        <value>LDAP</value>

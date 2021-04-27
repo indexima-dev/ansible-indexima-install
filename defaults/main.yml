@@ -90,11 +90,10 @@ drivers: 0
 #drivers_url: 0
 #driver_list: []
 
-# Cloud Storage
-aws: 0
-gs: 0
-azure: 0
+# Cloud Credentials
 #google_credentials: "{{ galactica_path }}/conf"
+#aws_access_key_id: 
+#aws_secret_access_key:
 
 # Auth
 monitor_auth: false
