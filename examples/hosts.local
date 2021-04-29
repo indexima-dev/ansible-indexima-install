@@ -148,8 +148,8 @@ vd_data=/opt/indexima/visualdoop-data
 #kerberos_keytab_path=
 
 ## Indexima Hive config
-## If you need custom authentication for Indexima Hive, uncomment custom_auth (If you want to use LDAP, keep commented and see below).
-#custom_auth=1
+## If you need custom authentication for Indexima Hive, uncomment monitor_auth (If you want to use LDAP, keep commented and see below).
+#monitor_auth=1
 galactica_users="admin,hadoop"
 galactica_passwords="admin,password"
 galactica_admins="admin"

@@ -4,7 +4,7 @@ Ansible role to install, configure and start Indexima, with a few example
 [![Build Status](https://travis-ci.com/indexima-dev/ansible-indexima-install.svg?branch=master)](https://travis-ci.com/indexima-dev/ansible-indexima-install)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-ansible__indexima__install-blue)](https://galaxy.ansible.com/indexima_team/ansible_indexima_install)
 
-## Quickstart
+# Quickstart
 
 If you are new to Ansible, here is how to install it with pip:
 
@@ -32,3 +32,69 @@ You can also make your own playbook
   vars:
     is_master: 1
 ```
+
+# Variables
+
+## Prerequisites and install
+
+ Variable                 | Description              | Possible Values  | Default                                                                                 |
+| ----------------------- | ----------------         | ---------------- | --------------------------------------------------------------------------------------- |
+| version                 | Indexima version         |                  | 1.7.12.1257.1                                                                           |
+| internal_host           | Internal IP of each host |                  | "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"                 |
+| internet                | Hosts have internet access or not | 1/0     | 1                                                                                       |
+| internal_use            | If you store your own Indexima package, you can use this instead of the official download.indexima.com/release url | 1/0 | 0                                                                                       |
+| is_master               | A host variable that set the master. Only one host must be master | 1/0 | 0                                                                                       |
+| systemd                 | Set to true to use systemd service to start/stop Indexima | true/false | true                                                                                    |
+| install_path            | The base installation path |                  | /opt                                                                                    |
+| indexima_path           | Indexima and Visualdoop2 installation path |                  | "{{ install_path }}/indexima"                                                           |
+| indexima_logs_path      | The base path for all Indexima logs |                  | /var/log/indexima                                                                       |
+| indexima_log_dir        | Indexima logs |                  | "{{ indexima_logs_path }}/logs"                                                         |
+| indexima_hive_log_dir   | Indexima embedded Hive server logs |                  | "{{ indexima_logs_path }}/hive"                                                         |
+| indexima_history_dir    | Query history in log format |                  | "{{ indexima_logs_path }}/history"                                                      |
+| indexima_history_export | Query history in csv format |                  | "{{ indexima_logs_path }}/history_csv"                                                  |
+
+## Config parameters
+
+| Variable                | Description                            | Possible values               | Default        |
+| ----------------------- | -------------------------------------- | ----------------------------- | -------------- |
+| nodes                   | Number of nodes in the cluster (required) |  | 1 |
+| node_connect_timeout    | Time (in s) after which the cluster will start even if the number of nodes specified is not met |  |"{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] | d('LOCAL_IP') }}" |
+| cores                   | Number of cores per node |  |"{{ ansible_processor_vcpus }}"                                                         |
+| ram                     | Total RAM per node. Indexima RAM will be 0.7 * ram |  |"{{ ansible_memtotal_mb }}" |
+| disk                    | Number of disk per node |  |1                                                                                       |
+| warehouse_type          | The type of filesytem used for the data warehouse | local/nfs/s3/gs/adl/hdfs | local |
+| warehouse               | Path to the warehouse. If using S3, use the full s3 path, prefixed with 's3a://' (instead of the standard s3://) | | "{{ indexima_path }}/warehouse" |
+| partitions_number       | The number of partitions used for the data |  |"{{ cores|int * nodes }}" |
+| ha                      | Set to 1 to activate full master dynamic mode | 1/0 | 1 |
+
+These are the main useful variables. If you wish to customize the installation further, open an issue for more information on certain parts of the role.
+
+## Auth and integration
+
+| Variable                | Description                           | Possible values                | Default        |
+| ----------------------- | ------------------------------------- | ------------------------------ | -------------- |
+| drivers                 | Set to true if you need to upload jdbc to Indexima nodes. By default, it copies every file present in the 'files/driver' located in at the root of the Ansible folder | 1/0 | 0 |
+| drivers_url             | if you want to download the required jdbc drivers from a custom http url, set drivers_url to 1, and fill the driver_list with the names of the files. | | |
+| aws_access_key_id       | The AWS_ACCESS_KEY_ID of the account you want to use for Indexima, if you are using S3 as a warehouse type for example | | |
+| aws_secret_access_key   | The AWS_SECRET_ACCESS_KEY of the account you want to use for Indexima, if you are using S3 as a warehouse type for example | | |
+| google_credentials      | The path on every nodes to which you will copy the credentials.json for GCP access. It is recommended to use the value "{{ galactica_path }}/conf" | | |
+| fs_adl_oauth2_client_id | To use ADLS, you need to configure Azure credentials for Indexima. You can find these values on your Azure portal | | |
+| fs_adl_oauth2_tenant_id | 
+| dfs_adls_oauth2_password | 
+| fs_defaultFS            | The URL to your ADLS, it look like 'adl://BUCKET_NAME.azuredatalakestore.net' | | |
+| monitor_auth            | Set to true if you want to use the custom authentication to Indexima | true/false | false |
+| galactica_users         | If monitor_auth is set to true, you must specify a list of coma-separated usernames | | admin |
+| galactica_passwords     | Specify a list of coma-separated password. Each password match the user of the same index | | admin |
+| galactica_admins        | Specify a list of coma-separated username. The users in galactica_users that are also present here will have admin rights | |admin |
+| monitor_rights          | Set to true if you want to configure user rights for the Monitor | true/false | false |
+| monitor_api_key         | The API key that will be needed to attach a Indexima cluster to the console | | ChangeMe |
+| ldap                    | Set to true if you want to use LDAP to authenticate instead of custom auth. If set to true, ldap_url needs to be set | true/false | false |
+| ldap_url                | The complete url to your LDAP server. Eg. ldap://ldap.example.com | | |
+| ldap_user_dnpattern     | The LDAP User DN pattern to allow your users to login. Eg. cn=%s,ou=people,dc=example,dc=com. Note that the cn must always be %s for the login input variable | | |
+
+
+# External links
+
+[Indexima website](https://indexima.com)
+
+[Indexima documentation](https://docs.indexima.com)

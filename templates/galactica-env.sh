@@ -36,21 +36,17 @@ export NODESERVER_JVM_OPTIONS="-Djava.security.auth.login.config={{ galactica_pa
 # JVM parameters
 export GC_OPTIONS="{{ galactica_gc_options }}"
 
-{% if warehouse_type == "s3" or warehouse_type == "s3like" or aws == 1 %}
-# AWS credentials for loading from S3
 {% if aws_access_key_id is defined and aws_secret_access_key is defined %}
+# AWS credentials for loading from S3
 export AWS_ACCESS_KEY_ID={{ aws_access_key_id }}
 export AWS_SECRET_KEY={{ aws_secret_access_key }}
 
 {% endif %}
 
-{% endif %}
-{% if warehouse_type == "gs" or gs == 1 %}
-# Google Credentials for using GS
 {% if google_credentials is defined %}
+# Google Credentials for using GS
 export GOOGLE_APPLICATION_CREDENTIALS={{ google_credentials }}
 
-{% endif %}
 {% endif %}
 
 {% if galactica_jmx_options is defined and galactica_jmx_options != '' %}
