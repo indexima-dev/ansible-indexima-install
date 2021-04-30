@@ -51,10 +51,7 @@ galactica_path: "{{ indexima_path }}/galactica"
 
 # Dev Console
 admin_type: local
-visualdoop: true
-devconsole: false
 vd2_port: 8082
-dc_port: 8083
 vd_data: "$HOME/visualdoop-data"
 vd2_file: indexima-installer-visual2-{{ indexima_version }}.zip
 vd2_archive: "{{ indexima_path }}/{{ vd2_file }}"
@@ -64,10 +61,6 @@ vd_path: "{{ indexima_path }}/visualdoop"
 vd_cluster_mode: 0
 vd_cluster_only: 0
 vd_project_mode: 1
-dc_file: indexima-installer-devconsole-{{ indexima_version }}.zip
-dc_archive: "{{ indexima_path }}/{{ dc_file }}"
-dc_url: "{{ indexima_url }}/{{ dc_file }}"
-dc_path: "{{ indexima_path }}/devconsole"
 
 # Default admin user in vd2
 admin_users: "admin"

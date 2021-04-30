@@ -23,13 +23,6 @@
   shell: "(cd {{ vd2_path }} ; nohup {{ vd2_path }}/start.sh </dev/null >/dev/null 2>&1 & )"
   when:
     - is_master == 1
-    - visualdoop|bool
-
-- name: Start Dev Console on master node
-  shell: "(cd {{ dc_path }} ; nohup {{ dc_path }}/start.sh </dev/null >/dev/null 2>&1 & )"
-  when:
-    - is_master == 1
-    - devconsole|bool
 
 # HA = 1
 - name: Start nodes
