@@ -27,14 +27,6 @@
   tags: ['install', 'update', 'install-visualdoop', 'update-visualdoop']
   when:
     - is_master == 1
-    - visualdoop |bool
-
-## Dev Console
-- import_tasks: install_devconsole.yaml
-  tags: ['install', 'update', 'install-visualdoop', 'update-visualdoop']
-  when:
-    - is_master == 1
-    - devconsole |bool
 
 - import_tasks: deploy_service.yaml
   tags: [ 'service', 'install', 'update' ]
@@ -50,13 +42,6 @@
   tags: [ 'conf', 'conf-visualdoop' ]
   when: 
     - is_master == 1
-    - visualdoop | bool
-
-- import_tasks: config_devconsole.yaml
-  tags: [ 'conf', 'conf-visualdoop' ]
-  when:
-    - is_master == 1
-    - devconsole | bool
 
 - import_tasks: drivers.yaml
   tags: [ 'driver', 'update', 'update-galactica', 'install', 'install-galactica' ]

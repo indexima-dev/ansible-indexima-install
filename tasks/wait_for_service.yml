@@ -20,4 +20,3 @@
     timeout: 300
   when:
     - is_master == 1
-    - visualdoop|bool
