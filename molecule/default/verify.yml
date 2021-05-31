@@ -81,7 +81,7 @@
       assert:
         that:
           - "'cluster.name = docker_test' in _galactica_conf.stdout"
-    
+
     - name: Check that analyzer conf is correct
       assert:
         that:
@@ -129,11 +129,11 @@
 
     - name: Check that jmap is installed
       command: "jmap -h"
-    
+
     - name: Cat visualdoop2/config.sh
       shell: cat /opt/indexima/visualdoop2/config.sh
       register: _vd2_config
-    
+
     - name: Check that vd_config.sh has the correct admin_user
       assert:
         that:
@@ -156,7 +156,7 @@
       assert:
         that:
           - _file_driver.stat.gr_name == "index_group"
-    
+
     - name: Check that user is correct
       assert:
         that:

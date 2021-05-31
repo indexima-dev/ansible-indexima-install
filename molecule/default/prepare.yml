@@ -12,7 +12,7 @@
       copy:
         content: 'mydriver'
         dest: /etc/ansible/roles/ansible-indexima-install/files/drivers/mydriver.jar
-    
+
     - name: Ensure service_group exists
       ansible.builtin.group:
         name: "{{ service_group }}"

@@ -182,7 +182,7 @@
           - "'PROJECT_MODE=true' in _vd2_config.stdout"
         fail_msg: "PROJECT_MODE is not true"
       when: inventory_hostname == "instance1"
-    
+
     - name: Check that vd_config.sh has the correct admin_user
       assert:
         that:
@@ -199,7 +199,7 @@
       assert:
         that:
           - _file_driver.stat.gr_name == "ec2-user"
-    
+
     - name: Check that user is correct
       assert:
         that:

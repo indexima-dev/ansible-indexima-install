@@ -46,7 +46,7 @@
     - name: Cat galactica.conf
       shell: cat /opt/indexima/galactica/conf/galactica.conf
       register: _galactica_conf
-    
+
     - name: Cat hive_site.xml
       shell: cat /opt/indexima/galactica/conf/hive-site.xml
       register: _hive_site

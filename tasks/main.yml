@@ -40,7 +40,7 @@
 
 - import_tasks: config_visualdoop.yaml
   tags: [ 'conf', 'conf-visualdoop' ]
-  when: 
+  when:
     - is_master == 1
 
 - import_tasks: drivers.yaml
