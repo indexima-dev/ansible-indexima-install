@@ -8,6 +8,9 @@ env:
   - MOL_TEST: "docker"
     ANSIBLE_VERSION: "2.8.1"
   - MOL_TEST: "docker"
+    ANSIBLE_VERSION: "2.11.0"
+    INDEXIMA_VERSION: "2021.2.1390.2"
+  - MOL_TEST: "docker"
     MOL_DISTRO: "centos7"
   - MOL_TEST: "docker"
     MOL_DISTRO: "ubuntu1604"
@@ -16,22 +19,6 @@ env:
     MOL_AMI_OWNER: "amazon"
     MOL_SSH_USER: "ec2-user"
     MOL_ENV_NAME: "amazon"
-  # - MOL_AMI_NAME: "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"
-  #   MOL_AMI_OWNER: "099720109477"
-  #   MOL_SSH_USER: "ubuntu"
-  #   MOL_ENV_NAME: ubuntu18
-  # - MOL_AMI_NAME: "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
-  #   MOL_AMI_OWNER: "099720109477"
-  #   MOL_SSH_USER: "ubuntu"
-  #   MOL_ENV_NAME: ubuntu16
-  # - MOL_AMI_NAME: 'CentOS Linux 7*'
-  #   MOL_AMI_OWNER: "aws-marketplace"
-  #   MOL_SSH_USER: "centos"
-  #   MOL_ENV_NAME: centos7
-  # - MOL_AMI_NAME: "debian-stretch-hvm-x86_64-gp2*"
-  #   MOL_AMI_OWNER: "aws-marketplace"
-  #   MOL_SSH_USER: "admin"
-  #   MOL_ENV_NAME: debian9
 jobs:
   exclude:
     - if: branch != master AND branch !~ /^v[0-9]+\.[0-9]+\.[0-9]+$/
