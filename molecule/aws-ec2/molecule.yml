@@ -40,6 +40,7 @@ provisioner:
         monitor_api_key: MyTestApiKey
         vd_cluster_mode: 1
         vd_project_mode: 1
+        ha: 1
     host_vars:
       localhost:
         remote_user: ${MOL_SSH_USER}
