@@ -51,11 +51,35 @@
           - partitions == 8
           - "'partitions = 8' in _galactica_conf.stdout"
 
-    - name: Check that cores = 1
+    - name: Check that cores = 2
       assert:
         that:
-          - cores == 1
-          - "'cores = 1' in _galactica_conf.stdout"
+          - cores == 2
+          - "'cores = 2' in _galactica_conf.stdout"
+
+    - name: Check that readers = 1
+      assert:
+        that:
+          - readers == 1
+          - "'readers = 1' in _galactica_conf.stdout"
+
+    - name: Check that loaders = 1
+      assert:
+        that:
+          - loaders == 1
+          - "'loaders = 1' in _galactica_conf.stdout"
+
+    - name: Check that hybrids = 4
+      assert:
+        that:
+          - hybrids == 4
+          - "'hybrids = 4' in _galactica_conf.stdout"
+
+    - name: Check that queries = 8
+      assert:
+        that:
+          - queries == 8
+          - "'queries = 8' in _galactica_conf.stdout"
 
     - name: Check that log.dir is /var/log/indexima/logs
       assert:
@@ -91,6 +115,12 @@
           - "'analyser.smart.scheduling.duration.minutes = 10' in _galactica_conf.stdout"
           - "'analyser.smart.max.indexes = 50' in _galactica_conf.stdout"
           - "'analyser.smart.optimizer' in _galactica_conf.stdout"
+
+    - name: Check that monitor.api.key is ChangeMe
+      assert:
+        that:
+          - "'monitor.api.key = ChangeMe' in _galactica_conf.stdout"
+        fail_msg: "monitor.api.key is not ChangeMe"
 
     # galactica-env.sh
     - name: Cat galactica-env.sh
@@ -161,3 +191,9 @@
       assert:
         that:
           - _file_driver.stat.pw_name == "root"
+
+    - name: Check that MONITOR_API_KEY is ChangeMe
+      assert:
+        that:
+          - "'MONITOR_API_KEY=ChangeMe' in _vd2_config.stdout"
+        fail_msg: "MONITOR_API_KEY is not ChangeMe"
