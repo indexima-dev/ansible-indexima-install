@@ -21,7 +21,11 @@ provisioner:
         hadoop_url: "https://download.indexima.com/libs/hadoop-2.8.3.tar.gz"
         version: ${INDEXIMA_VERSION:-"2021.1.1334.2"}
         nodes: 1
-        cores: 1
+        cores: 2
+        readers: 1
+        loaders: 1
+        hybrids: 4
+        queries: 8
         ram: 600
         partitions: 8
         admin_users: "test_admin"

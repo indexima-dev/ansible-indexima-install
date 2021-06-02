@@ -11,14 +11,14 @@
         host: "{{ ansible_host }}"
         port: "{{ hive_port }}"
         timeout: 300
-      when: is_master == 1
+      when: is_master == 1 or ha == 1
 
     - name: Wait for Monitor server
       wait_for:
         host: "{{ ansible_host }}"
         port: 9999
         timeout: 300
-      when: is_master == 1
+      when: is_master == 1 or ha == 1
 
     - name: Wait for Dev console
       wait_for:

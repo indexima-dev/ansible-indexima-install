@@ -64,7 +64,11 @@ You can also make your own playbook
 | disk                    | Number of disk per node |  |1                                                                                       |
 | warehouse_type          | The type of filesytem used for the data warehouse | local/nfs/s3/gs/adl/hdfs | local |
 | warehouse               | Path to the warehouse. If using S3, use the full s3 path, prefixed with 's3a://' (instead of the standard s3://) | | "{{ indexima_path }}/warehouse" |
-| partitions_number       | The number of partitions used for the data |  |"{{ cores|int * nodes }}" |
+| readers                 | The number of max readers tasks  |  | "{% if cores > 4|int %}{{ cores / 2 }}{% else %}{{ cores }}{% endif %}" |
+| loaders                 | The number of max loaders tasks |  | "{% if cores > 4|int %}{{ cores / 2 }}{% else %}{{ cores }}{% endif %}" |
+| queries                 | The number of max threading for queries |  | "{{ cores|int * 8 }}" |
+| hybrids                 | The number of max threading for queries out of index |  | 6 |
+| partitions              | The number of partitions used for the data |  |"{{ cores|int * nodes }}" |
 | ha                      | Set to 1 to activate full master dynamic mode | 1/0 | 1 |
 
 These are the main useful variables. If you wish to customize the installation further, open an issue for more information on certain parts of the role.
