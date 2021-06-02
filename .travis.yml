@@ -23,13 +23,6 @@ jobs:
   exclude:
     - if: branch != master AND branch !~ /^v[0-9]+\.[0-9]+\.[0-9]+$/
       env:
-        - MOL_TEST: "docker-auth"
-        - MOL_TEST: "docker"
-          ANSIBLE_VERSION: "2.8.1"
-        - MOL_TEST: "docker"
-          MOL_DISTRO: "centos7"
-        - MOL_TEST: "docker"
-          MOL_DISTRO: "ubuntu1604"
         - MOL_TEST: "amazon"
           MOL_AMI_NAME: "amzn2-ami-hvm-2.0*"
           MOL_AMI_OWNER: "amazon"
@@ -38,6 +31,18 @@ jobs:
     - if: branch != master AND branch !~ /^v[0-9]+\.[0-9]+\.[0-9]+$/
       env:
         - MOL_TEST: "docker-auth"
+    - if: branch != master AND branch !~ /^v[0-9]+\.[0-9]+\.[0-9]+$/
+      env:
+        - MOL_TEST: "docker"
+          ANSIBLE_VERSION: "2.8.1"
+    - if: branch != master AND branch !~ /^v[0-9]+\.[0-9]+\.[0-9]+$/
+      env:
+        - MOL_TEST: "docker"
+          MOL_DISTRO: "centos7"
+    - if: branch != master AND branch !~ /^v[0-9]+\.[0-9]+\.[0-9]+$/
+      env:
+        - MOL_TEST: "docker"
+          MOL_DISTRO: "ubuntu1604"
 install:
   - pip install ansible==${ANSIBLE_VERSION:-2.10.1} molecule==3.0.8 molecule-ec2==0.2 molecule-docker==0.2.4 boto3 yamllint ansible-lint docker
 script:
