@@ -35,6 +35,9 @@ jobs:
           MOL_AMI_OWNER: "amazon"
           MOL_SSH_USER: "ec2-user"
           MOL_ENV_NAME: "amazon"
+    - if: branch != master AND branch !~ /^v[0-9]+\.[0-9]+\.[0-9]+$/
+      env:
+        - MOL_TEST: "docker-auth"
 install:
   - pip install ansible==${ANSIBLE_VERSION:-2.10.1} molecule==3.0.8 molecule-ec2==0.2 molecule-docker==0.2.4 boto3 yamllint ansible-lint docker
 script:
