@@ -68,17 +68,17 @@ admin_users: "admin"
 # Config parameters
 nodes: 1
 node_connect_timeout: 120
-cores: "{{ ansible_processor_vcpus }}"
-ram: "{{ ansible_memtotal_mb }}"
+cores: "{{ ansible_processor_vcpus|int }}"
+ram: "{{ ansible_memtotal_mb|int }}"
 disk: 1
 warehouse_type: local
 warehouse: "{{ indexima_path }}/warehouse"
-readers: "{% if cores > 4 %}{{ (cores / 2)|int }}{% else %}{{ cores|int }}{% endif %}"
-loaders: "{% if cores > 4 %}{{ (cores / 2)|int }}{% else %}{{ cores|int }}{% endif %}"
-queries: "{{ (cores * 8)|int }}"
+readers: "{% if cores|int > 4 %}{{ (cores|int / 2)|int }}{% else %}{{ cores|int }}{% endif %}"
+loaders: "{% if cores|int > 4 %}{{ (cores|int / 2)|int }}{% else %}{{ cores|int }}{% endif %}"
+queries: "{{ (cores|int * 8)|int }}"
 hybrids: 6
-partitions: "{{ (cores * nodes)|int }}"
-partitions_number: "{{ (cores * nodes)|int }}" # Duplicate parameter for backward compatibility. Will be removed in the future
+partitions: "{{ (cores|int * nodes|int)|int }}"
+partitions_number: "{{ (cores|int * nodes|int)|int }}" # Duplicate parameter for backward compatibility. Will be removed in the future
 indexima_service_user: "{{ service_user }}"
 
 # Drivers
