@@ -73,8 +73,8 @@ ram: "{{ ansible_memtotal_mb }}"
 disk: 1
 warehouse_type: local
 warehouse: "{{ indexima_path }}/warehouse"
-readers: "{% if cores > 4|int %}{{ cores / 2 }}{% else %}{{ cores }}{% endif %}"
-loaders: "{% if cores > 4|int %}{{ cores / 2 }}{% else %}{{ cores }}{% endif %}"
+readers: "{% if cores > 4|int %}{{ (cores / 2)|int }}{% else %}{{ cores }}{% endif %}"
+loaders: "{% if cores > 4|int %}{{ (cores / 2)|int }}{% else %}{{ cores }}{% endif %}"
 queries: "{{ cores|int * 8 }}"
 hybrids: 6
 partitions: "{{ cores|int * nodes }}"
