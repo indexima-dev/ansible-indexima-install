@@ -48,37 +48,31 @@
     - name: Check that partitions = 8
       assert:
         that:
-          - partitions == 8
           - "'partitions = 8' in _galactica_conf.stdout"
 
     - name: Check that cores = 2
       assert:
         that:
-          - cores == 2
           - "'cores = 2' in _galactica_conf.stdout"
 
     - name: Check that readers = 1
       assert:
         that:
-          - readers == 1
           - "'readers = 1' in _galactica_conf.stdout"
 
     - name: Check that loaders = 1
       assert:
         that:
-          - loaders == 1
           - "'loaders = 1' in _galactica_conf.stdout"
 
     - name: Check that hybrids = 4
       assert:
         that:
-          - hybrids == 4
           - "'hybrids = 4' in _galactica_conf.stdout"
 
     - name: Check that queries = 8
       assert:
         that:
-          - queries == 8
           - "'queries = 8' in _galactica_conf.stdout"
 
     - name: Check that log.dir is /var/log/indexima/logs
