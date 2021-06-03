@@ -9,7 +9,7 @@ env:
     ANSIBLE_VERSION: "2.8.1"
   - MOL_TEST: "docker"
     ANSIBLE_VERSION: "4.0.0"
-    INDEXIMA_VERSION: "2021.2.1390.2"
+    INDEXIMA_VERSION: "2021.2.1390.1"
   - MOL_TEST: "docker"
     MOL_DISTRO: "centos7"
   - MOL_TEST: "docker"
