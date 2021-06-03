@@ -18,6 +18,7 @@ if [ "$ENV" == "local" ]; then
 sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 bash -c 'cd /etc/ansible/roles/ansible-indexima-install && molecule converge -s local'
 else
 sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 bash -c 'cd /etc/ansible/roles/ansible-indexima-install && molecule test -s local'
+
 ## Cleanup
 sudo docker rm --force "$(cat ${container_id})"
 fi

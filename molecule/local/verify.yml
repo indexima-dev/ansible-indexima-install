@@ -44,6 +44,42 @@
       shell: cat /opt/indexima/galactica/conf/galactica.conf
       register: _galactica_conf
 
+    - name: Check that partitions = 8
+      assert:
+        that:
+          - partitions == 8
+          - "'partitions = 8' in _galactica_conf.stdout"
+
+    - name: Check that cores = 8
+      assert:
+        that:
+          - cores == 8
+          - "'cores = 8' in _galactica_conf.stdout"
+
+    - name: Check that readers = 4
+      assert:
+        that:
+          - readers == 4
+          - "'readers = 4' in _galactica_conf.stdout"
+
+    - name: Check that loaders = 4
+      assert:
+        that:
+          - loaders == 4
+          - "'loaders = 4' in _galactica_conf.stdout"
+
+    - name: Check that hybrids = 6
+      assert:
+        that:
+          - hybrids == 6
+          - "'hybrids = 6' in _galactica_conf.stdout"
+
+    - name: Check that queries = 64
+      assert:
+        that:
+          - queries == 64
+          - "'queries = 64' in _galactica_conf.stdout"
+
     - name: Check that log.dir is /var/log/indexima/logs
       assert:
         that:
