@@ -9,22 +9,22 @@
 ### Install
 ## Install Prep
 - import_tasks: install_prep.yaml
-  tags: ['install', 'prerequisites', 'install-galactica', 'install-visualdoop', 'prep' ]
+  tags: ['install', 'prerequisites', 'ginstall', 'vinstall', 'prep' ]
 
 - import_tasks: prerequisites.yaml
-  tags: [ 'install', 'prerequisites', 'centos', 'debian']
+  tags: [ 'install', 'prerequisites']
   become: yes
   become_user: root
 
 ## Galactica
 
 - import_tasks: install_galactica.yaml
-  tags: [ 'install', 'update', 'install-galactica', 'update-galactica']
+  tags: [ 'install', 'update', 'ginstall', 'gupdate']
 
 ## Visualdoop2
 
 - import_tasks: install_visualdoop.yaml
-  tags: ['install', 'update', 'install-visualdoop', 'update-visualdoop']
+  tags: ['install', 'update', 'vinstall', 'vupdate']
   when:
     - is_master == 1
 
@@ -33,18 +33,18 @@
   when: systemd| bool
 
 - import_tasks: config_galactica.yaml
-  tags: [ 'conf', 'conf-galactica' ]
+  tags: [ 'conf', 'gconf' ]
 
 - import_tasks: config_custom.yaml
   tags: [ 'never', 'conf-custom' ]
 
 - import_tasks: config_visualdoop.yaml
-  tags: [ 'conf', 'conf-visualdoop' ]
+  tags: [ 'conf', 'vconf' ]
   when:
     - is_master == 1
 
 - import_tasks: drivers.yaml
-  tags: [ 'driver', 'update', 'update-galactica', 'install', 'install-galactica' ]
+  tags: [ 'driver', 'update', 'gupdate', 'install', 'ginstall' ]
 
 - import_tasks: azure_datalake.yaml
   become: yes

@@ -96,6 +96,25 @@ These are the main useful variables. If you wish to customize the installation f
 | ldap_url                | The complete url to your LDAP server. Eg. ldap://ldap.example.com | | |
 | ldap_user_dnpattern     | The LDAP User DN pattern to allow your users to login. Eg. cn=%s,ou=people,dc=example,dc=com. Note that the cn must always be %s for the login input variable | | |
 
+# Tags
+
+To only partially execute the Indexima install role, you can use the following tags
+
+| Tag value          | Description         | Command example |
+| ------------------ | ------------------- | ------- |
+| install | Executes the prerequisites install as well as Indexima. Also deploys the service files and the selected jdbc drivers. Does *not* deploy the conf. Prefix install with a 'g' to install only Galactica. Prefix with a 'v' for Visualdoop | `ansible-playbook -i hosts indexima.yml -t 'install'` |
+| update | Executes only the Indexima install and deploys the service files as well as the selected jdbc drivers. Does *not* install the prerequisistes, nor deploy the configuration. | `ansible-playbook -i hosts indexima.yml -t 'update'` |
+| service | Only deploys the service files | `ansible-playbook -i hosts indexima.yml -t 'service'` |
+| driver | Only deploys the selected jdbc drivers | `ansible-playbook -i hosts indexima.yml -t 'driver'` |
+| license | Deploys the Indexima license. A valid 'indexima.lic' must be placed in the files/ folder of this Ansible Role, or in the current working directory if installed with ansible-galaxy. | `ansible-playbook -i hosts indexima.yml -t 'license'` |
+| azure_datalake | When deploying on Azure Datalake, additional configuration files are required. This tags deploys those files | `ansible-playbook -i hosts indexima.yml -t 'azure_datalake'` |
+| start | Starts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'start'` |
+| stop | Stops Indexima. | `ansible-playbook -i hosts indexima.yml -t 'stop'` |
+| restart | Restarts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'restart'` |
+
+install, update, conf and start/stop/restart tags can be prefixed with a 'g' or a 'v' to only apply to Galactica or Visualdoop respectively. Eg. `ansible-playbook -i hosts indexima.yml -t 'grestart'` restarts only Galactica. `ansible-playbook -i hosts indexima.yml -t 'vconf'` only deploys the configuration for Visualdoop.
+
+If no tags are provided, it is the equivalent of executing the following command: `ansible-playbook -i hosts indexima.yml -t 'prerequisites,update,conf,restart'`
 
 # External links
 
