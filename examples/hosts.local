@@ -205,6 +205,7 @@ galactica_admins="admin"
 #ha=0
 #zookeeper_quorum=
 #zookeeper_namespace=
+is_master=0
 
 ## HD Insight
 #core_site_path="/etc/hadoop/core-site.xml"
