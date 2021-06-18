@@ -41,6 +41,7 @@ provisioner:
         vd_cluster_mode: 1
         vd_project_mode: 1
         ha: 1
+        is_master: 0
     host_vars:
       localhost:
         remote_user: ${MOL_SSH_USER}
@@ -50,7 +51,5 @@ provisioner:
         galactica_conf: ${AWS_CUSTOM_CONF}
       instance1:
         is_master: 1
-      instance2:
-        is_master: 0
 verifier:
   name: ansible
