@@ -25,13 +25,9 @@
       copy:
         content: 'cores = 2
 
-        readers = 1
-
         loaders = 1
 
         queries = 36
-
-        hybrid = 6
 
         partitions = 4
 
