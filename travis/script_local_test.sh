@@ -15,7 +15,7 @@ sudo docker run --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --volu
     ${distribution}-${version}:ansible > "${container_id}"
 
 if [ "$ENV" == "local" ]; then
-sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 bash -c 'cd /etc/ansible/roles/ansible-indexima-install && molecule converge -s local'
+sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 bash -c 'cd /etc/ansible/roles/ansible-indexima-install && molecule converge -s local && molecule verify -s local'
 else
 sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 bash -c 'cd /etc/ansible/roles/ansible-indexima-install && molecule test -s local'
 
