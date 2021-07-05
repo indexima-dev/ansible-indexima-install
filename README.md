@@ -39,7 +39,7 @@ You can also make your own playbook
 
  Variable                 | Description              | Possible Values  | Default                                                                                 |
 | ----------------------- | ----------------         | ---------------- | --------------------------------------------------------------------------------------- |
-| version                 | Indexima version         |                  | 1.7.12.1257.1                                                                           |
+| version                 | Indexima version         |                  | 2021.2.1390.1                                                                           |
 | internal_host           | Internal IP of each host |                  | "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"                 |
 | internet                | Hosts have internet access or not | 1/0     | 1                                                                                       |
 | internal_use            | If you store your own Indexima package, you can use this instead of the official download.indexima.com/release url | 1/0 | 0                                                                                       |
@@ -58,17 +58,17 @@ You can also make your own playbook
 | Variable                | Description                            | Possible values               | Default        |
 | ----------------------- | -------------------------------------- | ----------------------------- | -------------- |
 | nodes                   | Number of nodes in the cluster (required) |  | 1 |
-| node_connect_timeout    | Time (in s) after which the cluster will start even if the number of nodes specified is not met |  |"{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] | d('LOCAL_IP') }}" |
+| node_connect_timeout    | Time (in s) after which the cluster will start even if the number of nodes specified is not met |  |"{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] \| d('LOCAL_IP') }}" |
 | cores                   | Number of cores per node |  |"{{ ansible_processor_vcpus }}"                                                         |
 | ram                     | Total RAM per node. Indexima RAM will be 0.7 * ram |  |"{{ ansible_memtotal_mb }}" |
 | disk                    | Number of disk per node |  |1                                                                                       |
 | warehouse_type          | The type of filesytem used for the data warehouse | local/nfs/s3/gs/adl/hdfs | local |
 | warehouse               | Path to the warehouse. If using S3, use the full s3 path, prefixed with 's3a://' (instead of the standard s3://) | | "{{ indexima_path }}/warehouse" |
-| readers                 | The number of max readers tasks  |  | "{% if cores > 4 %}{{ (cores / 2)|int }}{% else %}{{ cores|int }}{% endif %}" |
-| loaders                 | The number of max loaders tasks |  | "{% if cores > 4 %}{{ (cores / 2)|int }}{% else %}{{ cores|int }}{% endif %}" |
-| queries                 | The number of max threading for queries |  | "{{ (cores * 8)|int }}" |
-| hybrids                 | The number of max threading for queries out of index |  | 6 |
-| partitions              | The number of partitions used for the data |  | "{{ (cores * nodes)|int }}" |
+| readers                 | The number of max readers tasks. _Deprecated after Indexima 2021.2_  |  | "{% if cores > 4 %}{{ (cores / 2)\|int }}{% else %}{{ cores\|int }}{% endif %}" |
+| loaders                 | The number of max loaders tasks |  | "{% if cores > 4 %}{{ (cores / 2)\|int }}{% else %}{{ cores\|int }}{% endif %}" |
+| queries                 | The number of max threading for queries |  | "{{ (cores * 8)\|int }}" |
+| hybrids                 | The number of max threading for queries out of index. _Deprecated after Indexima 2021.1_ |  | 6 |
+| partitions              | The number of partitions used for the data |  | "{{ (cores * nodes)\|int }}" |
 | ha                      | Set to 1 to activate full master dynamic mode | 1/0 | 1 |
 
 These are the main useful variables. If you wish to customize the installation further, open an issue for more information on certain parts of the role.
