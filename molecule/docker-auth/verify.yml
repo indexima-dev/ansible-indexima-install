@@ -16,7 +16,7 @@
     - name: Wait for Monitor server
       wait_for:
         host: "{{ ansible_host }}"
-        port: "{{monitor_port}}"
+        port: "{{ monitor_port }}"
         timeout: 300
       when: is_master == 1
 

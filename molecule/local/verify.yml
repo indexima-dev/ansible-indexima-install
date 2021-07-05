@@ -16,7 +16,7 @@
     - name: Wait for Monitor server
       wait_for:
         host: "{{ ansible_host }}"
-        port: "{{monitor_port}}"
+        port: "{{ monitor_port }}"
         timeout: 300
       when: is_master == 1
 
@@ -87,7 +87,7 @@
     - name: Check that webui.port is correctly modified
       assert:
         that:
-          - "'webui.port = 19999' in _galactica_conf.stdout"
+          - "'webui.port = 12345' in _galactica_conf.stdout"
 
     - name: Check that hive.log.dir is /tmp/hive
       assert:

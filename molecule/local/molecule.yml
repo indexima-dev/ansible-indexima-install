@@ -22,7 +22,7 @@ provisioner:
         version: 1.7.11.1183.2
         cores: 8
         node_port: 29999
-        monitor_port: 19999
+        monitor_port: 12345
         admin_users: "admin_local"
         service_group: "root"
         drivers_url: https://download.indexima.com/jdbc_drivers
