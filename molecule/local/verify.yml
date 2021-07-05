@@ -79,6 +79,16 @@
         that:
           - "'log.dir = /var/log/indexima/logs' in _galactica_conf.stdout"
 
+    - name: Check that node port is default
+      assert:
+        that:
+          - "'nodes.port = 21000' in _galactica_conf.stdout"
+
+    - name: Check that webui.port is default
+      assert:
+        that:
+          - "'webui.port = 11000' in _galactica_conf.stdout"
+
     - name: Check that hive.log.dir is /tmp/hive
       assert:
         that:

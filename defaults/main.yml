@@ -69,6 +69,7 @@ admin_users: "admin"
 nodes: 1
 node_connect_timeout: 120
 node_port: 19999
+monitor_port: 9999
 cores: "{{ ansible_processor_vcpus|int }}"
 ram: "{{ ansible_memtotal_mb|int }}"
 disk: 1
@@ -97,7 +98,6 @@ drivers: 0
 # Auth
 monitor_auth: false
 monitor_rights: false
-monitor_port: 9999
 monitor_api_key: ChangeMe
 ldap: false
 #ldap_url: 

@@ -28,6 +28,8 @@ provisioner:
         queries: 8
         ram: 600
         partitions: 8
+        node_port: 19999
+        monitor_port: 9999
         admin_users: "test_admin"
         service_group: "index_group"
         warehouse: "/opt/indexima/warehouse"
