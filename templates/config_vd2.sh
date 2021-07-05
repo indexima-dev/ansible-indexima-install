@@ -78,7 +78,7 @@ export CLUSTER_ONLY=true
 # Default Cluster
 export MAIN_CLUSTER_IP={{ service_master_ip}}
 export MAIN_CLUSTER_NAME="Default Cluster"
-export MAIN_CLUSTER_PORT=9999
+export MAIN_CLUSTER_PORT={{monitor_port}}
 export MAIN_CLUSTER_API_KEY={{ monitor_api_key }}
 
 # Default Connection

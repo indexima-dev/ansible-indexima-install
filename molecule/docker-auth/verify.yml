@@ -16,7 +16,7 @@
     - name: Wait for Monitor server
       wait_for:
         host: "{{ ansible_host }}"
-        port: 9999
+        port: "{{monitor_port}}"
         timeout: 300
       when: is_master == 1
 
@@ -29,7 +29,7 @@
 
     - name: Check if all nodes are up
       uri:
-        url: "http://{{ ansible_host }}:9999/api/get/nodes"
+        url: "http://{{ ansible_host }}:{{ monitor_port }}/api/get/nodes"
         url_username: "{{ auth_username }}"
         url_password: "{{ auth_password }}"
         force_basic_auth: yes
