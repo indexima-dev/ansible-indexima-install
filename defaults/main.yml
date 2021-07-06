@@ -68,6 +68,8 @@ admin_users: "admin"
 # Config parameters
 nodes: 1
 node_connect_timeout: 120
+node_port: 19999
+monitor_port: 9999
 cores: "{{ ansible_processor_vcpus|int }}"
 ram: "{{ ansible_memtotal_mb|int }}"
 disk: 1

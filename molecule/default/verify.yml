@@ -44,6 +44,16 @@
     - name: Cat galactica.conf
       shell: cat /opt/indexima/galactica/conf/galactica.conf
       register: _galactica_conf
+    
+    - name: Check that node port is default
+      assert:
+        that:
+          - "'nodes.port = 19999' in _galactica_conf.stdout"
+
+    - name: Check that webui.port is default
+      assert:
+        that:
+          - "'webui.port = 9999' in _galactica_conf.stdout"
 
     - name: Check that partitions = 8
       assert:
