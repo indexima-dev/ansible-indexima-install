@@ -58,6 +58,9 @@
       assert:
         that:
           - "'readers = 4' in _galactica_conf.stdout"
+      when:
+        - indexima_year |int == 2021 or not version_format_new| bool
+        - indexima_month |int < 3 or not version_format_new| bool
 
     - name: Check that loaders = 4
       assert:
