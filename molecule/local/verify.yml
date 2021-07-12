@@ -6,6 +6,34 @@
   vars:
     hive_port: 10000
   tasks:
+    # Setting version
+    - name: Split version
+      set_fact:
+        version_split: "{{ version.split('.') }}"
+      when: version is defined
+    - name: Set version format new
+      set_fact:
+        version_format_new: true
+      when: version_split[0] |length == 4
+    - name: Set version format old
+      set_fact:
+        version_format_new: false
+      when: version_split[0] |length != 4
+    - name: Set indexima_year
+      set_fact:
+        indexima_year: "{{ version_split[0] }}"
+        indexima_release: "{{ version_split[0:2] |join('.') }}"
+      when:
+        - indexima_year is not defined
+        - version_format_new|bool
+    - name: Set indexima_month
+      set_fact:
+        indexima_month: "{{ version_split[1] }}"
+      when:
+        - indexima_month is not defined
+        - version_format_new|bool
+
+    # Start verifying
     - name: Wait for Hive server
       wait_for:
         host: "{{ ansible_host }}"
@@ -71,6 +99,10 @@
       assert:
         that:
           - "'hybrids = 6' in _galactica_conf.stdout"
+      when:
+        - version_format_new| bool
+        - indexima_year |int == 2021 or not version_format_new| bool
+        - indexima_month |int < 2 or not version_format_new| bool
 
     - name: Check that queries = 64
       assert:
