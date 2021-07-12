@@ -42,6 +42,7 @@ provisioner:
         vd_project_mode: 1
         ha: 1
         is_master: 0
+        node_port: 19991
     host_vars:
       localhost:
         remote_user: ${MOL_SSH_USER}

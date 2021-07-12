@@ -76,7 +76,7 @@
     - name: Check that node port is default
       assert:
         that:
-          - "'nodes.port = 19999' in _galactica_conf.stdout"
+          - "'node.port = 19999' in _galactica_conf.stdout"
 
     - name: Check that webui.port is default
       assert:

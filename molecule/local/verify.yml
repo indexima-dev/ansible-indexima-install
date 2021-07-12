@@ -82,7 +82,7 @@
     - name: Check that node port is correctly modified
       assert:
         that:
-          - "'nodes.port = 29999' in _galactica_conf.stdout"
+          - "'node.port = 29999' in _galactica_conf.stdout"
 
     - name: Check that webui.port is correctly modified
       assert:
