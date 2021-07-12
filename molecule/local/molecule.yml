@@ -19,7 +19,7 @@ provisioner:
         is_master: 1
         nodes: 1
         drivers: true
-        version: 1.7.11.1183.2
+        version: ${INDEXIMA_VERSION:-"2021.3.1456.0"}
         cores: 8
         admin_users: "admin_local"
         service_group: "root"
