@@ -26,7 +26,7 @@
 
 # HA = 1
 - name: Start nodes
-  shell: "(cd {{ galactica_path }} ; nohup {{ galactica_path }}/start-node.sh --host {{ service_local_ip }} --attach {{ service_master_ip }} </dev/null >/dev/null 2>&1 & )"
+  shell: "(cd {{ galactica_path }} ; nohup {{ galactica_path }}/start-node.sh --host {{ service_local_ip }}:{{ node_port }} --attach {{ service_master_ip }}:{{ node_port }} </dev/null >/dev/null 2>&1 & )"
   when:
     - ha == 1
 
