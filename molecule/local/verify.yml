@@ -87,8 +87,8 @@
         that:
           - "'readers = 4' in _galactica_conf.stdout"
       when:
-        - indexima_year |int == 2021 or not version_format_new| bool
-        - indexima_month |int < 3 or not version_format_new| bool
+        - not version_format_new| bool or indexima_year |int == 2021
+        - not version_format_new| bool or indexima_month |int < 3
 
     - name: Check that loaders = 4
       assert:
@@ -100,9 +100,7 @@
         that:
           - "'hybrids = 6' in _galactica_conf.stdout"
       when:
-        - version_format_new| bool
-        - indexima_year |int == 2021 or not version_format_new| bool
-        - indexima_month |int < 2 or not version_format_new| bool
+        - version_format_new| bool and indexima_year |int == 2021 and indexima_month |int < 2 or not version_format_new| bool
 
     - name: Check that queries = 64
       assert:
