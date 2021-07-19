@@ -19,6 +19,8 @@ hadoop_url: http://archive.apache.org/dist/hadoop/common/{{ hadoop_file }}/{{ ha
 hadoop_archive: "{{ install_path }}/{{ hadoop_file }}.tar.gz"
 hadoop_path: "{{ install_path }}/{{ hadoop_file }}"
 
+
+
 #standalone
 #don't change
 version: 2021.2.1390.1
@@ -72,6 +74,8 @@ node_port: 19999
 monitor_port: 9999
 cores: "{{ ansible_processor_vcpus|int }}"
 ram: "{{ ansible_memtotal_mb|int }}"
+indexima_ram: "{{ (ram|float * 0.70) | int }}"
+
 disk: 1
 warehouse_type: local
 warehouse: "{{ indexima_path }}/warehouse"
