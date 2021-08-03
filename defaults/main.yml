@@ -12,8 +12,8 @@ java_package_centos: java-1.8.0-openjdk # Redhat family
 java_package_debian: openjdk-8-jdk # Debian family
 java_jdk_rhel: java-1.8.0-openjdk-devel #OpenJDK 8 JDK
 java_jre_debian: openjdk-8-jre-headless
-
-hadoop_version: "2.8.3"
+hadoop_version_major: "3"
+hadoop_version: "{% if hadoop_version_major == '3' %}3.1.4{% else %}2.8.3{% endif %}"
 hadoop_file: hadoop-{{ hadoop_version }}
 hadoop_url: http://archive.apache.org/dist/hadoop/common/{{ hadoop_file }}/{{ hadoop_file }}.tar.gz
 hadoop_archive: "{{ install_path }}/{{ hadoop_file }}.tar.gz"
@@ -44,7 +44,7 @@ indexima_logs:
 indexima_version: "{{ indexima_release }}{% if indexima_build is defined %}.{{ indexima_build }}{% endif %}{% if indexima_sp is defined %}.{{ indexima_sp }}{% endif %}"
 
 # Indexima installer
-indexima_file: indexima-installer-{{ indexima_version }}.zip
+indexima_file: "indexima-installer-{% if hadoop_version_major == '3' %}galactica-hadoop3-{% endif %}{{ indexima_version }}.zip"
 indexima_gold: "{{ indexima_release | replace('.', '') }}-{{ indexima_build | omitempty}}"
 indexima_url: "{{ indexima_base_url }}/{{ indexima_release }}/{{ indexima_sp |d('') }}"
 galactica_url: "{{ indexima_url }}/{{ indexima_file }}"
