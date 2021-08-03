@@ -15,7 +15,6 @@ provisioner:
   inventory:
     host_vars:
       localhost:
-        #hadoop_url: "https://download.indexima.com/libs/hadoop-2.8.3.tar.gz"
         hadoop_version_major: "3"
         is_master: 1
         nodes: 1
