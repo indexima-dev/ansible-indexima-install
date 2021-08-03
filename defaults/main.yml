@@ -123,7 +123,7 @@ kerberos_hdfs: "{{ kerberos_full }}"
 kerberos_zookeeper: "{{ kerberos_full }}"
 
 # Hadoop
-hadoop_base: "{{ install_path }}/hadoop-2.8.3"
+hadoop_base: "{{ install_path }}/hadoop-{{ hadoop_version }}"
 yarn_deploy: 0
 yarn_classpath: "{{ yarn_deploy }}"
 hive_port: 10000
