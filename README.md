@@ -72,6 +72,7 @@ You can also make your own playbook
 | ha                      | Set to 1 to activate full master dynamic mode | 1/0 | 1 |
 | node_port               | Port used by the nodes to communicate with each other. This will use the port specified here, and the port +1 | | 19999 |
 | monitor_port            | Port used to access the monitor api | | 9999 |
+| galactica_conf_extended | Path (on the Ansible host) to a file containing galactica.conf parameters. The content of the file will be appended at the ended of the automatically generated galactica.conf. Use this if a parameter you need is not yet supported by the Ansible install role. *Warning*: Be careful not to write a parameter already present in the template | | |
 
 These are the main useful variables. If you wish to customize the installation further, open an issue for more information on certain parts of the role.
 
