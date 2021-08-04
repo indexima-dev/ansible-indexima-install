@@ -17,3 +17,9 @@
       ansible.builtin.group:
         name: "{{ service_group }}"
         state: present
+    
+    - name: Write extended galactica conf
+      local_action:
+        module: copy
+        content: 'myvar = 1'
+        dest: /tmp/galactica_extended

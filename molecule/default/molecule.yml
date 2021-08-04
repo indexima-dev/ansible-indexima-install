@@ -45,6 +45,7 @@ provisioner:
         vd_cluster_mode: 1
         vd_cluster_only: 1
         vd_project_mode: 0
+        galactica_conf_extended: /tmp/galactica_extended
         analyzer:
           mode: INCREMENTAL
           smart_metrics_days: 15

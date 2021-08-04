@@ -8,6 +8,36 @@
     - '"s3://" not in galactica_conf'
   changed_when: false
 
+- name: Copy galactica.conf extended content from local file
+  local_action:
+    module: shell
+    _raw_params: "cat {{ galactica_conf_extended }}"
+  register: _galactica_conf_extended_local
+  when:
+    - galactica_conf_extended is defined
+    - galactica_conf_extended != ''
+    - '"s3://" not in galactica_conf_extended'
+  changed_when: false
+
+- name: Set bucket and path to galactica_conf_extended when s3
+  set_fact:
+    galactica_conf_extended_bucket: "{{ galactica_conf_extended.split('/')[2] }}"
+    galactica_conf_extended_path: "{{ galactica_conf_extended.split('/')[3:] |join('/') }}"
+  when:
+    - galactica_conf_extended is defined
+    - '"s3://" in galactica_conf_extended'
+
+- name: Get galactica extended content from s3 file
+  aws_s3:
+    bucket: "{{ galactica_conf_extended_bucket }}"
+    object: "{{ galactica_conf_extended_path }}"
+    mode: getstr
+  register: _galactica_conf_extended_s3
+  when:
+    - galactica_conf_extended is defined
+    - '"s3://" in galactica_conf_extended'
+  changed_when: false
+
 - name: Set bucket and path to galactica_conf when s3
   set_fact:
     galactica_conf_bucket: "{{ galactica_conf.split('/')[2] }}"

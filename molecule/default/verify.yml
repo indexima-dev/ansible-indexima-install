@@ -177,6 +177,12 @@
           - "'monitor.api.key = ChangeMe' in _galactica_conf.stdout"
         fail_msg: "monitor.api.key is not ChangeMe"
 
+    - name: Check that galactica extended content is present
+      assert:
+        that:
+          - "'myvar = 1' in _galactica_conf.stdout"
+        fail_msg: "galactica extended content is not present"
+
     # galactica-env.sh
     - name: Cat galactica-env.sh
       shell: cat /opt/indexima/galactica/conf/galactica-env.sh
