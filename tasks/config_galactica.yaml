@@ -43,14 +43,6 @@
     group: "{{ service_group }}"
     mode: '0755'
 
-- name: Copy monitor-site.xml template to servers
-  template:
-    src: monitor-site.xml
-    dest: "{{ indexima_path }}/galactica/conf/monitor-site.xml"
-    owner: "{{ service_user }}"
-    group: "{{ service_group }}"
-    mode: '0644'
-
 - name: Copy hive-site.xml template to servers
   template:
     src: hive-site.xml
