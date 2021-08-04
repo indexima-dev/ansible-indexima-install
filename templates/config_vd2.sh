@@ -77,13 +77,14 @@ export CLUSTER_ONLY=true
 {% endif %}
 # Default Cluster
 export MAIN_CLUSTER_IP={{ service_master_ip}}
-export MAIN_CLUSTER_NAME="Default Cluster"
+export MAIN_CLUSTER_NAME="Default_Cluster"
 export MAIN_CLUSTER_PORT={{ monitor_port }}
 export MAIN_CLUSTER_API_KEY={{ monitor_api_key }}
 
 # Default Connection
 export MAIN_CONNECTION_IP={{ service_master_ip}}
-export MAIN_CONNECTION_NAME="Default Connection"
+export MAIN_CONNECTION_NAME="Default_Connection"
+export MAIN_CONNECTION_PORT={{ hive_port }}
 export MAIN_CONNECTION_USER={{ main_connection_user }}
 export MAIN_CONNECTION_PASSWORD={{ main_connection_password }}
 
