@@ -106,6 +106,7 @@ To only partially execute the Indexima install role, you can use the following t
 | ------------------ | ------------------- | ------- |
 | install | Executes the prerequisites install as well as Indexima. Also deploys the service files and the selected jdbc drivers. Does *not* deploy the conf. Prefix install with a 'g' to install only Galactica. Prefix with a 'v' for Visualdoop | `ansible-playbook -i hosts indexima.yml -t 'install'` |
 | update | Executes only the Indexima install and deploys the service files as well as the selected jdbc drivers. Does *not* install the prerequisistes, nor deploy the configuration. | `ansible-playbook -i hosts indexima.yml -t 'update'` |
+| conf | Deploys the configuration files to the Indexima nodes. | `ansible-playbook -i hosts indexima.yml -t 'conf'` |
 | service | Only deploys the service files | `ansible-playbook -i hosts indexima.yml -t 'service'` |
 | driver | Only deploys the selected jdbc drivers | `ansible-playbook -i hosts indexima.yml -t 'driver'` |
 | license | Deploys the Indexima license. A valid 'indexima.lic' must be placed in the files/ folder of this Ansible Role, or in the current working directory if installed with ansible-galaxy. | `ansible-playbook -i hosts indexima.yml -t 'license'` |
