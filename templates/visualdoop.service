@@ -5,7 +5,6 @@ StartLimitInterval=60
 StartLimitBurst=5
 
 [Service]
-EnvironmentFile=/etc/environment
 Restart=always
 RestartSec=10
 WorkingDirectory={{ vd2_path }}

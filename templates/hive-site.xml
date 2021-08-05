@@ -113,5 +113,35 @@
     </property>
     {% endif %}
     {% endif %}
+    
+{% if hadoop_version_major|int == 3 %}
+    <property>
+		<name>hive.server2.webui.port</name>
+		<value>0</value>
+	</property>
+	<property>
+		<name>datanucleus.schema.autoCreateAll</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>hive.metastore.schema.verification</name>
+		<value>false</value>
+	</property>
+	<property>
+		<name>hive.execution.engine</name>
+		<value>mr</value>
+	</property>
+	<property>
+		<name>hive.server2.active.passive.ha.enable</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>javax.jdo.option.ConnectionURL</name>
+		<value>jdbc:derby:;databaseName=indexima_hive3_metastore_db;create=true</value>
+		<description>
+			JDBC connect string for a JDBC metastore.
+		</description>
+	</property>
+{% endif %}
 
 </configuration>

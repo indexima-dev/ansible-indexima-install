@@ -15,11 +15,11 @@ provisioner:
   inventory:
     host_vars:
       localhost:
-        hadoop_url: "https://download.indexima.com/libs/hadoop-2.8.3.tar.gz"
+        hadoop_version_major: "3"
         is_master: 1
         nodes: 1
         drivers: true
-        version: ${INDEXIMA_VERSION:-"2021.3.1456.0"}
+        version: ${INDEXIMA_VERSION:-"2021.3.1456.1"}
         cores: 8
         node_port: 29999
         monitor_port: 12345
