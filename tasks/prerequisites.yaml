@@ -19,20 +19,14 @@
     update_cache: yes
   when: ansible_facts['os_family'] == "Debian"
 
-- name: Add java_path to JAVA_HOME Env on CentOS
-  lineinfile:
-    path: /etc/environment
-    regexp: 'JAVA_HOME'
-    line: "JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk"
-  tags: ['java', 'env']
+- name: Set java_home for CentOS
+  set_fact:
+    java_home: /usr/lib/jvm/jre-1.8.0-openjdk
   when: ansible_facts['os_family'] == "RedHat"
 
-- name: Add java_path to JAVA_HOME Env on Debian
-  lineinfile:
-    path: /etc/environment
-    regexp: 'JAVA_HOME'
-    line: "JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64"
-  tags: ['java', 'env']
+- name: Set java_home for Debian
+  set_fact:
+    java_home: /usr/lib/jvm/java-1.8.0-openjdk-amd64
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Download Hadoop {{ hadoop_version }}
@@ -61,17 +55,10 @@
     group: "{{ service_group }}"
   tags: ['hadoop']
 
-- name: Add {{ hadoop_path }} to HADOOP_BASE Env
-  lineinfile:
-    path: /etc/environment
-    regexp: 'HADOOP_BASE'
-    line: "HADOOP_BASE={{ hadoop_path }}"
-  tags: ['hadoop', 'env']
-
-- name: add {{ hadoop_path }} to the PATH
+- name: Add hadoop_base to the PATH
   copy:
     dest: /etc/profile.d/custom-path.sh
-    content: 'PATH=$PATH:/usr/local/bin:{{ hadoop_path }}/bin:{{ hadoop_path }}/sbin'
+    content: 'PATH=$PATH:/usr/local/bin:{{ hadoop_base }}/bin:{{ hadoop_base }}/sbin'
     owner: "root"
     group: "root"
     mode: '0755'

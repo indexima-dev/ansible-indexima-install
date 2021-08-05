@@ -114,7 +114,7 @@
     {% endif %}
     {% endif %}
     
-{% if hadoop_version_major == 3 %}
+{% if hadoop_version_major|int == 3 %}
     <property>
 		<name>hive.server2.webui.port</name>
 		<value>0</value>

@@ -3,7 +3,6 @@ Description=Indexima Service
 After=network.target
 
 [Service]
-EnvironmentFile=/etc/environment
 Restart=always
 WorkingDirectory={{ galactica_path }}
 LimitNOFILE=65536
