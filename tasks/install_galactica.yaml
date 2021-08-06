@@ -37,7 +37,7 @@
 
 - name: Download Indexima zip archive from internal repository (internal use only)
   get_url:
-    url: "{{ internal_url }}/indexima-installer/{{ indexima_version }}/indexima-installer-{{ indexima_version }}.zip"
+    url: "{{ internal_url }}/indexima-installer{% if hadoop_version_major|int == 3 %}-galactica-hadoop3{% endif %}/{{ indexima_version }}/{{ indexima_file }}"
     dest: "{{ indexima_archive }}"
     url_username: "{{ internal_username }}"
     url_password: "{{ internal_password }}"
