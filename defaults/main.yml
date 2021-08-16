@@ -1,8 +1,7 @@
 ---
-# defaults file for indexima
+# DEFAULT FILE FOR INDEXIMA 
 
-#prerequisites
-download_url: http://download.oracle.com/otn-pub/java/jdk/8u5-211/jdk-8u5-linux-x64.tar.gz
+# PREREQUISITES 
 install_path: "/opt"
 service_user: "root"
 service_group: "{{ service_user }}"
@@ -17,14 +16,12 @@ hadoop_version: "{% if hadoop_version_major|int == 3 %}3.1.4{% else %}2.8.3{% en
 hadoop_file: hadoop-{{ hadoop_version }}
 #hadoop_url: http://archive.apache.org/dist/hadoop/common/{{ hadoop_file }}/{{ hadoop_file }}.tar.gz
 hadoop_url: "{{ indexima_base_url }}/libs/{{ hadoop_file }}.tar.gz"
-
-
 hadoop_archive: "{{ install_path }}/{{ hadoop_file }}.tar.gz"
 hadoop_base: "{{ install_path }}/hadoop-{{ hadoop_version }}"
 
 
-#standalone
-#don't change
+# STANDALONE 
+# DON'T CHANGE 
 version: 2021.2.1390.1
 internal_host: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] | d('LOCAL_IP') }}"
 internet: 1
@@ -45,7 +42,7 @@ indexima_logs:
   - "{{ indexima_history_export }}"
 indexima_version: "{{ indexima_release }}{% if indexima_build is defined %}.{{ indexima_build }}{% endif %}{% if indexima_sp is defined %}.{{ indexima_sp }}{% endif %}"
 
-# Indexima installer
+# INDEXIMA INSTALLER 
 indexima_file: "indexima-installer-{% if hadoop_version_major|int == 3 %}galactica-hadoop3-{% endif %}{{ indexima_version }}.zip"
 indexima_gold: "{{ indexima_release | replace('.', '') }}-{{ indexima_build | omitempty}}"
 indexima_url: "{{ indexima_base_url }}/release/{{ indexima_release }}/{{ indexima_sp |d('') }}"
@@ -53,7 +50,7 @@ galactica_url: "{{ indexima_url }}/{{ indexima_file }}"
 indexima_archive: "{{ indexima_path }}/{{ indexima_file }}"
 galactica_path: "{{ indexima_path }}/galactica"
 
-# Dev Console
+# DEV CONSOLE
 admin_type: local
 vd2_port: 8082
 vd_data: "$HOME/visualdoop-data"
@@ -66,10 +63,10 @@ vd_cluster_mode: 0
 vd_cluster_only: 0
 vd_project_mode: 1
 
-# Default admin user in vd2
+# DEFAULT ADMIN USER IN VD2 
 admin_users: "admin"
 
-# Config parameters
+# CONFIG PARAMETERS
 nodes: 1
 node_connect_timeout: 120
 node_port: 19999
@@ -89,7 +86,7 @@ partitions: "{{ (cores|int * nodes|int)|int }}"
 partitions_number: "{{ (cores|int * nodes|int)|int }}" # Duplicate parameter for backward compatibility. Will be removed in the future
 indexima_service_user: "{{ service_user }}"
 
-# Drivers
+# DRIVERS
 drivers: 0
 # Driver URL> if you want to download the required jdbc drivers from a custom http url, set drivers_url to 1, and
 # Fill the driver_list with the names of the files, These parameters are unset by default
@@ -101,7 +98,7 @@ drivers: 0
 #aws_access_key_id: 
 #aws_secret_access_key:
 
-# Auth
+# AUTH
 monitor_auth: false
 monitor_rights: false
 monitor_api_key: ChangeMe
@@ -124,7 +121,7 @@ kerberos_indexima: "{{ kerberos_full }}"
 kerberos_hdfs: "{{ kerberos_full }}"
 kerberos_zookeeper: "{{ kerberos_full }}"
 
-# Hadoop
+# HADOOP
 yarn_deploy: 0
 yarn_classpath: "{{ yarn_deploy }}"
 hive_port: 10000
@@ -134,7 +131,7 @@ yarn_memory: "{{ ram }}"
 yarn_tmp_dir: hdfs://localhost:8020/tmp/indexima
 yarn_name: Indexima
 
-# HD Insight
+# HD INSIGHT
 core_site_path: "{{ hadoop_base }}/etc/hadoop"
 azure_hadoop_jars_path: "{{ hadoop_base }}/share/hadoop/common"
 fs_adl_oauth2_client_id: "ADL_CLIENT_ID"
@@ -145,7 +142,7 @@ fs_defaultFS: "adl://BUCKET_NAME.azuredatalakestore.net"
 fs_adl_impl: "org.apache.hadoop.fs.adl.AdlFileSystem"
 fs_AbstractFileSystem_adl_impl: "org.apache.hadoop.fs.adl.Adl"
 
-# Misc
+# MISC
 clean: 1
 ssl: 0
 ha: 1

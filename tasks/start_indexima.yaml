@@ -1,35 +1,35 @@
 ---
-- name: Echo Starting Indexima
+- name: start_indexima.yaml / Echo Starting Indexima
   debug:
     msg: "Starting Indexima"
 
-- name: Start worker nodes
+- name: start_indexima.yaml / Start worker nodes
   shell: "(cd {{ galactica_path }} ; nohup {{ galactica_path }}/start-node.sh </dev/null >/dev/null 2>&1 & )"
   when:
     - is_master == 0
     - ha == 0
 
-- name: Waiting 5 seconds for workers to start
+- name: start_indexima.yaml / Waiting 5 seconds for workers to start
   pause:
     seconds: 5
 
-- name: Start master node
+- name: start_indexima.yaml / Start master node
   shell: "(cd {{ galactica_path }} ; nohup {{ galactica_path }}/start-node.sh --master </dev/null >/dev/null 2>&1 & )"
   when:
     - is_master == 1
     - ha == 0
 
-- name: Start VD2 on master node
+- name: start_indexima.yaml / Start VD2 on master node
   shell: "(cd {{ vd2_path }} ; nohup {{ vd2_path }}/start.sh </dev/null >/dev/null 2>&1 & )"
   when:
     - is_master == 1
 
 # HA = 1
-- name: Start nodes
+- name: start_indexima.yaml / Start nodes
   shell: "(cd {{ galactica_path }} ; nohup {{ galactica_path }}/start-node.sh --host {{ service_local_ip }}:{{ node_port }} --attach {{ service_master_ip }}:{{ node_port }} </dev/null >/dev/null 2>&1 & )"
   when:
     - ha == 1
 
-- name: Waiting 5 seconds for workers to start
+- name: start_indexima.yaml / Waiting 5 seconds for workers to start
   pause:
     seconds: 5

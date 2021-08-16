@@ -1,5 +1,5 @@
 ---
-- name: Create Install Path Dir
+- name: install_prep.yaml / Create Install Path Dir
   become: yes
   become_user: root
   file:
@@ -10,7 +10,7 @@
     mode: '0755'
   register: install
 
-- name: Create Log Dir
+- name: install_prep.yaml / Create Log Dir
   become: yes
   become_user: root
   file:
@@ -21,7 +21,7 @@
     mode: '0755'
   with_items: "{{ indexima_logs }}"
 
-- name: Create extract dir
+- name: install_prep.yaml / Create extract dir
   become: yes
   become_user: root
   file:
