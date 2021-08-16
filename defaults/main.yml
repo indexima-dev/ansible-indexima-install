@@ -15,7 +15,10 @@ java_jre_debian: openjdk-8-jre-headless
 hadoop_version_major: "2"
 hadoop_version: "{% if hadoop_version_major|int == 3 %}3.1.4{% else %}2.8.3{% endif %}"
 hadoop_file: hadoop-{{ hadoop_version }}
-hadoop_url: http://archive.apache.org/dist/hadoop/common/{{ hadoop_file }}/{{ hadoop_file }}.tar.gz
+#hadoop_url: http://archive.apache.org/dist/hadoop/common/{{ hadoop_file }}/{{ hadoop_file }}.tar.gz
+hadoop_url: "{{ indexima_base_url }}/libs/{{ hadoop_file }}.tar.gz"
+
+
 hadoop_archive: "{{ install_path }}/{{ hadoop_file }}.tar.gz"
 hadoop_base: "{{ install_path }}/hadoop-{{ hadoop_version }}"
 
@@ -28,7 +31,7 @@ internet: 1
 internal_use: 0
 is_master: 0
 systemd: true
-indexima_base_url: "https://download.indexima.com/release"
+indexima_base_url: "https://download.indexima.com"
 indexima_path: "{{ install_path }}/indexima"
 indexima_logs_path: "/var/log/indexima"
 indexima_log_dir: "{{ indexima_logs_path }}/logs"
@@ -45,7 +48,7 @@ indexima_version: "{{ indexima_release }}{% if indexima_build is defined %}.{{ i
 # Indexima installer
 indexima_file: "indexima-installer-{% if hadoop_version_major|int == 3 %}galactica-hadoop3-{% endif %}{{ indexima_version }}.zip"
 indexima_gold: "{{ indexima_release | replace('.', '') }}-{{ indexima_build | omitempty}}"
-indexima_url: "{{ indexima_base_url }}/{{ indexima_release }}/{{ indexima_sp |d('') }}"
+indexima_url: "{{ indexima_base_url }}/release/{{ indexima_release }}/{{ indexima_sp |d('') }}"
 galactica_url: "{{ indexima_url }}/{{ indexima_file }}"
 indexima_archive: "{{ indexima_path }}/{{ indexima_file }}"
 galactica_path: "{{ indexima_path }}/galactica"
