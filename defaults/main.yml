@@ -151,3 +151,5 @@ galactica_gc_options: "-XX:+UseConcMarkSweepGC -XX:-OmitStackTraceInFastThrow"
 galactica_perf_mode: stable
 service_master_ip: "{% for host in ansible_play_hosts |default(['localhost']) %}{% if hostvars[host]['is_master'] %}{{ hostvars[host]['internal_host'] }}{% endif %}{% endfor %}"
 service_local_ip: "{{ internal_host |d('LOCAL_IP') }}"
+
+log4j2_retention: 10
