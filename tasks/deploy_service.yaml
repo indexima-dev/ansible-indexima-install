@@ -1,5 +1,5 @@
 ---
-- name: Copy Galactica Master service file to all nodes
+- name: deploy_service.yaml / Copy Galactica Master service file to all nodes
   become: yes
   become_user: root
   template:
@@ -12,7 +12,7 @@
     - is_master == 1
     - ha == 0
 
-- name: Copy Galactica Worker service file to all nodes
+- name: deploy_service.yaml / Copy Galactica Worker service file to all nodes
   become: yes
   become_user: root
   template:
@@ -25,7 +25,7 @@
     - is_master == 0
     - ha == 0
 
-- name: Copy Visualdoop service file to master node
+- name: deploy_service.yaml / Copy Visualdoop service file to master node
   become: yes
   become_user: root
   template:
@@ -37,7 +37,7 @@
   when:
     - is_master == 1
 
-- name: Copy Galactica ha service file to all nodes
+- name: deploy_service.yaml / Copy Galactica ha service file to all nodes
   become: yes
   become_user: root
   template:

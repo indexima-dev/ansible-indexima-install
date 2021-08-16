@@ -1,5 +1,5 @@
 ---
-- name: Print jdbc URL for the cluster
+- name: jdbc_url.yaml / Print jdbc URL for the cluster
   debug:
     msg: "{{ jdbc_url }}"
   ignore_errors: yes

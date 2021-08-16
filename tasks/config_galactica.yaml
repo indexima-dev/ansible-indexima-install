@@ -1,5 +1,5 @@
 ---
-- name: Copy custom galactica.conf from local file
+- name: config_galactica.yaml / Copy custom galactica.conf from local file
   shell: "cat {{ galactica_conf }}"
   register: _custom_galactica_conf_local
   when:
@@ -8,7 +8,7 @@
     - '"s3://" not in galactica_conf'
   changed_when: false
 
-- name: Copy galactica.conf extended content from local file
+- name: config_galactica.yaml / Copy galactica.conf extended content from local file
   local_action:
     module: shell
     _raw_params: "cat {{ galactica_conf_extended }}"
@@ -19,7 +19,7 @@
     - '"s3://" not in galactica_conf_extended'
   changed_when: false
 
-- name: Set bucket and path to galactica_conf_extended when s3
+- name: config_galactica.yaml / Set bucket and path to galactica_conf_extended when s3
   set_fact:
     galactica_conf_extended_bucket: "{{ galactica_conf_extended.split('/')[2] }}"
     galactica_conf_extended_path: "{{ galactica_conf_extended.split('/')[3:] |join('/') }}"
@@ -27,7 +27,7 @@
     - galactica_conf_extended is defined
     - '"s3://" in galactica_conf_extended'
 
-- name: Get galactica extended content from s3 file
+- name: config_galactica.yaml / Get galactica extended content from s3 file
   aws_s3:
     bucket: "{{ galactica_conf_extended_bucket }}"
     object: "{{ galactica_conf_extended_path }}"
@@ -38,7 +38,7 @@
     - '"s3://" in galactica_conf_extended'
   changed_when: false
 
-- name: Set bucket and path to galactica_conf when s3
+- name: config_galactica.yaml / Set bucket and path to galactica_conf when s3
   set_fact:
     galactica_conf_bucket: "{{ galactica_conf.split('/')[2] }}"
     galactica_conf_path: "{{ galactica_conf.split('/')[3:] |join('/') }}"
@@ -46,7 +46,7 @@
     - galactica_conf is defined
     - '"s3://" in galactica_conf'
 
-- name: Copy custom galactica.conf from s3 file
+- name: config_galactica.yaml / Copy custom galactica.conf from s3 file
   aws_s3:
     bucket: "{{ galactica_conf_bucket }}"
     object: "{{ galactica_conf_path }}"
@@ -57,7 +57,7 @@
     - '"s3://" in galactica_conf'
   changed_when: false
 
-- name: Copy galactica.conf template to servers
+- name: config_galactica.yaml / Copy galactica.conf template to servers
   template:
     src: galactica.conf
     dest: "{{ indexima_path }}/galactica/conf/galactica.conf"
@@ -65,7 +65,7 @@
     group: "{{ service_group }}"
     mode: '0644'
 
-- name: Copy galactica-env.sh template to servers
+- name: config_galactica.yaml / Copy galactica-env.sh template to servers
   template:
     src: galactica-env.sh
     dest: "{{ indexima_path }}/galactica/conf/galactica-env.sh"
@@ -73,7 +73,7 @@
     group: "{{ service_group }}"
     mode: '0755'
 
-- name: Copy hive-site.xml template to servers
+- name: config_galactica.yaml / Copy hive-site.xml template to servers
   template:
     src: hive-site.xml
     dest: "{{ indexima_path }}/galactica/conf/hive-site.xml"
@@ -81,7 +81,7 @@
     group: "{{ service_group }}"
     mode: '0644'
 
-- name: Rename log4j2.xml.template
+- name: config_galactica.yaml / Rename log4j2.xml.template
   copy:
     src: "{{ galactica_path }}/conf/log4j2.xml.template"
     dest: "{{ galactica_path }}/conf/log4j2.xml"
@@ -90,7 +90,7 @@
     remote_src: yes
     mode: '0644'
 
-- name: Rename optimize_index.json.template
+- name: config_galactica.yaml / Rename optimize_index.json.template
   copy:
     src: "{{ galactica_path }}/conf/optimize_index.json.template"
     dest: "{{ galactica_path }}/conf/optimize_index.json"
@@ -99,7 +99,7 @@
     remote_src: yes
     mode: '0644'
 
-- name: Rename notifications.json.template
+- name: config_galactica.yaml / Rename notifications.json.template
   copy:
     src: "{{ galactica_path }}/conf/notifications.json.template"
     dest: "{{ galactica_path }}/conf/notifications.json"
@@ -108,7 +108,7 @@
     remote_src: yes
     mode: '0644'
 
-- name: Rename supported_dbs.json.template
+- name: config_galactica.yaml / Rename supported_dbs.json.template
   copy:
     src: "{{ galactica_path }}/conf/supported_dbs.json.template"
     dest: "{{ galactica_path }}/conf/supported_dbs.json"
@@ -117,7 +117,7 @@
     remote_src: yes
     mode: '0644'
 
-- name: Copy jaas.conf template to servers
+- name: config_galactica.yaml /  jaas.conf template to servers
   template:
     src: jaas.conf
     dest: "{{ galactica_path }}/jaas.conf"
@@ -126,7 +126,7 @@
     mode: '0644'
   when: kerberos_principal is defined and kerberos_keytab is defined
 
-- name: Copy google_credentials.json file to servers
+- name: config_galactica.yaml / Copy google_credentials.json file to servers
   copy:
     src: "credentials.json"
     dest: "{{ google_credentials }}"

@@ -1,5 +1,5 @@
 ---
-- name: Copy license to galactica/conf
+- name: license.yaml / Copy license to galactica/conf
   copy:
     src: indexima.lic
     dest: "{{ galactica_path }}/conf"

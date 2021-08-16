@@ -1,6 +1,6 @@
 ---
 ## Local drivers
-- name: Copy jdbc drivers in /driver
+- name: drivers.yaml / Copy jdbc drivers in /driver
   copy:
     src: "{{ item }}"
     dest: "{{ galactica_path }}/driver"
@@ -22,7 +22,7 @@
 #     - drivers |bool
 #     - drivers_url is defined and drivers_url != ""
 
-- name: Download all jar files present in {{ drivers_url }}
+- name: drivers.yaml / Download all jar files present in {{ drivers_url }}
   get_url:
     url: "{{ drivers_url }}/{{ item }}"
     dest: "{{ galactica_path }}/driver"

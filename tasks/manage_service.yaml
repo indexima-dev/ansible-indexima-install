@@ -1,5 +1,5 @@
 ---
-- name: Stop Galactica service on workers
+- name: manage_service.yaml / Stop Galactica service on workers
   become: yes
   become_user: root
   service:
@@ -11,7 +11,7 @@
     - is_master == 0
     - ha == 0
 
-- name: Stop Galactica service on master
+- name: manage_service.yaml / Stop Galactica service on master
   become: yes
   become_user: root
   service:
@@ -24,7 +24,7 @@
     - ha == 0
 
 # HA
-- name: Stop Galactica service on ha cluster
+- name: manage_service.yaml / Stop Galactica service on ha cluster
   become: yes
   become_user: root
   service:
@@ -35,7 +35,7 @@
   when: ha == 1
 
 # VD 2
-- name: Stop Visualdoop service
+- name: manage_service.yaml / Stop Visualdoop service
   become: yes
   become_user: root
   service:
@@ -47,7 +47,7 @@
     - is_master == 1
 
 # Standard
-- name: Enable Galactica service on workers
+- name: manage_service.yaml / Enable Galactica service on workers
   become: yes
   become_user: root
   service:
@@ -59,7 +59,7 @@
     - is_master == 0
     - ha == 0
 
-- name: Start Galactica service on workers
+- name: manage_service.yaml / Start Galactica service on workers
   become: yes
   become_user: root
   service:
@@ -71,7 +71,7 @@
     - is_master == 0
     - ha == 0
 
-- name: Enable Galactica service on master
+- name: manage_service.yaml / Enable Galactica service on master
   become: yes
   become_user: root
   service:
@@ -83,7 +83,7 @@
     - is_master == 1
     - ha == 0
 
-- name: Start Galactica service on master
+- name: manage_service.yaml / Start Galactica service on master
   become: yes
   become_user: root
   service:
@@ -96,7 +96,7 @@
     - ha == 0
 
 # HA
-- name: Enable Galactica service on ha cluster
+- name: manage_service.yaml / Enable Galactica service on ha cluster
   become: yes
   become_user: root
   service:
@@ -106,7 +106,7 @@
   tags: [ 'grestart', 'gstart', 'istart', 'start']
   when: ha == 1
 
-- name: Start Galactica service on ha cluster
+- name: manage_service.yaml / Start Galactica service on ha cluster
   become: yes
   become_user: root
   service:
@@ -117,7 +117,7 @@
   when: ha == 1
 
 # VD2
-- name: Enable Visualdoop service
+- name: manage_service.yaml / Enable Visualdoop service
   become: yes
   become_user: root
   service:
@@ -128,7 +128,7 @@
   when:
     - is_master == 1
 
-- name: Start Visualdoop service
+- name: manage_service.yaml / Start Visualdoop service
   become: yes
   become_user: root
   service:
