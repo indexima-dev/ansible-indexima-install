@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration monitorInterval="30">
-        <Properties>
-                <Property name="LOG_PATTERN">%d{yyyy-MM-dd_HH:mm:ss} %5p [%t] %c - %m%n</Property>
-        </Properties>
-        <Appenders>
-                <!-- Default appender in console. Only STDOUT -->
-                <Console name="ConsoleAppender" target="SYSTEM_OUT">
-                        <PatternLayout pattern="${LOG_PATTERN}"/>
-                </Console>
+	<Properties>
+		<Property name="LOG_PATTERN">%d{yyyy-MM-dd_HH:mm:ss} %5p [%t] %c - %m%n</Property>
+	</Properties>
+	<Appenders>
+		<!-- Default appender in console. Only STDOUT -->
+		<Console name="ConsoleAppender" target="SYSTEM_OUT">
+			<PatternLayout pattern="${LOG_PATTERN}"/>
+		</Console>
 
-                <!-- File appender with 100MB / day.  -->
-                <RollingFile name="FileAppender" fileName="visualdoop.log"
-                                         filePattern="visualdoop_%d{yyyy-MM-dd}.log" append="true" createOnDemand="true">
-                        <PatternLayout pattern="${LOG_PATTERN}" />
-                        <Policies>
-                                <TimeBasedTriggeringPolicy interval="1" />
-                                <SizeBasedTriggeringPolicy size="100 MB"/>
-                        </Policies>
-                        <DefaultRolloverStrategy max="2" compressionLevel="0">
-                                <!-- old files deleted hen age > 7 days -->
-                                <Delete basePath="." >
-                                <IfLastModified age="7d" />
-                                        <IfFileName glob="visualdoop_*.log"/>
-                        </Delete>
-                        </DefaultRolloverStrategy>
-                </RollingFile>
-                <!-- Create an async appender for logs file -->
-                <Async name="AsyncFileAppender">
-                        <AppenderRef ref="FileAppender"/>
-                </Async>
-                <!-- Create an async appender for console logs -->
-                <Async name="AsyncConsoleAppender">
-                        <AppenderRef ref="ConsoleAppender"/>
-                </Async>
-        </Appenders>
-        <Loggers>
-                <!-- Default configuration -->
-                <Root level="INFO">
-                        <AppenderRef ref="AsyncFileAppender"/>
-                </Root>
-                <!-- Console Logger. Do not change. -->
-                <Logger name="INDEXIMA_CONSOLE" level="INFO" additivity="false">
-                        <AppenderRef ref="AsyncConsoleAppender"/>
-                </Logger>
-        </Loggers>
+		<!-- File appender with 100MB / day.  -->
+		<RollingFile name="FileAppender" fileName="visualdoop.log"
+					filePattern="visualdoop_%d{yyyy-MM-dd}.log" append="true" createOnDemand="true">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" />
+				<SizeBasedTriggeringPolicy size="100 MB"/>
+			</Policies>
+			<DefaultRolloverStrategy max="2" compressionLevel="0">
+				<!-- old files deleted hen age > 7 days -->
+				<Delete basePath="." >
+					<IfLastModified age="{{ log4j2_retention }}d" />
+					<IfFileName glob="visualdoop_*.log"/>
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+		<!-- Create an async appender for logs file -->
+		<Async name="AsyncFileAppender">
+			<AppenderRef ref="FileAppender"/>
+		</Async>
+		<!-- Create an async appender for console logs -->
+		<Async name="AsyncConsoleAppender">
+			<AppenderRef ref="ConsoleAppender"/>
+		</Async>
+	</Appenders>
+	<Loggers>
+		<!-- Default configuration -->
+		<Root level="INFO">
+			<AppenderRef ref="AsyncFileAppender"/>
+		</Root>
+		<!-- Console Logger. Do not change. -->
+		<Logger name="INDEXIMA_CONSOLE" level="INFO" additivity="false">
+			<AppenderRef ref="AsyncConsoleAppender"/>
+		</Logger>
+	</Loggers>
 </Configuration>

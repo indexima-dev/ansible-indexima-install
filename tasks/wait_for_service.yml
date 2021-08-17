@@ -1,19 +1,19 @@
 ---
-- name: Wait for Hive server
+- name: wait_for_services.yaml / Wait for Hive server
   wait_for:
     host: "{{ ansible_host }}"
     port: "{{ hive_port }}"
     timeout: 300
   when: is_master == 1
 
-- name: Wait for Monitor server
+- name: wait_for_services.yaml / Wait for Monitor server
   wait_for:
     host: "{{ ansible_host }}"
     port: "{{ monitor_port }}"
     timeout: 300
   when: is_master == 1
 
-- name: Wait for VD2
+- name: wait_for_services.yaml / Wait for VD2
   wait_for:
     host: "{{ ansible_host }}"
     port: 8082

@@ -1,7 +1,7 @@
 ---
 # tasks file for indexima-prerequisites
 
-- name : Install unzip and java8 on CentOS
+- name : prerequisites.yaml / Install unzip and java8 on CentOS
   yum:
     name:
       - unzip
@@ -9,7 +9,7 @@
       - "{{ java_jdk_rhel }}"
   when: ansible_facts['os_family'] == "RedHat"
 
-- name: Install unzip, software-properties-common and java8 on Debian
+- name: prerequisites.yaml/ Install unzip, software-properties-common and java8 on Debian
   apt:
     name:
       - unzip
@@ -19,24 +19,24 @@
     update_cache: yes
   when: ansible_facts['os_family'] == "Debian"
 
-- name: Set java_home for CentOS
+- name: prerequisites.yaml/ Set java_home for CentOS
   set_fact:
     java_home: /usr/lib/jvm/jre-1.8.0-openjdk
   when: ansible_facts['os_family'] == "RedHat"
 
-- name: Set java_home for Debian
+- name: prerequisites.yaml/ Set java_home for Debian
   set_fact:
     java_home: /usr/lib/jvm/java-1.8.0-openjdk-amd64
   when: ansible_facts['os_family'] == "Debian"
 
-- name: Download Hadoop {{ hadoop_version }}
+- name: prerequisites.yaml / Download Hadoop {{ hadoop_version }}
   get_url:
     url: "{{ hadoop_url }}"
     dest: "{{ hadoop_archive }}"
   tags: ['hadoop', 'web']
   when: internet == 1
 
-- name: Copy Hadoop tar.gz archive
+- name: prerequisites.yaml / Copy Hadoop tar.gz archive
   copy:
     src: "{{ hadoop_file }}.tar.gz"
     dest: "{{ hadoop_archive }}"
@@ -46,7 +46,7 @@
   tags: ['hadoop']
   when: internet == 0
 
-- name: Extract hadoop_archive
+- name: prerequisites.yaml / Extract hadoop_archive
   unarchive:
     remote_src: yes
     src: "{{ hadoop_archive }}"
@@ -55,7 +55,7 @@
     group: "{{ service_group }}"
   tags: ['hadoop']
 
-- name: Add hadoop_base to the PATH
+- name: prerequisites.yaml / Add hadoop_base to the PATH
   copy:
     dest: /etc/profile.d/custom-path.sh
     content: 'PATH=$PATH:/usr/local/bin:{{ hadoop_base }}/bin:{{ hadoop_base }}/sbin'
@@ -64,14 +64,14 @@
     mode: '0755'
   tags: ['hadoop', 'env']
 
-- name: Set ulimit 65536
+- name: prerequisites.yaml / Set ulimit 65536
   lineinfile:
     path: /etc/security/limits.conf
     regexp: '\*\s*-\s*nofile\s*65536'
     line: '*        -     nofile  65536'
   tags: ['etc']
 
-- name: Install nginx with amazon linux extra
+- name: prerequisites.yaml / Install nginx with amazon linux extra
   command:
     cmd: amazon-linux-extras install nginx1.12=latest -y
     creates: /sbin/nginx

@@ -1,5 +1,5 @@
 ---
-- name: Copy VD2 zip archive (No internet mode)
+- name: install_visualdoop.yaml / Copy VD2 zip archive (No internet mode)
   copy:
     src: "{{ vd2_file }}"
     dest: "{{ vd2_archive }}"
@@ -9,7 +9,7 @@
   when: internet == 0
   register: copy_result
 
-- name: Download VD2 zip archive
+- name: install_visualdoop.yaml / Download VD2 zip archive
   get_url:
     url: "{{ vd2_url }}"
     dest: "{{ vd2_archive }}"
@@ -18,7 +18,7 @@
     - internal_use == 0
   register: download_result
 
-- name: Download VD2 zip archive from internal repository (internal use only)
+- name: install_visualdoop.yaml / Download VD2 zip archive from internal repository (internal use only)
   get_url:
     url: "{{ internal_url }}/indexima-installer-visual2/{{ indexima_version }}/indexima-installer-visual2-{{ indexima_version }}.zip"
     dest: "{{ vd2_archive }}"
@@ -29,7 +29,7 @@
     - internal_use == 1
   register: download_result
 
-- name: Check if something changed in VD2
+- name: install_visualdoop.yaml / Check if something changed in VD2
   check_mode: true
   unarchive:
     remote_src: yes
@@ -44,7 +44,7 @@
   tags: ['clean']
   when: check_vd2.changed
 
-- name: Extract VD2 release
+- name: install_visualdoop.yaml / Extract VD2 release
   unarchive:
     remote_src: yes
     src: "{{ vd2_archive }}"
@@ -52,7 +52,7 @@
     owner: "{{ service_user }}"
     group: "{{ service_group }}"
 
-- name: Copy keystore file if SSL is enabled
+- name: install_visualdoop.yaml / Copy keystore file if SSL is enabled
   copy:
     src: "{{ keystore_file }}"
     dest: "{{ vd2_path }}"

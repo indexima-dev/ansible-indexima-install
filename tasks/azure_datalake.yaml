@@ -1,5 +1,5 @@
 ---
-- name: Create {{ core_site_path }} if it doesn't exist
+- name: azure_datalake.yaml / Create {{ core_site_path }} if it doesn't exist
   file:
     path: "{{ core_site_path }}"
     state: directory
@@ -7,7 +7,7 @@
     group: "{{ service_group }}"
     mode: '0755'
 
-- name: Copy core-site.xml template
+- name: azure_datalake.yaml / Copy core-site.xml template
   template:
     src: core-site.xml
     dest: "{{ core_site_path }}/core-site.xml"
@@ -15,7 +15,7 @@
     group: "{{ service_group }}"
     mode: '0644'
 
-- name: Copy azure-data-lake-store-sdk-2.3.7.jar
+- name: azure_datalake.yaml / Copy azure-data-lake-store-sdk-2.3.7.jar
   copy:
     src: azure-data-lake-store-sdk-2.3.7.jar
     dest: "{{ azure_hadoop_jars_path }}"
@@ -23,7 +23,7 @@
     group: "{{ service_group }}"
     mode: '0644'
 
-- name: Copy hadoop-azure-datalake-2.8.5.jar
+- name: azure_datalake.yaml / Copy hadoop-azure-datalake-2.8.5.jar
   copy:
     src: hadoop-azure-datalake-2.8.5.jar
     dest: "{{ azure_hadoop_jars_path }}"
@@ -31,7 +31,7 @@
     group: "{{ service_group }}"
     mode: '0644'
 
-- name: Copy jackson-core-2.8.6.jar
+- name: azure_datalake.yaml / Copy jackson-core-2.8.6.jar
   copy:
     src: jackson-core-2.8.6.jar
     dest: "{{ azure_hadoop_jars_path }}"
@@ -39,7 +39,7 @@
     group: "{{ service_group }}"
     mode: '0644'
 
-- name: Copy okhttp-2.4.0.jar
+- name: azure_datalake.yaml / Copy okhttp-2.4.0.jar
   copy:
     src: okhttp-2.4.0.jar
     dest: "{{ azure_hadoop_jars_path }}"
@@ -47,7 +47,7 @@
     group: "{{ service_group }}"
     mode: '0644'
 
-- name: Copy okio-1.4.0.jar
+- name: azure_datalake.yaml / Copy okio-1.4.0.jar
   copy:
     src: okio-1.4.0.jar
     dest: "{{ azure_hadoop_jars_path }}"
@@ -55,7 +55,7 @@
     group: "{{ service_group }}"
     mode: '0644'
 
-- name: Copy slf4j-api-1.7.21.jar
+- name: azure_datalake.yaml / Copy slf4j-api-1.7.21.jar
   copy:
     src: slf4j-api-1.7.21.jar
     dest: "{{ azure_hadoop_jars_path }}"
@@ -63,7 +63,7 @@
     group: "{{ service_group }}"
     mode: '0644'
 
-- name: Copy wildfly-openssl-1.0.7.Final.jar
+- name: azure_datalake.yaml / Copy wildfly-openssl-1.0.7.Final.jar
   copy:
     src: wildfly-openssl-1.0.7.Final.jar
     dest: "{{ azure_hadoop_jars_path }}"

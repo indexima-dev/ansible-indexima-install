@@ -1,6 +1,6 @@
 ---
 # Find all zip in indexima_path
-- name: Find all zip in {{ indexima_path }} dir
+- name: install_galactica.yaml / Find all zip in {{ indexima_path }} dir
   find:
     paths: "{{ indexima_path }}"
     patterns: "*.zip"
@@ -9,14 +9,14 @@
   when: clean == 1
 
 # Remove all files found above
-- name: Remove all zip in {{ indexima_path }} dir
+- name: install_galactica.yaml / Remove all zip in {{ indexima_path }} dir
   file:
     path: "{{ item.path }}"
     state: absent
   with_items: "{{ zip_to_delete.files }}"
   when: clean == 1
 
-- name: Copy Indexima zip archive (No internet mode)
+- name: install_galactica.yaml / Copy Indexima zip archive (No internet mode)
   copy:
     src: "{{ indexima_file }}"
     dest: "{{ indexima_archive }}"
@@ -26,7 +26,7 @@
   when: internet == 0
   register: copy_result
 
-- name: Download Indexima zip archive
+- name: install_galactica.yaml / Download Indexima zip archive
   get_url:
     url: "{{ galactica_url }}"
     dest: "{{ indexima_archive }}"
@@ -35,7 +35,7 @@
     - internal_use == 0
   register: download_result
 
-- name: Download Indexima zip archive from internal repository (internal use only)
+- name: install_galactica.yaml / Download Indexima zip archive from internal repository (internal use only)
   get_url:
     url: "{{ internal_url }}/indexima-installer{% if hadoop_version_major|int == 3 %}-galactica-hadoop3{% endif %}/{{ indexima_version }}/{{ indexima_file }}"
     dest: "{{ indexima_archive }}"
@@ -46,7 +46,7 @@
     - internal_use == 1
   register: download_result
 
-- name: Check if something changed in galactica
+- name: install_galactica.yaml / Check if something changed in galactica
   check_mode: true
   unarchive:
     remote_src: yes
@@ -61,7 +61,7 @@
   tags: ['clean']
   when: check_galactica.changed
 
-- name: Extract indexima release
+- name: install_galactica.yaml / Extract indexima release
   unarchive:
     remote_src: yes
     src: "{{ indexima_archive }}"
@@ -69,7 +69,7 @@
     owner: "{{ service_user }}"
     group: "{{ service_group }}"
 
-- name: Copy keystore file if SSL is enabled
+- name: install_galactica.yaml / Copy keystore file if SSL is enabled
   copy:
     src: "{{ keystore_file }}"
     dest: "{{ galactica_path }}/conf"
