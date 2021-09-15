@@ -116,6 +116,9 @@ To only partially execute the Indexima install role, you can use the following t
 | stop | Stops Indexima. | `ansible-playbook -i hosts indexima.yml -t 'stop'` |
 | restart | Restarts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'restart'` |
 
+| start | Starts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'start'` |
+| stop | Stops Indexima. | `ansible-playbook -i hosts indexima.yml -t 'stop'` |
+| restart | Restarts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'restart'` |
 
 install, update, conf and start/stop/restart tags can be prefixed with a 'g' or a 'v' to only apply to Galactica or Visualdoop (dev console) respectively. Eg. `ansible-playbook -i hosts indexima.yml -t 'grestart'` restarts only Galactica. `ansible-playbook -i hosts indexima.yml -t 'vconf'` only deploys the configuration for Visualdoop (dev console).
 
