@@ -46,7 +46,7 @@ You can also make your own playbook
 | is_master               | A host variable that set the master. Only one host must be master | 1/0 | 0                                                                                       |
 | systemd                 | Set to true to use systemd service to start/stop Indexima | true/false | true                                                                                    |
 | install_path            | The base installation path |                  | /opt                                                                                    |
-| indexima_path           | Indexima and Visualdoop2 installation path |                  | "{{ install_path }}/indexima"                                                           |
+| indexima_path           | Indexima and Visualdoop2 (dev console) installation path |                  | "{{ install_path }}/indexima"                                                           |
 | indexima_logs_path      | The base path for all Indexima logs |                  | /var/log/indexima                                                                       |
 | indexima_log_dir        | Indexima logs |                  | "{{ indexima_logs_path }}/logs"                                                         |
 | indexima_hive_log_dir   | Indexima embedded Hive server logs |                  | "{{ indexima_logs_path }}/hive"                                                         |
@@ -105,7 +105,7 @@ To only partially execute the Indexima install role, you can use the following t
 
 | Tag value          | Description         | Command example |
 | ------------------ | ------------------- | ------- |
-| install | Executes the prerequisites install as well as Indexima. Also deploys the service files and the selected jdbc drivers. Does *not* deploy the conf. Prefix install with a 'g' to install only Galactica. Prefix with a 'v' for Visualdoop | `ansible-playbook -i hosts indexima.yml -t 'install'` |
+| install | Executes the prerequisites install as well as Indexima. Also deploys the service files and the selected jdbc drivers. Does *not* deploy the conf. Prefix install with a 'g' to install only Galactica. Prefix with a 'v' for Visualdoop (dev console) | `ansible-playbook -i hosts indexima.yml -t 'install'` |
 | update | Executes only the Indexima install and deploys the service files as well as the selected jdbc drivers. Does *not* install the prerequisistes, nor deploy the configuration. | `ansible-playbook -i hosts indexima.yml -t 'update'` |
 | conf | Deploys the configuration files to the Indexima nodes. | `ansible-playbook -i hosts indexima.yml -t 'conf'` |
 | service | Only deploys the service files | `ansible-playbook -i hosts indexima.yml -t 'service'` |
@@ -116,7 +116,8 @@ To only partially execute the Indexima install role, you can use the following t
 | stop | Stops Indexima. | `ansible-playbook -i hosts indexima.yml -t 'stop'` |
 | restart | Restarts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'restart'` |
 
-install, update, conf and start/stop/restart tags can be prefixed with a 'g' or a 'v' to only apply to Galactica or Visualdoop respectively. Eg. `ansible-playbook -i hosts indexima.yml -t 'grestart'` restarts only Galactica. `ansible-playbook -i hosts indexima.yml -t 'vconf'` only deploys the configuration for Visualdoop.
+
+install, update, conf and start/stop/restart tags can be prefixed with a 'g' or a 'v' to only apply to Galactica or Visualdoop (dev console) respectively. Eg. `ansible-playbook -i hosts indexima.yml -t 'grestart'` restarts only Galactica. `ansible-playbook -i hosts indexima.yml -t 'vconf'` only deploys the configuration for Visualdoop (dev console).
 
 If no tags are provided, it is the equivalent of executing the following command: `ansible-playbook -i hosts indexima.yml -t 'prerequisites,update,conf,restart'`
 
