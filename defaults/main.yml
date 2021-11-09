@@ -145,7 +145,6 @@ fs_AbstractFileSystem_adl_impl: "org.apache.hadoop.fs.adl.Adl"
 # MISC
 clean: 1
 ssl: 0
-ha: 1
 dynamic: 1
 galactica_gc_options: "-XX:+UseConcMarkSweepGC -XX:-OmitStackTraceInFastThrow"
 galactica_perf_mode: stable
