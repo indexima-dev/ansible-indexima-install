@@ -1,26 +1,44 @@
 # ansible_host is the host to which you connect via ssh.
 # internal_host is the host as seen by all the Indexima cluster nodes.
 # both are required
+
 [indexima]
 node1 ansible_host=10.0.0.1 is_master=1
 node2 ansible_host=10.0.0.2
 node3 ansible_host=10.0.0.3
 
-[indexima:vars]
 
+[indexima:vars]
 ansible_user={{ lookup('env', 'USER') }}
 ansible_ssh_private_key_file=
 ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
 
-is_master=0
 internet=1
 nodes=3
 version=2021.1.1334.2
-install_path=/opt
-warehouse_type=nfs
-warehouse=/mnt/warehouse
 vd_data=/opt/indexima/visualdoop-data
 monitor_auth=1
+
+
+###################### 
+## WAREHOUSE TYPES  ##
+######################
+
+#### NFS ####
+#warehouse_type=nfs
+#warehouse=/mnt/warehouse
+#install_path=/opt
+
+#### S3 ####
+#warehouse_type=s3
+#warehouse=s3a://mybucket/warehouse
+#aws_access_key_id=AKIAIOSFODNN7EXAMPLE
+#aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+###################### 
+## USERS ACCESS  ##
+######################
+
 galactica_users="admin,hadoop"
 galactica_passwords="admin,password"
 galactica_admins="admin"
