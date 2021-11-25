@@ -1,5 +1,5 @@
 # Ansible role: Indexima installation
-Ansible role to install, configure and start Indexima, with a few example 
+Ansible role to install, configure and start Indexima, with a few examples
 
 [![Build Status](https://travis-ci.com/indexima-dev/ansible-indexima-install.svg?branch=master)](https://travis-ci.com/indexima-dev/ansible-indexima-install)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-ansible__indexima__install-blue)](https://galaxy.ansible.com/indexima_team/ansible_indexima_install)
@@ -115,12 +115,11 @@ To only partially execute the Indexima install role, you can use the following t
 | start | Starts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'start'` |
 | stop | Stops Indexima. | `ansible-playbook -i hosts indexima.yml -t 'stop'` |
 | restart | Restarts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'restart'` |
-
 | start | Starts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'start'` |
 | stop | Stops Indexima. | `ansible-playbook -i hosts indexima.yml -t 'stop'` |
 | restart | Restarts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'restart'` |
 
-install, update, conf and start/stop/restart tags can be prefixed with a 'g' or a 'v' to only apply to Galactica or Visualdoop (dev console) respectively. Eg. `ansible-playbook -i hosts indexima.yml -t 'grestart'` restarts only Galactica. `ansible-playbook -i hosts indexima.yml -t 'vconf'` only deploys the configuration for Visualdoop (dev console).
+install, update, conf and start/stop/restart tags can be prefixed with a 'g' or a 'v' to only apply to Galactica (core engine) or Visualdoop (console) respectively. Eg. `ansible-playbook -i hosts indexima.yml -t 'grestart'` restarts only the core engine. `ansible-playbook -i hosts indexima.yml -t 'vconf'` only deploys the configuration for the console.
 
 If no tags are provided, it is the equivalent of executing the following command: `ansible-playbook -i hosts indexima.yml -t 'prerequisites,update,conf,restart'`
 
