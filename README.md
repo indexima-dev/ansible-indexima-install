@@ -122,7 +122,7 @@ If no tags are provided, it is the equivalent of executing the following command
 
 # Update process
 - Backup the warehouse folder + Backup the hosts file
-- Download ZIP files (indexima installer & visualdoop2) from the 'download.indexima.com/release/'
+- Download ZIP files (indexima installer & visualdoop2) from the [Indexima releases repository](https://download.indexima.com/release/)
 - Upload ZIP files in the ansible folder ..\ansible-indexima-install\files\
 - Modify the variable 'version' in the hosts file
 - Launch the command : ```ansible-playbook -i client.hosts -t 'update,conf,restart'```
