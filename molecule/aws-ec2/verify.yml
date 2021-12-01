@@ -115,10 +115,10 @@
           - "'monitor.api.key = MyTestApiKey' in _galactica_conf.stdout"
         fail_msg: "monitor.api.key is not MyTestApiKey"
 
-    - name: Check that node timeout is pre 1.7.10
-      assert:
-        that:
-          - "'nodes.connect.timeout = 120' in _galactica_conf.stdout"
+    # - name: Check that node timeout is pre 1.7.10
+    #   assert:
+    #     that:
+    #       - "'nodes.connect.timeout = 120' in _galactica_conf.stdout"
 
     - name: Cat galactica-env.sh
       shell: cat /opt/indexima/galactica/conf/galactica-env.sh
