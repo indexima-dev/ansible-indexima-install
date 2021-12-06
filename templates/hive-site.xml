@@ -81,7 +81,7 @@
     </property>
 
     {% endif %}
-    {% if ha == 1 and zookeeper_namespace is defined %}
+    {% if zookeeper_namespace is defined %}
     <property>
       <name>hive.server2.support.dynamic.service.discovery</name>
       <value>true</value>
