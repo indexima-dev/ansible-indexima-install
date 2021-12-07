@@ -11,14 +11,12 @@
         host: "{{ ansible_host }}"
         port: "{{ hive_port }}"
         timeout: 300
-      when: is_master == 1 or ha == 1
 
     - name: Wait for Monitor server
       wait_for:
         host: "{{ ansible_host }}"
         port: 9999
         timeout: 300
-      when: is_master == 1 or ha == 1
 
     - name: Wait for Dev console
       wait_for:
@@ -117,10 +115,10 @@
           - "'monitor.api.key = MyTestApiKey' in _galactica_conf.stdout"
         fail_msg: "monitor.api.key is not MyTestApiKey"
 
-    - name: Check that node timeout is pre 1.7.10
-      assert:
-        that:
-          - "'nodes.connect.timeout = 120' in _galactica_conf.stdout"
+    # - name: Check that node timeout is pre 1.7.10
+    #   assert:
+    #     that:
+    #       - "'nodes.connect.timeout = 120' in _galactica_conf.stdout"
 
     - name: Cat galactica-env.sh
       shell: cat /opt/indexima/galactica/conf/galactica-env.sh

@@ -1,23 +1,15 @@
 ---
 # tasks file for indexima-prerequisites
-- name: stop_indexima.yaml / Echo Stoping Indexima
+- name: stop_indexima.yaml / Echo Stopping Indexima
   debug:
-    msg: "Stoping Indexima"
+    msg: "Stopping Indexima"
 
-- name: stop_indexima.yaml / Stop master node
+- name: stop_indexima.yaml / Stop Galactica node
   shell: "(cd {{ indexima_path }}/galactica ; ./stop.sh)"
-  when: is_master == 1
 
 - name: stop_indexima.yaml / Stop VD2 on master node
   shell: "(cd {{ vd2_path }} ; ./stop.sh)"
-  when:
-    - is_master == 1
-
-- name: stop_indexima.yaml / Stop worker nodes
-  shell: "(cd {{ indexima_path }}/galactica ; ./stop.sh)"
-  when:
-    - is_master == 0
-    - ha == 1
+  when: is_master == 1
 
 - name: stop_indexima.yaml / Waiting 5 seconds
   pause:
