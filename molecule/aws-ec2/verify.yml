@@ -169,7 +169,6 @@
     - name: Check that Default Connection is defined
       assert:
         that:
-          - "'MAIN_CONNECTION_IP=' in _vd2_config.stdout"
           - "'MAIN_CONNECTION_NAME=' in _vd2_config.stdout"
           - "'MAIN_CONNECTION_USER=admin' in _vd2_config.stdout"
           - "'MAIN_CONNECTION_PASSWORD=admin' in _vd2_config.stdout"
