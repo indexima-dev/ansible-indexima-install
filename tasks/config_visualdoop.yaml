@@ -22,8 +22,8 @@
 
 - name: config_visualdoop.yaml / Rename log4j2.xml.template
   copy:
-    src: "{{ vd2_path }}log4j2.xml.template"
-    dest: "{{ vd2_path }}log4j2.xml"
+    src: "{{ vd2_path }}/log4j2.xml.template"
+    dest: "{{ vd2_path }}/log4j2.xml"
     owner: "{{ service_user }}"
     group: "{{ service_group }}"
     remote_src: yes
