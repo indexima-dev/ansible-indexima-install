@@ -51,9 +51,6 @@
   become_user: root
   tags: [ 'never', 'azure_datalake' ]
 
-- import_tasks: license.yaml
-  tags: [ 'never', 'license' ]
-
 - import_tasks: stop_indexima.yaml
   tags: [ 'never', 'restart', 'stop' ]
   when: not systemd| bool
