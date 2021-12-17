@@ -201,8 +201,7 @@ galactica_admins="admin"
 #yarn_tmp_dir=hdfs://localhost:8020/tmp/indexima
 #yarn_name=Indexima
 
-## HA and Zookeeper
-#ha=0
+## Zookeeper
 #zookeeper_quorum=
 #zookeeper_namespace=
 is_master=0

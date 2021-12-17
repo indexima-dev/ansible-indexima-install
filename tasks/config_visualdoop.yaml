@@ -8,15 +8,6 @@
     mode: '0644'
   when: is_master == 1
 
-- name: config_visualdoop.yaml / Copy log4j2_vd2.xml template to visualdoop2 master
-  template:
-    src: log4j2_vd2.xml
-    dest: "{{ vd2_path }}/log4j2.xml"
-    owner: "{{ service_user }}"
-    group: "{{ service_group }}"
-    mode: '0644'
-  when: is_master == 1
-
 - name: config_visualdoop.yaml / Copy ldap.properties template to servers
   template:
     src: ldap.properties
@@ -28,3 +19,12 @@
     - is_master == 1
     - ldap| bool
     - version_format_new|bool or indexima_release == "1.7.12"
+
+- name: config_visualdoop.yaml / Rename log4j2.xml.template
+  copy:
+    src: "{{ vd2_path }}/log4j2.xml.template"
+    dest: "{{ vd2_path }}/log4j2.xml"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
+    remote_src: yes
+    mode: "0644"

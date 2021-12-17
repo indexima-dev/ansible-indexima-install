@@ -130,7 +130,6 @@
   set_fact:
     jdbc_zookeeper: "serviceDiscoveryMode=zooKeeper;zooKeeperNamespace={{ zookeeper_namespace }}"
   when:
-    - ha == 1
     - is_master == 1
     - zookeeper_namespace is defined
   ignore_errors: yes
