@@ -13,9 +13,13 @@ ansible_user={{ lookup('env', 'USER') }}
 ansible_ssh_private_key_file=
 ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
 
-internet=1
 nodes=3
 version=2021.1.1334.2
+internet=0
+drivers=1
+partitions=64
+hadoop_version_major=2
+
 vd_data=/opt/indexima/visualdoop-data
 monitor_auth=1
 
