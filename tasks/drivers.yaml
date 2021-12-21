@@ -1,5 +1,5 @@
 ---
-## Local drivers
+## LOCAL DRIVERS
 - name: drivers.yaml / Copy jdbc drivers in /driver
   copy:
     src: "{{ item }}"
@@ -13,6 +13,7 @@
     - drivers |bool
     - drivers_url is not defined or drivers_url == ""
 
+## S3 SOURCE
 - name: drivers.yaml / Download all jar files present in {{ drivers_url }}
   get_url:
     url: "{{ drivers_url }}/{{ item }}"
@@ -22,3 +23,16 @@
     - drivers |bool
     - drivers_url is defined and drivers_url != ""
     - driver_list is defined and driver_list != []
+
+
+
+- name: config_galactica.yaml / Copy custom galactica.conf from s3 file
+  aws_s3:
+    bucket: "{{ s3bucket_drivers }}"
+    object: "{{ s3path_drivers }}"
+    mode: getstr
+  register: _custom_galactica_conf_s3
+  when:
+    - galactica_conf is defined
+    - '"s3://" in galactica_conf'
+  changed_when: false
