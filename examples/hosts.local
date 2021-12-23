@@ -108,7 +108,6 @@ vd_data=/opt/indexima/visualdoop-data
 #vd_data=
 #vd_pass=
 #admin_users=
-#vd_cluster=0
 #main_connection_user=
 #main_connection_password=
 
@@ -178,17 +177,6 @@ galactica_admins="admin"
 
 ##### DRIVERS CONFIG #####
 ##########################
-
-#### Database drivers
-### If you want to Load data from external database into Indexima
-### you need additional drivers. Uncomment the ones you need.
-#oracle=1
-#db2=1
-#mysql=1
-#postgres=1
-#sqlserver=1
-#snowflake=1
-#hive=1
 
 ### Hadoop
 ## If you deploy Indexima using yarn, uncomment 'yarn_deploy'. You can uncomment 'hadoop_base' if you prefer to use the hadoop-2.8.3 libraries
