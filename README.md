@@ -114,7 +114,6 @@ If no tags are provided, it is the equivalent of executing the following command
 | conf | Deploys the configuration files to the Indexima nodes. | `ansible-playbook -i hosts indexima.yml -t 'conf'` |
 | service | Only deploys the service files | `ansible-playbook -i hosts indexima.yml -t 'service'` |
 | driver | Only deploys the selected jdbc drivers | `ansible-playbook -i hosts indexima.yml -t 'driver'` |
-| license | Deploys the Indexima license. A valid 'indexima.lic' must be placed in the files/ folder of this Ansible Role, or in the current working directory if installed with ansible-galaxy. | `ansible-playbook -i hosts indexima.yml -t 'license'` |
 | azure_datalake | When deploying on Azure Datalake, additional configuration files are required. This tags deploys those files | `ansible-playbook -i hosts indexima.yml -t 'azure_datalake'` |
 | start | Starts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'start'` |
 | stop | Stops Indexima. | `ansible-playbook -i hosts indexima.yml -t 'stop'` |
