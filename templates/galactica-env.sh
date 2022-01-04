@@ -7,14 +7,7 @@ export GALACTICA_MEM={{ indexima_ram }}m
 export JAVA_HOME={{ java_home }}
 
 {% endif %}
-# If you installed hadoop on your own, you need to manually specify an HADOOP_BASE variable
-{% if yarn_deploy and yarn_classpath %}
-export HADOOP_JARS=$(yarn classpath)
-{% else %}
-export HADOOP_BASE={{ hadoop_base }}
-export HADOOP_JARS=$HADOOP_BASE/etc/hadoop:$HADOOP_BASE/share/hadoop/common/*:$HADOOP_BASE/share/hadoop/common/lib/*:$HADOOP_BASE/share/hadoop/hdfs/*:$HADOOP_BASE/share/hadoop/mapreduce/*:$HADOOP_BASE/share/hadoop/yarn/*:$HADOOP_BASE/share/hadoop/tools/lib/*
 
-{% endif %}
 {% if kerberos_full or kerberos_indexima %}
 ## In kerberos mode you can specify here the principal and keytab
 KINIT_PRINCIPAL={{ kerberos_principal }}

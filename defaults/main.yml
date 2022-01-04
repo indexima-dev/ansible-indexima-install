@@ -1,7 +1,7 @@
 ---
-# DEFAULT FILE FOR INDEXIMA 
+# DEFAULT FILE FOR INDEXIMA
 
-# PREREQUISITES 
+# PREREQUISITES
 install_path: "/opt"
 service_user: "root"
 service_group: "{{ service_user }}"
@@ -19,9 +19,8 @@ hadoop_url: "{{ indexima_base_url }}/libs/{{ hadoop_file }}.tar.gz"
 hadoop_archive: "{{ install_path }}/{{ hadoop_file }}.tar.gz"
 hadoop_base: "{{ install_path }}/hadoop-{{ hadoop_version }}"
 
-
-# STANDALONE 
-# DON'T CHANGE 
+# STANDALONE
+# DON'T CHANGE
 version: 2021.2.1390.1
 internal_host: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] | d('LOCAL_IP') }}"
 internet: 1
@@ -42,7 +41,7 @@ indexima_logs:
   - "{{ indexima_history_export }}"
 indexima_version: "{{ indexima_release }}{% if indexima_build is defined %}.{{ indexima_build }}{% endif %}{% if indexima_sp is defined %}.{{ indexima_sp }}{% endif %}"
 
-# INDEXIMA INSTALLER 
+# INDEXIMA INSTALLER
 indexima_file: "indexima-installer-{% if hadoop_version_major|int == 3 %}galactica-hadoop3-{% endif %}{{ indexima_version }}.zip"
 indexima_gold: "{{ indexima_release | replace('.', '') }}-{{ indexima_build | omitempty}}"
 indexima_url: "{{ indexima_base_url }}/release/{{ indexima_release }}/{{ indexima_sp |d('') }}"
@@ -63,7 +62,7 @@ vd_cluster_mode: 0
 vd_cluster_only: 0
 vd_project_mode: 1
 
-# DEFAULT ADMIN USER IN VD2 
+# DEFAULT ADMIN USER IN VD2
 admin_users: "admin"
 
 # CONFIG PARAMETERS
@@ -95,7 +94,7 @@ drivers: 0
 
 # Cloud Credentials
 #google_credentials: "{{ galactica_path }}/conf"
-#aws_access_key_id: 
+#aws_access_key_id:
 #aws_secret_access_key:
 
 # AUTH
@@ -103,12 +102,12 @@ monitor_auth: false
 monitor_rights: false
 monitor_api_key: ChangeMe
 ldap: false
-#ldap_url: 
-#ldap_user_dnpattern: 
-#ldap_group_dnpattern: 
-#ldap_group_classkey: 
-#ldap_group_membershipkey: 
-#ldap_group_filter: 
+#ldap_url:
+#ldap_user_dnpattern:
+#ldap_group_dnpattern:
+#ldap_group_classkey:
+#ldap_group_membershipkey:
+#ldap_group_filter:
 
 galactica_users: admin
 galactica_passwords: admin
@@ -122,14 +121,8 @@ kerberos_hdfs: "{{ kerberos_full }}"
 kerberos_zookeeper: "{{ kerberos_full }}"
 
 # HADOOP
-yarn_deploy: 0
-yarn_classpath: "{{ yarn_deploy }}"
 hive_port: 10000
 hive_type: binary
-yarn_resourcemanager_hostname: localhost
-yarn_memory: "{{ ram }}"
-yarn_tmp_dir: hdfs://localhost:8020/tmp/indexima
-yarn_name: Indexima
 
 # HD INSIGHT
 core_site_path: "{{ hadoop_base }}/etc/hadoop"

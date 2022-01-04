@@ -177,17 +177,6 @@ galactica_admins="admin"
 ##### DRIVERS CONFIG #####
 ##########################
 
-### Hadoop
-## If you deploy Indexima using yarn, uncomment 'yarn_deploy'. You can uncomment 'hadoop_base' if you prefer to use the hadoop-2.8.3 libraries
-## instead of the yarn classpath
-#hadoop_base="/opt/hadoop-2.8.3"
-#yarn_classpath=1
-#yarn_deploy=1
-#yarn_resourcemanager_hostname=localhost
-#yarn_memory="{{ ram }}"
-#yarn_tmp_dir=hdfs://localhost:8020/tmp/indexima
-#yarn_name=Indexima
-
 ## Zookeeper
 #zookeeper_quorum=
 #zookeeper_namespace=
