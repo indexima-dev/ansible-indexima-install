@@ -121,7 +121,6 @@ vd_data=/opt/indexima/visualdoop-data
 ##############################
 
 ## AWS // If you need Indexima to use some AWS services, you need to fill the AWS Configs bellow and uncomment the following line
-#aws=1
 #aws_access_key_id=
 #aws_secret_access_key=
 

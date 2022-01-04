@@ -20,8 +20,6 @@ export VISUALDOOP_WEB_PORT={{ vd2_port }}
 # Agent port number
 export VISUALDOOP_HOST=0.0.0.0
 
-#export TDS_DRIVER_CLASS=indexima_jdbc
-
 {% if admin_type == 's3' %}
 # AWS S3 storage
 export VISUALDOOP_STORE=S3
@@ -82,7 +80,7 @@ export MAIN_CLUSTER_PORT={{ monitor_port }}
 export MAIN_CLUSTER_API_KEY={{ monitor_api_key }}
 
 # Default Connection
-export MAIN_CONNECTION_NAME="Default_Connection"
+export MAIN_CONNECTION_IP={{ service_master_ip}}
 export MAIN_CONNECTION_PORT={{ hive_port }}
 export MAIN_CONNECTION_USER={{ main_connection_user }}
 export MAIN_CONNECTION_PASSWORD={{ main_connection_password }}
