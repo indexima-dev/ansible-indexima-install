@@ -11,7 +11,7 @@ java_package_centos: java-1.8.0-openjdk # Redhat family
 java_package_debian: openjdk-8-jdk # Debian family
 java_jdk_rhel: java-1.8.0-openjdk-devel #OpenJDK 8 JDK
 java_jre_debian: openjdk-8-jre-headless
-hadoop_version_major: "2"
+hadoop_version_major: "3"
 hadoop_version: "{% if hadoop_version_major|int == 3 %}3.1.4{% else %}2.8.3{% endif %}"
 hadoop_file: hadoop-{{ hadoop_version }}
 #hadoop_url: http://archive.apache.org/dist/hadoop/common/{{ hadoop_file }}/{{ hadoop_file }}.tar.gz
