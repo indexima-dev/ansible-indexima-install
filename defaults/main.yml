@@ -82,7 +82,6 @@ loaders: "{% if cores|int > 4 %}{{ (cores|int / 2)|int }}{% else %}{{ cores|int 
 queries: "{{ (cores|int * 8)|int }}"
 hybrids: 6 # Deprecated since 2021.2
 partitions: "{{ (cores|int * nodes|int)|int }}"
-partitions_number: "{{ (cores|int * nodes|int)|int }}" # Duplicate parameter for backward compatibility. Will be removed in the future
 indexima_service_user: "{{ service_user }}"
 
 # DRIVERS
