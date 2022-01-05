@@ -36,7 +36,6 @@ provisioner:
         indexima_hive_log_dir: "/tmp/indexima/hive"
         indexima_history_dir: "/opt/indexima/oldhistory"
         indexima_history_export: "/opt/indexima/newhistory"
-        ha: 0
         systemd: false
         cluster_name: docker_test
         galactica_gc_options: "-XX:+UseConcMarkSweepGC -XX:-OmitStackTraceInFastThrow -XX:NewRatio=3"

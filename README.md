@@ -69,7 +69,6 @@ You can also make your own playbook
 | queries                 | The number of max threading for queries |  | "{{ (cores * 8)\|int }}" |
 | hybrids                 | The number of max threading for queries out of index. _Deprecated after Indexima 2021.1_ |  | 6 |
 | partitions              | The number of partitions used for the data |  | "{{ (cores * nodes)\|int }}" |
-| ha                      | Set to 1 to activate full master dynamic mode | 1/0 | 1 |
 | node_port               | Port used by the nodes to communicate with each other. This will use the port specified here, and the port +1 | | 19999 |
 | monitor_port            | Port used to access the monitor api | | 9999 |
 | galactica_conf_extended | Path (on the Ansible host) to a file containing galactica.conf parameters. The content of the file will be appended at the ended of the automatically generated galactica.conf. Use this if a parameter you need is not yet supported by the Ansible install role. *Warning*: Be careful not to write a parameter already present in the template | | |
