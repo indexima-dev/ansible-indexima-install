@@ -1,11 +1,12 @@
 # Copyright Indexima
 #
 export GALACTICA_MEM={{ indexima_ram }}m
+export HADOOP_BASE={{ hadoop_base }}
+export HADOOP_JARS=$HADOOP_BASE/etc/hadoop:$HADOOP_BASE/share/hadoop/common/*:$HADOOP_BASE/share/hadoop/common/lib/*:$HADOOP_BASE/share/hadoop/hdfs/*:$HADOOP_BASE/share/hadoop/mapreduce/*:$HADOOP_BASE/share/hadoop/yarn/*:$HADOOP_BASE/share/hadoop/tools/lib/*
 
 # If you installed java on your own, you need to manually specify an JAVA_HOME variable
 {% if java_home is defined %}
 export JAVA_HOME={{ java_home }}
-
 {% endif %}
 
 {% if kerberos_full or kerberos_indexima %}
