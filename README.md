@@ -81,7 +81,6 @@ These are the main useful variables. If you wish to customize the installation f
 | Variable                | Description                           | Possible values                | Default        |
 | ----------------------- | ------------------------------------- | ------------------------------ | -------------- |
 | drivers                 | Set to true if you need to upload jdbc to Indexima nodes. By default, it copies every file present in the 'files/driver' located in at the root of the Ansible folder | 1/0 | 0 |
-| drivers_url             | if you want to download the required jdbc drivers from a custom http url, set drivers_url to 1, and fill the driver_list with the names of the files. | | |
 | aws_access_key_id       | The AWS_ACCESS_KEY_ID of the account you want to use for Indexima, if you are using S3 as a warehouse type for example | | |
 | aws_secret_access_key   | The AWS_SECRET_ACCESS_KEY of the account you want to use for Indexima, if you are using S3 as a warehouse type for example | | |
 | google_credentials      | The path on every nodes to which you will copy the credentials.json for GCP access. It is recommended to use the value "{{ galactica_path }}/conf" | | |
