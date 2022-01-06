@@ -64,6 +64,7 @@ You can also make your own playbook
 | disk                    | Number of disk per node |  |1                                                                                       |
 | warehouse_type          | The type of filesytem used for the data warehouse | local/nfs/s3/gs/adl/hdfs | local |
 | warehouse               | Path to the warehouse. If using S3, use the full s3 path, prefixed with 's3a://' (instead of the standard s3://) | | "{{ indexima_path }}/warehouse" |
+| hadoop_version_major    | The version of hadoop librairies used by Indexima nodes | 2 or 3 | 3 |
 | readers                 | The number of max readers tasks. _Deprecated after Indexima 2021.2_  |  | "{% if cores > 4 %}{{ (cores / 2)\|int }}{% else %}{{ cores\|int }}{% endif %}" |
 | loaders                 | The number of max loaders tasks |  | "{% if cores > 4 %}{{ (cores / 2)\|int }}{% else %}{{ cores\|int }}{% endif %}" |
 | queries                 | The number of max threading for queries |  | "{{ (cores * 8)\|int }}" |

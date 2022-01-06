@@ -18,7 +18,7 @@ version=2021.1.1334.2
 internet=0
 drivers=1
 partitions=64
-hadoop_version_major=2
+hadoop_version_major=3
 
 vd_data=/opt/indexima/visualdoop-data
 monitor_auth=1
