@@ -118,6 +118,18 @@ If no tags are provided, it is the equivalent of executing the following command
 | stop | Stops Indexima. | `ansible-playbook -i hosts indexima.yml -t 'stop'` |
 | restart | Restarts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'restart'` |
 
+# Indexima Prerequisites
+- Download Hadoop3 Jar files & Tez Jar Zip
+- Move this file in ..\ansible-indexima-install\files\
+- Download JDBC drivers (only those you need) from https://docs.indexima.com/latest/standalone-deployment/tech-guides/compatibility-matrix/data-source-compatibility-matrix
+- Move the files in ..\ansible-indexima-install\files\drivers
+
+# Install process
+- Download ZIP files (indexima installer & visualdoop2) from the Indexima releases repository
+- Move ZIP files in the ansible folder ..\ansible-indexima-install\files\
+- Fill the Host file
+- Launch the command : ansible-playbook -i hosts indexima.yml -t 'prerequisites,update,conf,restart'
+
 # Update process
 - Backup the warehouse folder + Backup the hosts file
 - Download ZIP files (indexima installer & visualdoop2) from the [Indexima releases repository](https://download.indexima.com/release/)
