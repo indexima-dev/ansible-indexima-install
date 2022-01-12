@@ -43,7 +43,7 @@ You can also make your own playbook
 - Download ZIP files (indexima installer & visualdoop2) from the Indexima releases repository
 - Move ZIP files in the ansible folder ..\ansible-indexima-install\files\
 - Fill the Host file
-- Launch the command : ansible-playbook -i hosts indexima.yml -t 'prerequisites,update,conf,restart'
+- Launch the command : ```ansible-playbook -i hosts indexima.yml```
 
 # Update process
 - Backup the warehouse folder + Backup the hosts file
