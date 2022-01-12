@@ -50,7 +50,7 @@ You can also make your own playbook
 - Download ZIP files (indexima installer & visualdoop2) from the [Indexima releases repository](https://download.indexima.com/release/)
 - Upload ZIP files in the ansible folder ..\ansible-indexima-install\files\
 - Modify the variable 'version' in the hosts file
-- Launch the command : ```ansible-playbook -i client.hosts indexima.yml -t 'update,conf,restart'```
+- Launch the command : ```ansible-playbook -i client.hosts indexima.yml -t 'stop,update,conf,start'```
 
 # Variables
 
