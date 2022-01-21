@@ -4,7 +4,7 @@ Ansible role to install, configure and start Indexima, with a few examples
 [![Build Status](https://travis-ci.com/indexima-dev/ansible-indexima-install.svg?branch=master)](https://travis-ci.com/indexima-dev/ansible-indexima-install)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-ansible__indexima__install-blue)](https://galaxy.ansible.com/indexima_team/ansible_indexima_install)
 
-# Prerequisites and Install process
+# Prerequisites
 
 Before the installation of indexima, check the general requirements : https://docs.indexima.com/latest/standalone-deployment/tech-guides/general-requirements
 
@@ -20,6 +20,9 @@ Ansible is an agentless automation tool that you install on a control node. From
 * Move the files in ```ansible-indexima-install/files/```
 * Download JDBC drivers (only those you need) from https://docs.indexima.com/latest/standalone-deployment/tech-guides/compatibility-matrix/data-source-compatibility-matrix
 * Move the files in ```ansible-indexima-install/files/drivers```
+
+# Install process
+
 - Fill the file ```ansible-indexima-install/example/cluster.host```
 - Launch the command : ```ansible-playbook -i example/cluster.host indexima.yml```
 You can execute the example playbook in examples with the example host file:
