@@ -15,14 +15,13 @@ Ansible is an agentless automation tool that you install on a control node. From
 
 * Clone the repository : ```git clone https://github.com/indexima-dev/ansible-indexima-install.git```
 
-* Download Hadoop3 Jar files & Tez Jar Zip from https://download.indexima.com/libs/
+* Download Hadoop3 Jar files / Tez Jar Zip from https://download.indexima.com/libs/
+* Download Indexima installer & Visual2 from https://download.indexima.com/release/
 * Move this file in ```ansible-indexima-install/files/```
 * Download JDBC drivers (only those you need) from https://docs.indexima.com/latest/standalone-deployment/tech-guides/compatibility-matrix/data-source-compatibility-matrix
 * Move the files in ```ansible-indexima-install/files/drivers```
 
 # Install process
-- Download ZIP files (indexima installer hadoop3 & visualdoop2) from the Indexima releases repository
-- Move ZIP files in the ansible folder ..\ansible-indexima-install\files\
 - Fill the Host file
 - Launch the command : ```ansible-playbook -i hosts indexima.yml```
 
