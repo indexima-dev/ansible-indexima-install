@@ -29,8 +29,6 @@
 
         queries = 36
 
-        hybrid = 6
-
         partitions = 4
 
         this comes from s3
