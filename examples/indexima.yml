@@ -3,4 +3,4 @@
   become: yes
   become_user: "{{ service_user }}"
   roles:
-    - { role: indexima_team.ansible_indexima_install }
+    - ansible-indexima-install

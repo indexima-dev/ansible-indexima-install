@@ -36,7 +36,7 @@ ansible_connection=local
 ## Internet connection : 1 or 0
 ## Set to 0 if your Indexima nodes don't have external access to internet
 ## Copy the desired indexima-installer-<version>.zip into roles/indexima-standalone/files
-internet=1
+internet=0
 
 
 ## Total number of nodes

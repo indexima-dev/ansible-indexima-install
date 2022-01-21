@@ -6,10 +6,23 @@ Ansible role to install, configure and start Indexima, with a few examples
 
 # Quickstart
 
-If you are new to Ansible, here is how to install it with pip:
+Before the installation of indexima, check the general requirements : https://docs.indexima.com/latest/standalone-deployment/tech-guides/general-requirements
 
-```pip install ansible```
+For the installation of the indexima solution, we use ansible to automate the deployment.
+Ansible is an agentless automation tool that you install on a control node. From the control node, Ansible manages machines and other devices remotely (by default, over the SSH protocol / Port 22).
 
+* Install ansible : https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
+
+* Clone the repository : git clone https://github.com/indexima-dev/ansible-indexima-install.git
+
+* Download packages from our repository : 
+`wget -P ansible-indexima-install/files/ https://download.indexima.com/libs/hadoop-3.1.4.tar.gz`
+`wget -P ansible-indexima-install/files/ https://download.indexima.com/libs/tez-api-0.9.2.jar`
+`wget -P ansible-indexima-install/files/ https://download.indexima.com/libs/tez-dag-0.9.2.jar`
+`wget -P ansible-indexima-install/files/ https://download.indexima.com/release/2021.5/5/indexima-installer-galactica-hadoop3-2021.5.1576.5.zip`
+`wget -P ansible-indexima-install/files/ https://download.indexima.com/release/2021.5/5/indexima-installer-visual2-2021.5.1576.5.zip`
+
+Ansible 
 Then install the indexima-install role:
 
 ```ansible-galaxy install indexima_team.ansible_indexima_install```
@@ -60,7 +73,6 @@ You can also make your own playbook
 | ----------------------- | ----------------         | ---------------- | --------------------------------------------------------------------------------------- |
 | version                 | Indexima version         |                  | 2021.2.1390.1                                                                           |
 | internal_host           | Internal IP of each host |                  | "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"                 |
-| internet                | Hosts have internet access or not | 1/0     | 1                                                                                       |
 | internal_use            | If you store your own Indexima package, you can use this instead of the official download.indexima.com/release url | 1/0 | 0                                                                                       |
 | is_master               | A host variable that set the master. Only one host must be master | 1/0 | 0                                                                                       |
 | systemd                 | Set to true to use systemd service to start/stop Indexima | true/false | true                                                                                    |
