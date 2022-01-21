@@ -15,8 +15,8 @@ Ansible is an agentless automation tool that you install on a control node. From
 
 * Clone the repository : ```git clone https://github.com/indexima-dev/ansible-indexima-install.git```
 
-* Download Hadoop3 Jar files / Tez Jar Zip from https://download.indexima.com/libs/
-* Download Indexima installer & Visual2 from https://download.indexima.com/release/
+* Download Hadoop3 Jar files / Tez Jar Zip from [Indexima libs repository](https://download.indexima.com/libs/)
+* Download Indexima installer & Visual2 from [Indexima releases repository](https://download.indexima.com/release/)
 * Move the files in ```ansible-indexima-install/files/```
 * Download JDBC drivers (only those you need) from https://docs.indexima.com/latest/standalone-deployment/tech-guides/compatibility-matrix/data-source-compatibility-matrix
 * Move the files in ```ansible-indexima-install/files/drivers```
