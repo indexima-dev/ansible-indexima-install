@@ -16,6 +16,7 @@ Ansible is an agentless automation tool that you install on a control node. From
 * Clone the repository : git clone https://github.com/indexima-dev/ansible-indexima-install.git
 
 * Download packages from our repository : 
+
 ```wget -P ansible-indexima-install/files/ https://download.indexima.com/libs/hadoop-3.1.4.tar.gz```
 ```wget -P ansible-indexima-install/files/ https://download.indexima.com/libs/tez-api-0.9.2.jar```
 ```wget -P ansible-indexima-install/files/ https://download.indexima.com/libs/tez-dag-0.9.2.jar```
