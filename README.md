@@ -24,8 +24,10 @@ Ansible is an agentless automation tool that you install on a control node. From
 # Install process
 
 - Fill the file ```ansible-indexima-install/example/cluster.host```
-- Launch the command : ```ansible-playbook -i example/cluster.host indexima.yml```
-You can execute the example playbook in examples with the example host file:
+- Launch the command : ```ansible-playbook -i example/cluster.host indexima.yml```  
+
+
+You can also execute the example playbook with the example host file:
 
 ```ansible-playbook -i examples/hosts.local examples/indexima.yml```
 
