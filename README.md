@@ -4,7 +4,7 @@ Ansible role to install, configure and start Indexima, with a few examples
 [![Build Status](https://travis-ci.com/indexima-dev/ansible-indexima-install.svg?branch=master)](https://travis-ci.com/indexima-dev/ansible-indexima-install)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-ansible__indexima__install-blue)](https://galaxy.ansible.com/indexima_team/ansible_indexima_install)
 
-# Quickstart
+# Prerequisites
 
 Before the installation of indexima, check the general requirements : https://docs.indexima.com/latest/standalone-deployment/tech-guides/general-requirements
 
@@ -15,39 +15,10 @@ Ansible is an agentless automation tool that you install on a control node. From
 
 * Clone the repository : git clone https://github.com/indexima-dev/ansible-indexima-install.git
 
-* Download packages from our repository : 
-
- 
-
-Ansible 
-Then install the indexima-install role:
-
-```ansible-galaxy install indexima_team.ansible_indexima_install```
-
-You can execute the example playbook in examples with the example host file:
-
-```ansible-playbook -i examples/hosts.local examples/indexima.yml```
-
-This will install Indexima locally, providing your current user has sudo access with no password.
-If it does not, you need to either execute the playbook as root, or set the sudo password in the example/hosts.local file (uncomment and set the "ansible_sudo_pass" variable)
-
-You can also make your own playbook
-
-```
----
-- hosts: localhost
-  become: yes
-  roles:
-    - { role: indexima_team.ansible_indexima_install }
-  vars:
-    is_master: 1
-```
-
-# Indexima Prerequisites
-- Download Hadoop3 Jar files & Tez Jar Zip from https://download.indexima.com/libs/
-- Move this file in ..\ansible-indexima-install\files\
-- Download JDBC drivers (only those you need) from https://docs.indexima.com/latest/standalone-deployment/tech-guides/compatibility-matrix/data-source-compatibility-matrix
-- Move the files in ..\ansible-indexima-install\files\drivers
+* Download Hadoop3 Jar files & Tez Jar Zip from https://download.indexima.com/libs/
+* Move this file in /ansible-indexima-install/files/
+* Download JDBC drivers (only those you need) from https://docs.indexima.com/latest/standalone-deployment/tech-guides/compatibility-matrix/data-source-compatibility-matrix
+* Move the files in ../ansible-indexima-install/files/drivers
 
 # Install process
 - Download ZIP files (indexima installer hadoop3 & visualdoop2) from the Indexima releases repository
@@ -145,6 +116,29 @@ If no tags are provided, it is the equivalent of executing the following command
 | stop | Stops Indexima. | `ansible-playbook -i hosts indexima.yml -t 'stop'` |
 | restart | Restarts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'restart'` |
 
+# Ansible Galaxy 
+Then install the indexima-install role:
+
+```ansible-galaxy install indexima_team.ansible_indexima_install```
+
+You can execute the example playbook in examples with the example host file:
+
+```ansible-playbook -i examples/hosts.local examples/indexima.yml```
+
+This will install Indexima locally, providing your current user has sudo access with no password.
+If it does not, you need to either execute the playbook as root, or set the sudo password in the example/hosts.local file (uncomment and set the "ansible_sudo_pass" variable)
+
+You can also make your own playbook
+
+```
+---
+- hosts: localhost
+  become: yes
+  roles:
+    - { role: indexima_team.ansible_indexima_install }
+  vars:
+    is_master: 1
+```
 # External links
 
 [Indexima website](https://indexima.com)
