@@ -11,7 +11,7 @@ Before the installation of indexima, check the general requirements : https://do
 For the installation of the indexima solution, we use ansible to automate the deployment.
 Ansible is an agentless automation tool that you install on a control node. From the control node, Ansible manages machines and other devices remotely (by default, over the SSH protocol / Port 22).
 
-* Install ansible : https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
+* Install ansible : [Ansible installation guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
 * Clone the repository : ```git clone https://github.com/indexima-dev/ansible-indexima-install.git```
 
