@@ -23,9 +23,7 @@ provisioner:
         version: ${INDEXIMA_VERSION:-"2021.1.1334.3"}
         nodes: 1
         cores: 2
-        readers: 1
         loaders: 1
-        hybrids: 4
         queries: 8
         ram: 600
         partitions: 8

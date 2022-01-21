@@ -45,8 +45,6 @@ nodes=1
 #cores=2
 ## Amount of RAM per node (Mb)
 #ram=600
-## Number of disk per node
-#disk=1
 ## If you want to set the partitions number manually, uncomment next field and write the desired value
 #partitions=4
 

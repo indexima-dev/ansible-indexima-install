@@ -93,43 +93,10 @@
         that:
           - "'cores = 2' in _galactica_conf.stdout"
 
-    - name: Check that readers = 1
-      assert:
-        that:
-          - "'readers = 1' in _galactica_conf.stdout"
-      when:
-        - not version_format_new| bool or indexima_year |int == 2021
-        - not version_format_new| bool or indexima_month |int < 3
-
-    - name: Check that readers is absent if version > 2021.2
-      assert:
-        that:
-          - "'readers =' not in _galactica_conf.stdout"
-      when:
-        - version_format_new| bool
-        - indexima_year |int >= 2021
-        - indexima_month |int >= 3
-
     - name: Check that loaders = 1
       assert:
         that:
           - "'loaders = 1' in _galactica_conf.stdout"
-
-    - name: Check that hybrids = 4
-      assert:
-        that:
-          - "'hybrids = 4' in _galactica_conf.stdout"
-      when:
-        - version_format_new| bool and indexima_year |int == 2021 and indexima_month |int < 2 or not version_format_new| bool
-
-    - name: Check that hybrid is absent if version > 2021.1
-      assert:
-        that:
-          - "'hybrids =' not in _galactica_conf.stdout"
-      when:
-        - version_format_new| bool
-        - indexima_year |int >= 2021
-        - indexima_month |int >= 2
 
     - name: Check that queries = 8
       assert:

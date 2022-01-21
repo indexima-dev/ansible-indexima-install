@@ -72,12 +72,6 @@
           - "'cores = 2' in _galactica_conf.stdout"
         fail_msg: "cores is not equal 2 in galactica.conf: {{ _galactica_conf.stdout }}"
 
-    - name: Check that readers = 1
-      assert:
-        that:
-          - "'readers = 1' in _galactica_conf.stdout"
-        fail_msg: "readers is not equal 1 in galactica.conf: {{ _galactica_conf.stdout }}"
-
     - name: Check this comes from s3
       assert:
         that:

@@ -65,14 +65,11 @@ If it does not, you need to either execute the playbook as root, or set the sudo
 | nodes                   | Number of nodes in the cluster (required) |  | 1 |
 | cores                   | Number of cores per node |  |"{{ ansible_processor_vcpus }}"                                                         |
 | ram                     | Total RAM per node. Indexima RAM will be 0.7 * ram |  |"{{ ansible_memtotal_mb }}" |
-| disk                    | Number of disk per node |  |1                                                                                       |
 | warehouse_type          | The type of filesytem used for the data warehouse | local/nfs/s3/gs/adl/hdfs | local |
 | warehouse               | Path to the warehouse. If using S3, use the full s3 path, prefixed with 's3a://' (instead of the standard s3://) | | "{{ indexima_path }}/warehouse" |
 | hadoop_version_major    | The version of hadoop librairies used by Indexima nodes | 2 or 3 | 3 |
-| readers                 | The number of max readers tasks. _Deprecated after Indexima 2021.2_  |  | "{% if cores > 4 %}{{ (cores / 2)\|int }}{% else %}{{ cores\|int }}{% endif %}" |
 | loaders                 | The number of max loaders tasks |  | "{% if cores > 4 %}{{ (cores / 2)\|int }}{% else %}{{ cores\|int }}{% endif %}" |
 | queries                 | The number of max threading for queries |  | "{{ (cores * 8)\|int }}" |
-| hybrids                 | The number of max threading for queries out of index. _Deprecated after Indexima 2021.1_ |  | 6 |
 | partitions              | The number of partitions used for the data |  | "{{ (cores * nodes)\|int }}" |
 | node_port               | Port used by the nodes to communicate with each other. This will use the port specified here, and the port +1 | | 19999 |
 | monitor_port            | Port used to access the monitor api | | 9999 |

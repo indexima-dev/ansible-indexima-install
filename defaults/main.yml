@@ -75,13 +75,10 @@ cores: "{{ ansible_processor_vcpus|int }}"
 ram: "{{ ansible_memtotal_mb|int }}"
 indexima_ram: "{{ (ram|float * 0.70) | int }}"
 
-disk: 1
 warehouse_type: local
 warehouse: "{{ indexima_path }}/warehouse"
-readers: "{% if cores|int > 4 %}{{ (cores|int / 2)|int }}{% else %}{{ cores|int }}{% endif %}" # Deprecated since 2021.3
 loaders: "{% if cores|int > 4 %}{{ (cores|int / 2)|int }}{% else %}{{ cores|int }}{% endif %}"
 queries: "{{ (cores|int * 8)|int }}"
-hybrids: 6 # Deprecated since 2021.2
 partitions: "{{ (cores|int * nodes|int)|int }}"
 indexima_service_user: "{{ service_user }}"
 
