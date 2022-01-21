@@ -6,7 +6,7 @@ Ansible role to install, configure and start Indexima, with a few examples
 
 # Prerequisites
 
-Before the installation of indexima, check the general requirements : https://docs.indexima.com/latest/standalone-deployment/tech-guides/general-requirements
+Before the installation of indexima, check the requirements : [Indexima General Requirements](https://docs.indexima.com/latest/standalone-deployment/tech-guides/general-requirements)
 
 For the installation of the indexima solution, we use ansible to automate the deployment.
 Ansible is an agentless automation tool that you install on a control node. From the control node, Ansible manages machines and other devices remotely (by default, over the SSH protocol / Port 22).
