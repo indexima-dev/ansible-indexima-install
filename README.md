@@ -77,7 +77,6 @@ You can also make your own playbook
 | Variable                | Description                            | Possible values               | Default        |
 | ----------------------- | -------------------------------------- | ----------------------------- | -------------- |
 | nodes                   | Number of nodes in the cluster (required) |  | 1 |
-| node_connect_timeout    | Time (in s) after which the cluster will start even if the number of nodes specified is not met |  |"{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] \| d('LOCAL_IP') }}" |
 | cores                   | Number of cores per node |  |"{{ ansible_processor_vcpus }}"                                                         |
 | ram                     | Total RAM per node. Indexima RAM will be 0.7 * ram |  |"{{ ansible_memtotal_mb }}" |
 | disk                    | Number of disk per node |  |1                                                                                       |

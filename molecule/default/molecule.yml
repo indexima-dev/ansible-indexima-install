@@ -45,13 +45,6 @@ provisioner:
         vd_cluster_only: 1
         vd_project_mode: 0
         galactica_conf_extended: /tmp/galactica_extended
-        analyzer:
-          mode: INCREMENTAL
-          smart_metrics_days: 15
-          smart_scheduling_cron: 0 0/15 * * * ?
-          smart_scheduling_duration_minutes: 10
-          smart_max_indexes: 50
-          smart_optimizer: Last two weeks
     host_vars:
       instance:
         is_master: 1

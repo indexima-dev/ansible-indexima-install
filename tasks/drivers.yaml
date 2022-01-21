@@ -23,3 +23,18 @@
     - drivers |bool
     - drivers_url is defined and drivers_url != ""
     - driver_list is defined and driver_list != []
+
+## LOCAL DRIVERS
+- name: drivers.yaml / Copy jdbc drivers in /driver
+  copy:
+    src: "{{ item }}"
+    dest: "{{ galactica_path }}/tez"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
+    mode: "0644"
+  with_fileglob:
+    - files/tez/{{ tez_dag }}
+    - files/tez/{{ tez_api }}
+  when:
+    - drivers |bool
+    - hadoop_version_major == "3"

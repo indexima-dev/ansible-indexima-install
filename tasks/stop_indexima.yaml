@@ -14,3 +14,5 @@
 - name: stop_indexima.yaml / Waiting 5 seconds
   pause:
     seconds: 5
+
+# implement task for service

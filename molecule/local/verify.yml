@@ -137,11 +137,6 @@
         that:
           - "'history.export = /var/log/indexima/history_csv' in _galactica_conf.stdout"
 
-    - name: Check that node timeout is adapted to 1.7.11
-      assert:
-        that:
-          - "'nodes.connect.timeout.seconds = 120' in _galactica_conf.stdout"
-
     - name: List all files in galactica/driver
       find:
         paths: "/opt/indexima/galactica/driver"

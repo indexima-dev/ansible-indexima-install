@@ -18,6 +18,8 @@ hadoop_file: hadoop-{{ hadoop_version }}
 hadoop_url: "{{ indexima_base_url }}/libs/{{ hadoop_file }}.tar.gz"
 hadoop_archive: "{{ install_path }}/{{ hadoop_file }}.tar.gz"
 hadoop_base: "{{ install_path }}/hadoop-{{ hadoop_version }}"
+tez_dag:  "tez-dag-0.9.2.jar" 
+tez_api: "tez-api-0.9.2.jar"
 
 # STANDALONE
 # DON'T CHANGE
@@ -67,7 +69,6 @@ admin_users: "admin"
 
 # CONFIG PARAMETERS
 nodes: 1
-node_connect_timeout: 120
 node_port: 19999
 monitor_port: 9999
 cores: "{{ ansible_processor_vcpus|int }}"

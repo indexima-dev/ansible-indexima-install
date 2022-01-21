@@ -161,16 +161,6 @@
         that:
           - "'cluster.name = docker_test' in _galactica_conf.stdout"
 
-    - name: Check that analyzer conf is correct
-      assert:
-        that:
-          - "'analyser.mode = INCREMENTAL' in _galactica_conf.stdout"
-          - "'analyser.smart.metrics.days = 15' in _galactica_conf.stdout"
-          - "'analyser.smart.scheduling.cron' in _galactica_conf.stdout"
-          - "'analyser.smart.scheduling.duration.minutes = 10' in _galactica_conf.stdout"
-          - "'analyser.smart.max.indexes = 50' in _galactica_conf.stdout"
-          - "'analyser.smart.optimizer' in _galactica_conf.stdout"
-
     - name: Check that monitor.api.key is ChangeMe
       assert:
         that:
