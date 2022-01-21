@@ -188,13 +188,6 @@
           - "'VISUALDOOP_ADMIN=test_admin' in _vd2_config.stdout"
         fail_msg: "VISUALDOOP_ADMIN not defined"
 
-    - name: Check that VD2 is in cluster mode
-      assert:
-        that:
-          - "'CLUSTER_MODE=true' in _vd2_config.stdout"
-          - "'CLUSTER_ONLY=true' in _vd2_config.stdout"
-          - "'PROJECT_MODE=true' not in _vd2_config.stdout"
-
     - name: Register galactica-env.sh path
       stat:
         path: "/opt/indexima/galactica/conf/galactica-env.sh"

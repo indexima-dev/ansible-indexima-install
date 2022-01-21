@@ -141,13 +141,6 @@
         fail_msg: "MONITOR_API_KEY is not MyTestApiKey"
       when: inventory_hostname == "instance1"
 
-    - name: Check that CLUSTER_MODE is true
-      assert:
-        that:
-          - "'CLUSTER_MODE=true' in _vd2_config.stdout"
-        fail_msg: "CLUSTER_MODE is not true"
-      when: inventory_hostname == "instance1"
-
     - name: Check that Default Cluster is defined
       assert:
         that:
@@ -165,13 +158,6 @@
           - "'MAIN_CONNECTION_USER=admin' in _vd2_config.stdout"
           - "'MAIN_CONNECTION_PASSWORD=admin' in _vd2_config.stdout"
         fail_msg: "Default Connection is not correctly defined"
-      when: inventory_hostname == "instance1"
-
-    - name: Check that PROJECT_MODE is true
-      assert:
-        that:
-          - "'PROJECT_MODE=true' in _vd2_config.stdout"
-        fail_msg: "PROJECT_MODE is not true"
       when: inventory_hostname == "instance1"
 
     - name: Check that vd_config.sh has the correct admin_user

@@ -39,9 +39,7 @@ provisioner:
         galactica_gc_options: "-XX:+UseConcMarkSweepGC -XX:-OmitStackTraceInFastThrow -XX:NewRatio=3"
         galactica_jmx_options: '-verbose:gc'
         drivers: 1
-        vd_cluster_mode: 1
-        vd_cluster_only: 1
-        vd_project_mode: 0
+
         galactica_conf_extended: /tmp/galactica_extended
     host_vars:
       instance:

@@ -1,7 +1,7 @@
 [indexima]
 
 node1 ansible_host=10.20.30.40 is_master=1
-node3 ansible_host=10.20.30.50
+node2 ansible_host=10.20.30.50
 
 [indexima:vars]
 
@@ -12,22 +12,26 @@ ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
 
 #CLUSTER CONFIGURATION
 cluster_name="client"
-is_master=0
 nodes=2
 version=2021.5.1576.5
 hadoop_version_major=3
 drivers=1
+is_master=0
+
+# WARNING : For an already working, if you change the number of partitions, all your tables must be dropped and recreated, and all data reloaded.
+# By default : partitions = core * nodes
 partitions=64
 
-#INSTAL PATH & WAREHOUSE
+# INSTAL PATH & WAREHOUSE
 install_path=/opt
 vd_data=/opt/indexima/visualdoop-data
 warehouse_type=s3
-warehouse=s3a://indexima-tests/ajohnson/warehouse
+warehouse=s3a://indexima-tests/test/warehouse
 aws_access_key_id=AKIAU2....
 aws_secret_access_key=qZIhPX2p...
 
-#VISUAL CONSOLE CONFIGURATION
+# AUTHENTIFICATION
+ldap=0
 galactica_users="admin"
 galactica_passwords="admin"
 galactica_admins="admin"
