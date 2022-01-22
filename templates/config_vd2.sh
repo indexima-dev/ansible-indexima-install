@@ -80,8 +80,6 @@ export MAIN_CONNECTION_PORT={{ hive_port }}
 export MAIN_CONNECTION_USER={{ main_connection_user }}
 export MAIN_CONNECTION_PASSWORD={{ main_connection_password }}
 
-{% endif %}
-
 {% if monitor_api_key is defined and monitor_api_key != '' %}
 export MONITOR_API_KEY={{ monitor_api_key }}
 {% endif %}
