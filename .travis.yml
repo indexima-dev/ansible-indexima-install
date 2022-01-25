@@ -4,20 +4,20 @@ services:
   - docker
 env:
   - MOL_TEST: "local"
-    INDEXIMA_VERSION: "2021.3.1456.0"
+    INDEXIMA_VERSION: "2021.5.1576.5"
   - MOL_TEST: "docker-auth"
   - MOL_TEST: "docker"
     ANSIBLE_VERSION: "2.8.1"
-    INDEXIMA_VERSION: "2021.1.1334.3"
+    INDEXIMA_VERSION: "2021.5.1576.5"
   - MOL_TEST: "docker"
     ANSIBLE_VERSION: "4.0.0"
-    INDEXIMA_VERSION: "2021.2.1390.5"
+    INDEXIMA_VERSION: "2021.5.1576.5"
   - MOL_TEST: "docker"
     MOL_DISTRO: "centos7"
-    INDEXIMA_VERSION: "1.7.12.1257.4"
+    INDEXIMA_VERSION: "2021.5.1576.5"
   - MOL_TEST: "docker"
     MOL_DISTRO: "ubuntu1604"
-    INDEXIMA_VERSION: "1.7.11.1183.7"
+    INDEXIMA_VERSION: "2021.5.1576.5"
   - MOL_TEST: "amazon"
     MOL_AMI_NAME: "amzn2-ami-hvm-2.0*"
     MOL_AMI_OWNER: "amazon"
@@ -39,17 +39,17 @@ jobs:
       env:
         - MOL_TEST: "docker"
           ANSIBLE_VERSION: "2.8.1"
-          INDEXIMA_VERSION: "2021.1.1334.3"
+          INDEXIMA_VERSION: "2021.5.1576.5"
     - if: branch != master AND branch !~ /^v[0-9]+\.[0-9]+\.[0-9]+$/
       env:
         - MOL_TEST: "docker"
           MOL_DISTRO: "centos7"
-          INDEXIMA_VERSION: "1.7.12.1257.4"
+          INDEXIMA_VERSION: "2021.5.1576.5"
     - if: branch != master AND branch !~ /^v[0-9]+\.[0-9]+\.[0-9]+$/
       env:
         - MOL_TEST: "docker"
           MOL_DISTRO: "ubuntu1604"
-          INDEXIMA_VERSION: "1.7.11.1183.7"
+          INDEXIMA_VERSION: "2021.5.1576.5"
 install:
   - pip install ansible==${ANSIBLE_VERSION:-2.10.1} molecule==3.0.8 molecule-ec2==0.2 molecule-docker==0.2.4 boto3 yamllint ansible-lint docker
 script:
