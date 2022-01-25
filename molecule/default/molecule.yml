@@ -20,7 +20,7 @@ provisioner:
     group_vars:
       indexima:
         hadoop_url: "https://download.indexima.com/libs/hadoop-2.8.3.tar.gz"
-        version: ${INDEXIMA_VERSION:-"2021.1.1334.3"}
+        version: ${INDEXIMA_VERSION:-"2021.5.1576.5"}
         nodes: 1
         cores: 2
         loaders: 1
