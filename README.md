@@ -22,8 +22,10 @@ Ansible is an agentless automation tool that you install on a control node. From
 
 # Install process
 
-- Fill the file ```ansible-indexima-install/example/hosts.newcluster```
-- Launch the command : ```ansible-playbook -i example/hosts.newcluster indexima.yml```  
+- Fill the file ```ansible-indexima-install/examples/hosts.newcluster```
+- Use the ping module to ping all the nodes in your inventory ```ansible all -m ping -i hosts.newcluster```
+* You should see output for each host in your inventory with statut SUCCESS
+- Launch the command : ```ansible-playbook -i examples/hosts.newcluster examples/indexima.yml```  
 
 
 You can also execute the example playbook with the example host file:
