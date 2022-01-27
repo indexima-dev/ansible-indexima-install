@@ -28,9 +28,9 @@ vd_data=/opt/indexima/visualdoop-data
 warehouse_type=s3
 aws_access_key_id=AKIAU2....
 aws_secret_access_key=qZIhPX2p...
-warehouse=s3a://indexima-tests/test/warehouse
-indexima_history_dir="s3a://indexima-tests/test/history"
-indexima_history_export="s3a://indexima-tests/test/history_csv"
+warehouse=s3a://bucketname/indexima/warehouse
+indexima_history_dir="s3a://bucketname/indexima/log/history"
+indexima_history_export="s3a://bucketname/indexima/log/history_csv"
 
 # AUTHENTIFICATION
 ldap=0
