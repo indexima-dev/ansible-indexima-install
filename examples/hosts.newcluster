@@ -26,9 +26,11 @@ partitions=64
 install_path=/opt
 vd_data=/opt/indexima/visualdoop-data
 warehouse_type=s3
-warehouse=s3a://indexima-tests/test/warehouse
 aws_access_key_id=AKIAU2....
 aws_secret_access_key=qZIhPX2p...
+warehouse=s3a://indexima-tests/test/warehouse
+indexima_history_dir="s3a://indexima-tests/test/history"
+indexima_history_export="s3a://indexima-tests/test/history_csv"
 
 # AUTHENTIFICATION
 ldap=0
