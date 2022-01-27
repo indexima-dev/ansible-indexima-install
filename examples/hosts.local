@@ -49,7 +49,7 @@ nodes=1
 #partitions=4
 
 ## Change according to desired version and service pack
-#version=1.7.12.1257.0
+#version=2022.1.1669.0
 
 ## Set a custom install path. 'indexima' will automatically be appended to the variable
 ## Eg. install_path=/opt ; Indexima will be installed in /opt/indexima

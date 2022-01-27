@@ -13,7 +13,7 @@ ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
 #CLUSTER CONFIGURATION
 cluster_name="client"
 nodes=2
-version=2021.5.1576.5
+version=2022.1.1669.0
 hadoop_version_major=3
 drivers=1
 is_master=0
