@@ -37,5 +37,6 @@ ldap=0
 galactica_users="admin"
 galactica_passwords="admin"
 galactica_admins="admin"
+admin_users="admin"
 monitor_auth=1
 monitor_api_key="ApiKeyForVisualConsole"
