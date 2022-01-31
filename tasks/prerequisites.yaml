@@ -64,11 +64,11 @@
     mode: '0755'
   tags: ['hadoop', 'env']
 
-- name: prerequisites.yaml / Set ulimit 65536
+- name: prerequisites.yaml / Set ulimit 1000000
   lineinfile:
     path: /etc/security/limits.conf
     regexp: '\*\s*-\s*nofile\s*65536'
-    line: '*        -     nofile  65536'
+    line: '*        -     nofile  1000000'
   tags: ['etc']
 
 - name: prerequisites.yaml / Install nginx with amazon linux extra

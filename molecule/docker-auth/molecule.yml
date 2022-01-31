@@ -19,7 +19,7 @@ provisioner:
     group_vars:
       indexima:
         hadoop_url: "https://download.indexima.com/libs/hadoop-2.8.3.tar.gz"
-        version: 1.7.12.1257.1
+        version: 2021.5.1576.5
         nodes: 1
         warehouse: "/opt/indexima/warehouse"
         ldap: 1

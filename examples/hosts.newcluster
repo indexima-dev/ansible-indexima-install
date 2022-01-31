@@ -13,7 +13,7 @@ ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
 #CLUSTER CONFIGURATION
 cluster_name="client"
 nodes=2
-version=2021.5.1576.5
+version=2022.1.1669.0
 hadoop_version_major=3
 drivers=1
 is_master=0
@@ -26,14 +26,17 @@ partitions=64
 install_path=/opt
 vd_data=/opt/indexima/visualdoop-data
 warehouse_type=s3
-warehouse=s3a://indexima-tests/test/warehouse
 aws_access_key_id=AKIAU2....
 aws_secret_access_key=qZIhPX2p...
+warehouse=s3a://bucketname/indexima/warehouse
+indexima_history_dir="s3a://bucketname/indexima/log/history"
+indexima_history_export="s3a://bucketname/indexima/log/history_csv"
 
 # AUTHENTIFICATION
 ldap=0
 galactica_users="admin"
 galactica_passwords="admin"
 galactica_admins="admin"
+admin_users="admin"
 monitor_auth=1
 monitor_api_key="ApiKeyForVisualConsole"

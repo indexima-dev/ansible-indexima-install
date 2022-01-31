@@ -74,7 +74,6 @@ indexima_ram: "{{ (ram|float * 0.70) | int }}"
 
 warehouse_type: local
 warehouse: "{{ indexima_path }}/warehouse"
-loaders: "{% if cores|int > 4 %}{{ (cores|int / 2)|int }}{% else %}{{ cores|int }}{% endif %}"
 queries: "{{ (cores|int * 8)|int }}"
 partitions: "{{ (cores|int * nodes|int)|int }}"
 indexima_service_user: "{{ service_user }}"

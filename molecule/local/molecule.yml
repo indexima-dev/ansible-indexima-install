@@ -19,7 +19,7 @@ provisioner:
         is_master: 1
         nodes: 1
         drivers: true
-        version: ${INDEXIMA_VERSION:-"2021.3.1456.1"}
+        version: ${INDEXIMA_VERSION:-"2021.5.1576.5"}
         cores: 8
         node_port: 29999
         monitor_port: 12345

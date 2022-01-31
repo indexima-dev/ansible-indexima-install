@@ -93,11 +93,6 @@
         that:
           - "'cores = 2' in _galactica_conf.stdout"
 
-    - name: Check that loaders = 1
-      assert:
-        that:
-          - "'loaders = 1' in _galactica_conf.stdout"
-
     - name: Check that queries = 8
       assert:
         that:

@@ -22,8 +22,10 @@ Ansible is an agentless automation tool that you install on a control node. From
 
 # Install process
 
-- Fill the file ```ansible-indexima-install/example/hosts.newcluster```
-- Launch the command : ```ansible-playbook -i example/hosts.newcluster indexima.yml```  
+- Fill the file ```ansible-indexima-install/examples/hosts.newcluster```
+- Use the ping module to ping all the nodes in your inventory ```ansible all -m ping -i hosts.newcluster```
+* You should see output for each host in your inventory with statut SUCCESS
+- Launch the command : ```ansible-playbook -i examples/hosts.newcluster examples/indexima.yml```  
 
 
 You can also execute the example playbook with the example host file:
@@ -68,7 +70,6 @@ If it does not, you need to either execute the playbook as root, or set the sudo
 | warehouse_type          | The type of filesytem used for the data warehouse | local/nfs/s3/gs/adl/hdfs | local |
 | warehouse               | Path to the warehouse. If using S3, use the full s3 path, prefixed with 's3a://' (instead of the standard s3://) | | "{{ indexima_path }}/warehouse" |
 | hadoop_version_major    | The version of hadoop librairies used by Indexima nodes | 2 or 3 | 3 |
-| loaders                 | The number of max loaders tasks |  | "{% if cores > 4 %}{{ (cores / 2)\|int }}{% else %}{{ cores\|int }}{% endif %}" |
 | queries                 | The number of max threading for queries |  | "{{ (cores * 8)\|int }}" |
 | partitions              | The number of partitions used for the data |  | "{{ (cores * nodes)\|int }}" |
 | node_port               | Port used by the nodes to communicate with each other. This will use the port specified here, and the port +1 | | 19999 |
