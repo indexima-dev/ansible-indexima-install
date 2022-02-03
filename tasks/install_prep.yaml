@@ -31,3 +31,17 @@
     group: "{{ service_group }}"
     mode: '0755'
   register: dir
+
+- name: install_prep.yaml / Create folder TEZ
+  become: yes
+  become_user: root
+  file:
+    path: "{{ galactica_path }}/tez"
+    state: directory
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
+    mode: '0755'
+  register: dir
+  when:
+    - drivers |bool
+    - hadoop_version_major == "3"
