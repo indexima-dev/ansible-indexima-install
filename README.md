@@ -74,6 +74,7 @@ If it does not, you need to either execute the playbook as root, or set the sudo
 | partitions              | The number of partitions used for the data |  | "{{ (cores * nodes)\|int }}" |
 | node_port               | Port used by the nodes to communicate with each other. This will use the port specified here, and the port +1 | | 19999 |
 | monitor_port            | Port used to access the monitor api | | 9999 |
+| vd2_port                | Port used to access the web console | | 8082 |
 | galactica_conf_extended | Path (on the Ansible host) to a file containing galactica.conf parameters. The content of the file will be appended at the ended of the automatically generated galactica.conf. Use this if a parameter you need is not yet supported by the Ansible install role. *Warning*: Be careful not to write a parameter already present in the template | | |
 
 These are the main useful variables. If you wish to customize the installation further, open an issue for more information on certain parts of the role.
