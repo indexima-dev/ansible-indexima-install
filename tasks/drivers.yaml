@@ -35,5 +35,4 @@
   with_fileglob:
     - files/{{ tez_dag }}
     - files/{{ tez_api }}
-  when:
-    - hadoop_version_major == "3"
+  when: hadoop_version_major == "3"
