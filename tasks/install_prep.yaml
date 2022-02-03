@@ -43,5 +43,4 @@
     mode: '0755'
   register: dir
   when:
-    - drivers == "1"
     - hadoop_version_major == "3"
