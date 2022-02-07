@@ -32,7 +32,7 @@
     mode: "0755"
   register: dir
 
-- name: install_prep.yaml / Create folder TZ
+- name: install_prep.yaml / Create folder TEZ
   become: yes
   become_user: root
   file:
