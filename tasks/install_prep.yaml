@@ -36,10 +36,10 @@
   become: yes
   become_user: root
   file:
-    path: "{{  }}"
+    path: "{{ galactica_path }}/tez"
     state: directory
     owner: "{{ service_user }}"
     group: "{{ service_group }}"
     mode: "0755"
   register: dir
-  when: hadoop_version_major == "3"
+  when: hadoop_version_major == 3
