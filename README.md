@@ -102,7 +102,7 @@ These are the main useful variables. If you wish to customize the installation f
 
 # Tags
 
-To only partially execute the Indexima install role, you can use the following tags
+To only partially execute the Indexima install role, you can use the following tags. 
 
 install, update, conf and start/stop/restart tags can be prefixed with a 'g' or a 'v' to only apply to Galactica (core engine) or Visualdoop (console) respectively. Eg. `ansible-playbook -i hosts indexima.yml -t 'grestart'` restarts only the core engine. `ansible-playbook -i hosts indexima.yml -t 'vconf'` only deploys the configuration for the console.
 
