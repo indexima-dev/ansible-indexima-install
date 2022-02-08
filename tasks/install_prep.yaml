@@ -7,7 +7,7 @@
     state: directory
     owner: "{{ service_user }}"
     group: "{{ service_group }}"
-    mode: '0755'
+    mode: "0755"
   register: install
 
 - name: install_prep.yaml / Create Log Dir
@@ -18,7 +18,7 @@
     state: directory
     owner: "{{ service_user }}"
     group: "{{ service_group }}"
-    mode: '0755'
+    mode: "0755"
   with_items: "{{ indexima_logs }}"
 
 - name: install_prep.yaml / Create extract dir
@@ -29,5 +29,16 @@
     state: directory
     owner: "{{ service_user }}"
     group: "{{ service_group }}"
-    mode: '0755'
+    mode: "0755"
+  register: dir
+
+- name: install_prep.yaml / Create folder TEZ
+  become: yes
+  become_user: root
+  file:
+    path: "{{ galactica_path }}/tez"
+    state: directory
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
+    mode: "0755"
   register: dir
