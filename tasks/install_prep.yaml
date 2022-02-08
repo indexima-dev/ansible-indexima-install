@@ -42,4 +42,3 @@
     group: "{{ service_group }}"
     mode: "0755"
   register: dir
-  when: hadoop_version_major == 3
