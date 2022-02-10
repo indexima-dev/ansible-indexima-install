@@ -18,7 +18,7 @@ hadoop_file: hadoop-{{ hadoop_version }}
 hadoop_url: "{{ indexima_base_url }}/libs/{{ hadoop_file }}.tar.gz"
 hadoop_archive: "{{ install_path }}/{{ hadoop_file }}.tar.gz"
 hadoop_base: "{{ install_path }}/hadoop-{{ hadoop_version }}"
-tez_dag:  "tez-dag-0.9.2.jar" 
+tez_dag: "tez-dag-0.9.2.jar"
 tez_api: "tez-api-0.9.2.jar"
 
 # STANDALONE
@@ -133,6 +133,5 @@ clean: 1
 ssl: 0
 dynamic: 1
 galactica_gc_options: "-XX:+UseConcMarkSweepGC -XX:-OmitStackTraceInFastThrow"
-galactica_perf_mode: stable
 service_master_ip: "{% for host in ansible_play_hosts |default(['localhost']) %}{% if hostvars[host]['is_master'] %}{{ hostvars[host]['internal_host'] }}{% endif %}{% endfor %}"
 service_local_ip: "{{ internal_host |d('LOCAL_IP') }}"
