@@ -94,6 +94,7 @@ These are the main useful variables. If you wish to customize the installation f
 | galactica_users         | If monitor_auth is set to true, you must specify a list of coma-separated usernames | | admin |
 | galactica_passwords     | Specify a list of coma-separated password. Each password match the user of the same index | | admin |
 | galactica_admins        | Specify a list of coma-separated username. The users in galactica_users that are also present here will have admin rights | |admin |
+| admin_users        | For visualdoop console, specify a username. The user in admin_users that are also present here will have admin rights | |admin |
 | monitor_rights          | Set to true if you want to configure user rights for the Monitor | true/false | false |
 | monitor_api_key         | The API key that will be needed to attach a Indexima cluster to the console | | ChangeMe |
 | ldap                    | Set to true if you want to use LDAP to authenticate instead of custom auth. If set to true, ldap_url needs to be set | true/false | false |

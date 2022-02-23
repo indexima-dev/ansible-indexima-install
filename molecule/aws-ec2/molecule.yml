@@ -28,7 +28,7 @@ provisioner:
   inventory:
     group_vars:
       ec2:
-        hadoop_url: "https://download.indexima.com/libs/hadoop-2.8.3.tar.gz"
+        hadoop_url: "https://download.indexima.com/libs/hadoop-3.1.4.tar.gz"
         version: 2021.5.1576.5
         service_user: ${MOL_SSH_USER}
         nodes: 2
