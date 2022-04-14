@@ -27,7 +27,7 @@ export GC_OPTIONS="{{ galactica_gc_options }}"
 {% if aws_access_key_id is defined and aws_secret_access_key is defined %}
 # AWS credentials for loading from S3
 export AWS_ACCESS_KEY_ID={{ aws_access_key_id }}
-export AWS_SECRET_KEY={{ aws_secret_access_key }}
+export AWS_SECRET_ACCESS_KEY={{ aws_secret_access_key }}
 
 {% endif %}
 
