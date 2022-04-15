@@ -24,11 +24,22 @@
     - drivers_url is defined and drivers_url != ""
     - driver_list is defined and driver_list != []
 
-## LOCAL DRIVERS
+## LOCAL DRIVERS / TEMP TASKS
 - name: drivers.yaml / Copy TEZ jar
   copy:
     src: "{{ item }}"
     dest: "{{ galactica_path }}/tez"
+    owner: "{{ service_user }}"
+    group: "{{ service_group }}"
+    mode: "0644"
+  with_fileglob:
+    - files/{{ tez_dag }}
+    - files/{{ tez_api }}
+
+- name: drivers.yaml / Copy TEZ jar in EXT 
+  copy:
+    src: "{{ item }}"
+    dest: "{{ galactica_path }}/ext"
     owner: "{{ service_user }}"
     group: "{{ service_group }}"
     mode: "0644"

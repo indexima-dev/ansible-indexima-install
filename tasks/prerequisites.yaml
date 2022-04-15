@@ -69,6 +69,7 @@
     path: /etc/security/limits.conf
     regexp: '\*\s*-\s*nofile\s*65536'
     line: "*        -     nofile  1000000"
+  when: ansible_facts['distribution'] == "Amazon"
 
 - name: prerequisites.yaml / Change ulimit sysctl.conf
   lineinfile:
