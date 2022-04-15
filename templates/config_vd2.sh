@@ -27,7 +27,7 @@ export VISUALDOOP_BUCKET={{ vd_bucket }}
 export VISUALDOOP_DATA={{ vd_data }}/visualdoop-data
 {% if aws_access_key_id is defined and aws_secret_access_key is defined %}
 export AWS_ACCESS_KEY_ID={{ aws_access_key_id }}
-export AWS_SECRET_KEY={{ aws_secret_access_key }}
+export AWS_SECRET_ACCESS_KEY={{ aws_secret_access_key }}
 {% endif %}
 
 {% elif admin_type == 'azure' %}
