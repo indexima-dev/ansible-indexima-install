@@ -75,6 +75,7 @@
   lineinfile:
     path: /etc/sysctl.conf
     line: "fs.file-max = 1000000"
+  when: ansible_facts['distribution'] == "Amazon"
 
 - name: prerequisites.yaml / Install nginx with amazon linux extra
   command:
