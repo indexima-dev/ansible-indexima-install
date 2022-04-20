@@ -8,6 +8,7 @@ WorkingDirectory={{ galactica_path }}
 LimitNOFILE=1000000
 User={{ indexima_service_user }}
 ExecStart=/bin/bash {{ galactica_path }}/start-node.sh --host {{ service_local_ip }} --attach {{ service_master_ip }}
+ExecStop=/bin/bash {{ galactica_path }}/stop.sh
 
 [Install]
 WantedBy=multi-user.target
