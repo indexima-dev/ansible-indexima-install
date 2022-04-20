@@ -5,9 +5,9 @@ After=network.target
 [Service]
 Restart=always
 WorkingDirectory={{ galactica_path }}
-LimitNOFILE=65536
+LimitNOFILE=1000000
 User={{ indexima_service_user }}
-ExecStart=/bin/bash {{ galactica_path }}/start-node.sh --host {{ service_local_ip }}:{{ node_port }} --attach {{ service_master_ip }}:{{ node_port }}
+ExecStart=/bin/bash {{ galactica_path }}/start-node.sh --host {{ service_local_ip }} --attach {{ service_master_ip }}
 
 [Install]
 WantedBy=multi-user.target
