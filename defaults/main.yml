@@ -111,7 +111,6 @@ main_connection_password: admin
 kerberos_full: 0
 kerberos_indexima: "{{ kerberos_full }}"
 kerberos_hdfs: "{{ kerberos_full }}"
-kerberos_zookeeper: "{{ kerberos_full }}"
 
 # HADOOP
 hive_port: 10000

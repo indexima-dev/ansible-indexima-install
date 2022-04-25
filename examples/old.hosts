@@ -139,7 +139,6 @@ vd_data=/opt/indexima/visualdoop-data
 #kerberos_full=1
 #kerberos_indexima=1
 #kerberos_hdfs=1
-#kerberos_zookeeper=1
 #kerberos_principal=
 #kerberos_keytab_path=
 
@@ -175,9 +174,6 @@ galactica_admins="admin"
 ##### DRIVERS CONFIG #####
 ##########################
 
-## Zookeeper
-#zookeeper_quorum=
-#zookeeper_namespace=
 is_master=0
 
 ## HD Insight
