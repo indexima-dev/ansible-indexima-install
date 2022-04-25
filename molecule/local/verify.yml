@@ -63,9 +63,9 @@
       register: _result
       until:
         - _result.status == 200
-        - _result.json |length == 0
-      retries: 5 # 12 * 5 seconds = 1min
-      delay: 5 # Every 5 seconds
+      retries: 5 
+      delay: 10
+      failed_when: "'serving' not in _result.content"
 
     - name: Cat galactica.conf
       shell: cat /opt/indexima/galactica/conf/galactica.conf
