@@ -35,8 +35,7 @@
       register: _result
       until:
         - _result.status == 200
-        - _result.json.nodesDown |length == 0
-        - _result.json.nodesUp | length == nodes
+        - _result.json |length == 0
       retries: 12 # 12 * 5 seconds = 1min
       delay: 5 # Every 5 seconds
 
