@@ -10,6 +10,7 @@ RestartSec=10
 WorkingDirectory={{ vd2_path }}
 User={{ service_user }}
 ExecStart=/bin/bash {{ vd2_path }}/start.sh
+ExecStop=/bin/bash {{ vd2_path }}/stop.sh
 
 [Install]
 WantedBy=multi-user.target

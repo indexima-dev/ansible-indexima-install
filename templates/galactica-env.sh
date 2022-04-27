@@ -17,7 +17,7 @@ KINIT_KEYTAB={{ kerberos_keytab }}
 export KINIT_FROM_HIVE_SITE=true
 
 {% endif %}
-{% if kerberos_full == 0 and (kerberos_indexima == 1 or kerberos_zookeeper == 1 or kerberos_hdfs == 1) %}
+{% if kerberos_full == 0 and (kerberos_indexima == 1 or kerberos_hdfs == 1) %}
 export NODESERVER_JVM_OPTIONS="-Djava.security.auth.login.config={{ galactica_path }}/jaas.conf -Djavax.security.auth.useSubjectCredsOnly=false"
 
 {% endif %}

@@ -81,38 +81,6 @@
     </property>
 
     {% endif %}
-    {% if zookeeper_namespace is defined %}
-    <property>
-      <name>hive.server2.support.dynamic.service.discovery</name>
-      <value>true</value>
-    </property>
-    <property>
-      <name>hive.server2.zookeeper.namespace</name>
-      <value>{{ zookeeper_namespace }}</value>
-    </property>
-    <property>
-      <name>hive.zookeeper.quorum</name>
-      <value>{{ zookeeper_quorum }}</value>
-    </property>
-    {% if zookeeper_bind_ip is defined %}
-    <property>
-      <name>hive.server2.thrift.bind.zookeeper</name>
-      <value>{{ zookeeper_bind_ip }}</value>
-    </property>
-    {% endif %}
-    {% if kerberos_zookeeper == 0 %}
-    <property>
-      <name>allow.unsecure.zookeeper</name>
-      <value>true</value>
-    </property>
-    {% endif %}
-    {% if kerberos_zookeeper == 1 and kerberos_indexima == 0 %}
-    <property>
-      <name>use.jaas.file.zookeeper</name>
-      <value>true</value>
-    </property>
-    {% endif %}
-    {% endif %}
     
 {% if hadoop_version_major|int == 3 %}
     <property>

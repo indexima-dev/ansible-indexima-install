@@ -120,19 +120,9 @@
 
 - name: set_facts.yaml / Set the JDBC URL for the cluster
   set_fact:
-    jdbc_base_url: "jdbc:hive2://{% if zookeeper_quorum is defined %}{{ zookeeper_quorum }}\
-    {% else %}{{ ansible_host }}\
-    :{{ hive_port }}/default{% endif %}"
+    jdbc_base_url: "jdbc:hive2://{{ ansible_host }}:{{ hive_port }}/default"
   ignore_errors: yes
   when: is_master == 1
-
-- name: set_facts.yaml / Set the Zookeeper namespace for the jdbc url
-  set_fact:
-    jdbc_zookeeper: "serviceDiscoveryMode=zooKeeper;zooKeeperNamespace={{ zookeeper_namespace }}"
-  when:
-    - is_master == 1
-    - zookeeper_namespace is defined
-  ignore_errors: yes
 
 - name: set_facts.yaml / Set the Kerberos principal for the jdbc url
   set_fact:
@@ -144,7 +134,7 @@
 
 - name: set_facts.yaml / Set the full JDBC URL
   set_fact:
-    jdbc_url: "{{ ';'.join((jdbc_base_url, jdbc_zookeeper|d(), jdbc_kerberos|d())) }}"
+    jdbc_url: "{{ ';'.join((jdbc_base_url, jdbc_kerberos|d())) }}"
   ignore_errors: yes
   when: is_master == 1
 
