@@ -22,15 +22,16 @@ Ansible is an agentless automation tool that you install on a control node. From
 
 # Install process
 
-- Fill the file ```ansible-indexima-install/examples/hosts.newcluster```
-- Use the ping module to ping all the nodes in your inventory ```ansible all -m ping -i hosts.newcluster```
+- Go in this directory ```cd ansible-indexima-install/inventories```
+- Fill the file ```dev.hosts```
+- Use the ping module to ping all the nodes in your inventory ```ansible all -m ping -i dev.hosts```
 * You should see output for each host in your inventory with statut SUCCESS
-- Launch the command : ```ansible-playbook -i examples/hosts.newcluster examples/indexima.yml```  
+- Launch the command : ```ansible-playbook -i dev.hosts examples/indexima.yml```  
 
 
-You can also execute the example playbook with the example host file:
+You can also execute the playbook with the example host file:
 
-- ```ansible-playbook -i examples/hosts.local examples/indexima.yml```
+- ```ansible-playbook -i dev.hosts indexima.yml```
 
 This will install Indexima locally, providing your current user has sudo access with no password.
 If it does not, you need to either execute the playbook as root, or set the sudo password in the example/hosts.local file (uncomment and set the "ansible_sudo_pass" variable)  
@@ -39,8 +40,11 @@ If it does not, you need to either execute the playbook as root, or set the sudo
 - Download ZIP files (indexima installer & visualdoop2) from the [Indexima releases repository](https://download.indexima.com/release/)
 - Upload ZIP files in the ansible folder ..\ansible-indexima-install\files\
 - Modify the variable 'version' in the hosts file
-- Launch the command : ```ansible-playbook -i client.hosts indexima.yml -t 'stop,update,conf,start'```
-
+- Go in this directory ```cd ansible-indexima-install/inventories```
+- Launch the command : 
+```ansible-playbook -i dev.hosts indexima.yml -t 'stop'```
+```ansible-playbook -i dev.hosts indexima.yml```
+```ansible-playbook -i dev.hosts indexima.yml -t 'start'```
 # Variables
 
 ## Prerequisites and install
@@ -105,21 +109,21 @@ These are the main useful variables. If you wish to customize the installation f
 
 To only partially execute the Indexima install role, you can use the following tags. 
 
-install, update, conf and start/stop/restart tags can be prefixed with a 'g' or a 'v' to only apply to Galactica (core engine) or Visualdoop (console) respectively. Eg. `ansible-playbook -i hosts indexima.yml -t 'grestart'` restarts only the core engine. `ansible-playbook -i hosts indexima.yml -t 'vconf'` only deploys the configuration for the console.
+install, update, conf and start/stop/restart tags can be prefixed with a 'g' or a 'v' to only apply to Galactica (core engine) or Visualdoop (console) respectively. Eg. `ansible-playbook -i dev.hosts indexima.yml -t 'grestart'` restarts only the core engine. `ansible-playbook -i dev.hosts indexima.yml -t 'vconf'` only deploys the configuration for the console.
 
-If no tags are provided, it is the equivalent of executing the following command: `ansible-playbook -i hosts indexima.yml -t 'prerequisites,update,conf,restart'`
+If no tags are provided, it is the equivalent of executing the following command: `ansible-playbook -i dev.hosts indexima.yml -t 'prerequisites,update,conf,restart'`
 
 | Tag value          | Description         | Command example |
 | ------------------ | ------------------- | ------- |
 | install | Executes the prerequisites install as well as Indexima. Also deploys the service files and the selected jdbc drivers. Does *not* deploy the conf. Prefix install with a 'g' to install only Galactica. Prefix with a 'v' for Visualdoop (dev console) | `ansible-playbook -i hosts indexima.yml -t 'install'` |
-| update | Executes only the Indexima install and deploys the service files as well as the selected jdbc drivers. Does *not* install the prerequisistes, nor deploy the configuration. | `ansible-playbook -i hosts indexima.yml -t 'update'` |
-| conf | Deploys the configuration files to the Indexima nodes. | `ansible-playbook -i hosts indexima.yml -t 'conf'` |
-| service | Only deploys the service files | `ansible-playbook -i hosts indexima.yml -t 'service'` |
-| driver | Only deploys the selected jdbc drivers | `ansible-playbook -i hosts indexima.yml -t 'driver'` |
-| azure_datalake | When deploying on Azure Datalake, additional configuration files are required. This tags deploys those files | `ansible-playbook -i hosts indexima.yml -t 'azure_datalake'` |
-| start | Starts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'start'` |
-| stop | Stops Indexima. | `ansible-playbook -i hosts indexima.yml -t 'stop'` |
-| restart | Restarts Indexima. | `ansible-playbook -i hosts indexima.yml -t 'restart'` |
+| update | Executes only the Indexima install and deploys the service files as well as the selected jdbc drivers. Does *not* install the prerequisistes, nor deploy the configuration. | `ansible-playbook -i dev.hosts indexima.yml -t 'update'` |
+| conf | Deploys the configuration files to the Indexima nodes. | `ansible-playbook -i dev.hosts indexima.yml -t 'conf'` |
+| service | Only deploys the service files | `ansible-playbook -i dev.hosts indexima.yml -t 'service'` |
+| driver | Only deploys the selected jdbc drivers | `ansible-playbook -i dev.hosts indexima.yml -t 'driver'` |
+| azure_datalake | When deploying on Azure Datalake, additional configuration files are required. This tags deploys those files | `ansible-playbook -i dev.hosts indexima.yml -t 'azure_datalake'` |
+| start | Starts Indexima. | `ansible-playbook -i dev.hosts indexima.yml -t 'start'` |
+| stop | Stops Indexima. | `ansible-playbook -i dev.hosts indexima.yml -t 'stop'` |
+| restart | Restarts Indexima. | `ansible-playbook -i dev.hosts indexima.yml -t 'restart'` |
 
 # Ansible Galaxy 
 Then install the indexima-install role:
