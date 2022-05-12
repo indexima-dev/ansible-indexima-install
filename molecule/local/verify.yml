@@ -65,7 +65,6 @@
         - _result.status == 200
       retries: 5 
       delay: 10
-      failed_when: "'serving' not in _result.content"
 
     - name: Cat galactica.conf
       shell: cat /opt/indexima/galactica/conf/galactica.conf

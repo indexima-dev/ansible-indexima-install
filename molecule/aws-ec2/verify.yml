@@ -35,7 +35,6 @@
         - _result.status == 200
       retries: 12
       delay: 10
-      failed_when: "'serving' not in _result.content"
 
     - name: Check if warehouse is created
       amazon.aws.aws_s3:
