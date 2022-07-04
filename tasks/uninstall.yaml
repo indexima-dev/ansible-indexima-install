@@ -1,8 +1,0 @@
----
-- import_tasks: stop_indexima.yaml
-  ignore_errors: yes
-
-- name: uninstall.yaml / Delete extract dir
-  file:
-    path: "{{ indexima_path }}"
-    state: absent
